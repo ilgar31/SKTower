@@ -1,0 +1,151 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --font-inter: Inter;
+  --font-heebo: Heebo;
+  --font-lexend: Lexend;
+  --font-josefin-slab: "Josefin Slab";
+
+  /* font sizes */
+  --font-size-3xl-5: 1.406rem;
+  --font-size-lg: 1.125rem;
+  --font-size-45xl: 4rem;
+  --font-size-19xl: 2.375rem;
+  --font-size-32xl: 3.188rem;
+  --font-size-5xl: 1.5rem;
+  --font-size-xl: 1.25rem;
+  --font-size-base: 1rem;
+  --font-size-lgi: 1.188rem;
+  --font-size-13xl: 2rem;
+  --font-size-7xl: 1.625rem;
+  --font-size-21xl: 2.5rem;
+  --font-size-5xl-5: 1.531rem;
+  --font-size-smi-2: 0.763rem;
+  --font-size-9xl: 1.75rem;
+  --font-size-3xl: 1.375rem;
+  --font-size-xs-5: 0.719rem;
+  --font-size-2xl: 1.313rem;
+  --font-size-15xl: 2.125rem;
+  --font-size-8xl: 1.688rem;
+  --font-size-10xl: 1.813rem;
+  --font-size-4xl: 1.438rem;
+  --font-size-61xl: 5rem;
+  --font-size-17xl: 2.25rem;
+  --font-size-mini: 0.938rem;
+  --font-size-smi: 0.813rem;
+
+  /* Colors */
+  --color-whitesmoke-100: #f6f6f6;
+  --color-whitesmoke-200: #ebebeb;
+  --color-gray-100: #949494;
+  --color-gray-200: #2c2c2c;
+  --color-gray-300: #2a2a2a;
+  --color-gray-400: #181818;
+  --color-gray-500: #101a1e;
+  --color-gray-600: rgba(0, 0, 0, 0.6);
+  --color-gray-700: rgba(0, 0, 0, 0.27);
+  --color-gray-800: rgba(255, 255, 255, 0.25);
+  --color-black: #000;
+  --color-darkslategray-100: #424d52;
+  --color-darkslategray-200: #414141;
+  --color-darkslategray-300: #3f4041;
+  --color-darkslategray-400: #343243;
+  --color-gainsboro-100: #e4e4e4;
+  --color-gainsboro-200: #d9d9d9;
+  --color-gainsboro-300: rgba(217, 217, 217, 0.4);
+  --color-white: #fff;
+  --color-darkgray: #a0a0a0;
+  --color-silver-100: #c0c0c0;
+  --color-silver-200: #bbb;
+  --color-dimgray: #545454;
+
+  /* Gaps */
+  --gap-lgi: 1.187rem;
+  --gap-19xl: 2.375rem;
+  --gap-56xl: 4.687rem;
+  --gap-18xl: 2.312rem;
+  --gap-20xl: 2.437rem;
+  --gap-2xl: 1.312rem;
+  --gap-xl: 1.25rem;
+  --gap-115xl: 8.375rem;
+  --gap-14xl: 2.062rem;
+  --gap-48xl: 4.187rem;
+  --gap-3xl: 1.375rem;
+  --gap-25xl: 2.75rem;
+  --gap-46xl: 4.062rem;
+  --gap-13xl: 2rem;
+  --gap-base: 1rem;
+  --gap-94xl: 7.062rem;
+  --gap-9xl: 1.75rem;
+  --gap-37xl: 3.5rem;
+  --gap-93xl: 7rem;
+  --gap-lg: 1.125rem;
+  --gap-17xl: 2.25rem;
+  --gap-26xl: 2.812rem;
+  --gap-4xs: 0.562rem;
+  --gap-8xs: 0.312rem;
+  --gap-xs: 0.75rem;
+  --gap-24xl: 2.687rem;
+  --gap-5xl: 1.5rem;
+  --gap-21xl: 2.5rem;
+  --gap-7xl: 1.625rem;
+  --gap-5xs: 0.5rem;
+
+  /* Paddings */
+  --padding-6xs: 0.437rem;
+  --padding-5xl: 1.5rem;
+  --padding-xl: 1.25rem;
+  --padding-58xl: 4.812rem;
+  --padding-19xl: 2.375rem;
+  --padding-11xs: 0.125rem;
+  --padding-3xl: 1.375rem;
+  --padding-7xl: 1.625rem;
+  --padding-6xl: 1.562rem;
+  --padding-10xl: 1.812rem;
+  --padding-4xs: 0.562rem;
+  --padding-2xl: 1.312rem;
+  --padding-15xl: 2.125rem;
+  --padding-13xl: 2rem;
+  --padding-17xl: 2.25rem;
+  --padding-23xl: 2.625rem;
+  --padding-4xl: 1.437rem;
+  --padding-9xs: 0.25rem;
+  --padding-26xl: 2.812rem;
+  --padding-3xs: 0.625rem;
+  --padding-49xl: 4.25rem;
+  --padding-smi: 0.812rem;
+  --padding-14xl: 2.062rem;
+  --padding-33xl: 3.25rem;
+  --padding-xs: 0.75rem;
+  --padding-18xl: 2.312rem;
+  --padding-21xl: 2.5rem;
+  --padding-27xl: 2.875rem;
+  --padding-30xl: 3.062rem;
+  --padding-20xl: 2.437rem;
+  --padding-29xl: 3rem;
+  --padding-sm: 0.875rem;
+  --padding-9xs-5: 0.218rem;
+  --padding-8xs: 0.312rem;
+  --padding-231xl: 15.625rem;
+  --padding-11xl: 1.875rem;
+  --padding-47xl: 4.125rem;
+  --padding-9xl: 1.75rem;
+  --padding-82xl: 6.312rem;
+  --padding-12xl: 1.937rem;
+  --padding-53xl: 4.5rem;
+  --padding-lgi: 1.187rem;
+
+  /* Border radiuses */
+  --br-xl: 20px;
+  --br-8xs: 5px;
+  --br-3xs: 10px;
+  --br-8xs-4: 4.4px;
+  --br-521xl: 540px;
+  --br-25xl: 44px;
+  --br-54xl: 73px;
+  --br-56xl: 75px;
+}
