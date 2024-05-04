@@ -24,6 +24,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Josefin Slab:wght@700&display=swap"
     />
+    <link href="https://fonts.cdnfonts.com/css/gilroy-bold" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'main/css/header.css' %}">
     {% block link %}{% endblock %}
@@ -35,9 +36,9 @@
 <body>
 <web_header>
     <div class="block1">
-        <div class="logo">
+        <a class="logo" href="/" id="logo">
             <img src="{% static 'main/png/header/logo.png' %}" class="item_img" draggable="false">
-        </div>
+        </a>
         <div class="navigation">
             <a class="nav1" href="/">О НАС</a>
             <a class="nav2" href="/">ПРОЕКТЫ</a>
@@ -80,10 +81,10 @@
 </web_header>
 
 <mobile_header>
-    <div class="mobile_block1">
+    <a class="mobile_block1" href="/">
         <img src="{% static 'main/png/header/logo1.png' %}" class="mobile_item_img1" draggable="false">
         <img src="{% static 'main/png/header/logo2.png' %}" class="mobile_item_img2" draggable="false">
-    </div>
+    </a>
     <div class="mobile_block2">
         <div class="mobile_action_buttons">
             <div class="mobile_compare_block">
@@ -110,19 +111,47 @@
         <div id="menu" class="mobile_menu">
             <img src="{% static 'main/png/header/menu.png' %}" class="mobile_menu_icon" draggable="false">
         </div>
-        <div id="exit" class="mobile_menu2 not-visible">
-            <img src="{% static 'main/png/header/exit.png' %}" class="mobile_exit_icon" draggable="false">
+    </div>
+    <div class="mobile_menu_block" id="menu_block">
+        <div class="mobile_navigation_list">
+            <div class="mobile_menu_header">
+                <a href="/" class="mobile_phone_number">
+                    <img src="{% static 'main/png/header/phone.png' %}" class="mobile_phone_icon" draggable="false">
+                    +7(900) 555-40-60
+                </a>
+
+                <div id="exit" class="mobile_menu2 not-visible">
+                    <img src="{% static 'main/png/header/exit.png' %}" class="mobile_exit_icon" draggable="false">
+                </div>
+            </div>
+            <line></line>
+            <a class="mobile_nav" href="/">Главная</a>
+            <line></line>
+            <a class="mobile_nav" href="/">О нас</a>
+            <line></line>
+            <a class="mobile_nav" href="/">Проекты</a>
+            <line></line>
+            <a class="mobile_nav" href="/">Услуги</a>
+            <line></line>
+            <a class="mobile_nav" href="/">Цены</a>
+            <line></line>
+            <a class="mobile_nav" href="/">Портфолио</a>
+            <line></line>
+            <a class="mobile_nav" href="/">Отзывы</a>
+            <line></line>
+            <a class="mobile_nav" href="/">Контакты</a>
+            <line></line>
         </div>
-
-        <div class="mobile_menu_block">
-
+        <div class="mobile_phone_block">
+            Заказать звонок
         </div>
     </div>
 </mobile_header>
 
-<div class="content" id="content">
+<div class="content">
     {% block content %}
     {% endblock %}
 </div>
+
 </body>
 </html>
