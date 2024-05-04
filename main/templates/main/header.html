@@ -24,62 +24,105 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Josefin Slab:wght@700&display=swap"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'main/css/header.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'main/css/global.css' %}">
     {% block link %}{% endblock %}
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="{% static 'main/js/header.js' %}" defer></script>
     {% block script %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <header class="rectangle-parent">
-    <div class="rectangle-div"></div>
-    <div class="vector-parent">
-        <img src="{% static 'main/png/header/logo.png' %}" class="item_img" draggable="false">
-    </div>
-    <nav class="frame-wrapper">
-      <nav class="parent">
-        <a class="div9" href="/">О НАС</a>
-        <a class="div10" href="/">ПРОЕКТЫ</a>
-        <a class="div11" href="/">УСЛУГИ</a>
-        <a class="div12" href="/">ЦЕНЫ</a>
-        <a class="div13" href="/">ПОРТФОЛИО</a>
-        <a class="div14" href="/">ОТЗЫВЫ</a>
-        <a class="div15" href="/">КОНТАКТЫ</a>
-      </nav>
-    </nav>
-    <div class="frame-parents">
-        <div class="frame-parent">
-      <a class="rectangle-group">
-        <div class="frame-child1"></div>
-            <img src="{% static 'main/png/header/compare.png' %}" class="scales-icon7" draggable="false">      </a>
-      <div class="ellipse-parent">
-        <div class="ellipse-div"></div>
-        <div class="div16">2</div>
-      </div>
-    </div>
-    <div class="frame-parent">
-      <a class="rectangle-group">
-        <div class="frame-child1"></div>
-            <img src="{% static 'main/png/header/like.png' %}" class="favorite-icon8" draggable="false">      </a>
-      <div class="ellipse-parent">
-        <div class="ellipse-div"></div>
-        <div class="div16">8</div>
-      </div>
-    </div>
-    </div>
-    <div class="frame-container">
-      <div class="group">
-        <div class="div18">Пн–Пт 9:00-19:00 / Сб-Вс по договоренности</div>
-        <div class="wrapper">
-          <a class="b" href="/">+7(900) 555-40-60</a>
+<web_header>
+    <div class="block1">
+        <div class="logo">
+            <img src="{% static 'main/png/header/logo.png' %}" class="item_img" draggable="false">
         </div>
-      </div>
+        <div class="navigation">
+            <a class="nav1" href="/">О НАС</a>
+            <a class="nav2" href="/">ПРОЕКТЫ</a>
+            <a class="nav3" href="/">УСЛУГИ</a>
+            <a class="nav3" href="/">ЦЕНЫ</a>
+            <a class="nav4" href="/">ПОРТФОЛИО</a>
+            <a class="nav5" href="/">ОТЗЫВЫ</a>
+            <a class="nav6" href="/">КОНТАКТЫ</a>
+        </div>
     </div>
-    </header>
-    <div class="content" id="content">
-        {% block content %}
-        {% endblock %}
+    <div class="block2">
+        <div class="action_buttons">
+            <div class="compare_block">
+                <a class="compare" href="/">
+                    <img src="{% static 'main/png/header/compare.png' %}" class="compare_icon" draggable="false">
+                </a>
+                {% if True %}
+                <div class="compare_count_block">
+                    <p class="compare_count">{{ 2 }}</p>
+                </div>
+                {% endif %}
+            </div>
+            <div class="like_block">
+                <a class="like" href="/">
+                    <img src="{% static 'main/png/header/like.png' %}" class="like_icon" draggable="false">
+                </a>
+                {% if True %}
+                <div class="like_count_block">
+                    <p class="like_count">{{ 4 }}</p>
+                </div>
+                {% endif %}
+            </div>
+
+        </div>
+        <div class="info_container">
+            <div class="work_time">Пн–Пт 9:00-19:00 / Сб-Вс по договоренности</div>
+            <a class="header_number" href="/">+7(900) 555-40-60</a>
+        </div>
     </div>
+</web_header>
+
+<mobile_header>
+    <div class="mobile_block1">
+        <img src="{% static 'main/png/header/logo1.png' %}" class="mobile_item_img1" draggable="false">
+        <img src="{% static 'main/png/header/logo2.png' %}" class="mobile_item_img2" draggable="false">
+    </div>
+    <div class="mobile_block2">
+        <div class="mobile_action_buttons">
+            <div class="mobile_compare_block">
+                <a class="mobile_compare" href="/">
+                    <img src="{% static 'main/png/header/compare.png' %}" class="mobile_compare_icon" draggable="false">
+                </a>
+                {% if True %}
+                <div class="mobile_compare_count_block">
+                    <p class="mobile_compare_count">{{ 2 }}</p>
+                </div>
+                {% endif %}
+            </div>
+            <div class="mobile_like_block">
+                <a class="mobile_like" href="/">
+                    <img src="{% static 'main/png/header/like.png' %}" class="mobile_like_icon" draggable="false">
+                </a>
+                {% if True %}
+                <div class="mobile_like_count_block">
+                    <p class="mobile_like_count">{{ 4 }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div id="menu" class="mobile_menu">
+            <img src="{% static 'main/png/header/menu.png' %}" class="mobile_menu_icon" draggable="false">
+        </div>
+        <div id="exit" class="mobile_menu2 not-visible">
+            <img src="{% static 'main/png/header/exit.png' %}" class="mobile_exit_icon" draggable="false">
+        </div>
+
+        <div class="mobile_menu_block">
+
+        </div>
+    </div>
+</mobile_header>
+
+<div class="content" id="content">
+    {% block content %}
+    {% endblock %}
+</div>
 </body>
 </html>
