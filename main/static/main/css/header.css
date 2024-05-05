@@ -142,11 +142,19 @@ mobile_header {
         display: none;
     }
     mobile_header {
-        display: block;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
         height: 60px;
         display: flex;
         background-color: #f6f6f6;
         justify-content: space-between;
+        z-index: 2;
+    }
+
+    .content {
+        margin-top: 60px;
     }
 
     .mobile_block1 {
