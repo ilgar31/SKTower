@@ -147,7 +147,7 @@
     <div class="projects">
         <a class="project" href="/">
             <div class="project_block1" style="background-image: url('../static/main/png/home/test_project.png');">
-                <div class="compare_block">
+                <div class="project_compare_block">
                     <img src="{% static 'main/png/home/project_compare.png' %}" class="project_action_button" draggable="false">
                 </div>
                 <div class="favourite_block">
@@ -163,7 +163,7 @@
 
         <a class="project" href="/">
             <div class="project_block1" style="background-image: url('../static/main/png/home/test_project.png');">
-                <div class="compare_block">
+                <div class="project_compare_block">
                     <img src="{% static 'main/png/home/project_compare.png' %}" class="project_action_button" draggable="false">
                 </div>
                 <div class="favourite_block">
@@ -179,7 +179,7 @@
 
         <a class="project" href="/">
             <div class="project_block1" style="background-image: url('../static/main/png/home/test_project.png');">
-                <div class="compare_block">
+                <div class="project_compare_block">
                     <img src="{% static 'main/png/home/project_compare.png' %}" class="project_action_button" draggable="false">
                 </div>
                 <div class="favourite_block">
@@ -195,7 +195,7 @@
 
         <a class="project" href="/">
             <div class="project_block1" style="background-image: url('../static/main/png/home/test_project.png');">
-                <div class="compare_block">
+                <div class="project_compare_block">
                     <img src="{% static 'main/png/home/project_compare.png' %}" class="project_action_button" draggable="false">
                 </div>
                 <div class="favourite_block">
@@ -214,16 +214,34 @@
 
 <div class="special_block">
     <div class="special_block1">
-        <h1 class="special_block_title">У вас уже есть проект или смета на дом?</h1>
-        <p class="special_block_text">Прикрепите готовую смету, и мы расскажем, как можно сэкономить</p>
-        <form method="POST">
-
-        </form>
+        <div class="special_block1_1">
+            <h1 class="special_block_title">У вас уже есть проект или смета на дом?</h1>
+            <p class="special_block_text">Прикрепите готовую смету, и мы расскажем, как можно сэкономить</p>
+            <form method="POST">
+                <label for="file" class="file_input"></label>
+                <input type="file" id="file" class="feedback__file" name="file">
+                <p class="file_name" id="file_name"></p>
+                <p class="info_file_text" id="info_file_text">*Если у Вас более одного файла, поместите их все в один архив</p>
+                <input type="text" name="name" placeholder="Ваше имя" class="special_block_input">
+                <input id="phone" type="tel" name="phone" placeholder="Ваш телефон" class="special_block_input">
+            </form>
+        </div>
+        <label class="mobile_container">Согласен на обработку персональных данных в соответствии с пользовательским соглашением
+            <input type="checkbox">
+            <span class="mobile_checkmark"></span>
+        </label>
+        <div class="special_block1_2">
+            <div class="special_button1">Отправить заявку</div>
+            <div class="special_button2">Позвонить нам</div>
+        </div>
     </div>
 
     <div class="special_block2">
-        <img src="" alt="">
-        <input type="radio">
+        <img src="{% static 'main/png/home/special_block2_foto.png' %}" class="special_block2_foto" draggable="false">
+        <label class="container">Согласен на обработку персональных данных в соответствии с пользовательским соглашением
+            <input type="checkbox">
+            <span class="checkmark"></span>
+        </label>
     </div>
 </div>
 {% endblock %}
