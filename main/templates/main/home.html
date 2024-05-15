@@ -53,7 +53,7 @@
     </div>
 </div>
 
-<div class="advantages_block">
+<div class="advantages_block" id="block1">
     <h1 class="block_title">Наши преимущества</h1>
     <div class="advantages">
 
@@ -121,7 +121,7 @@
     </div>
 </div>
 
-<div class="steps_block">
+<div class="steps_block" id="block2">
     <h1 class="block_title">Этапы работы</h1>
     <div class="steps_block_content">
         <img src="{% static 'main/png/home/steps_background1.png' %}" class="steps_background" draggable="false">
@@ -142,7 +142,7 @@
     </div>
 </div>
 
-<div class="projects_block">
+<div class="projects_block" id="block3">
     <h1 class="block_title">Проекты домов</h1>
     <div class="projects">
         <a class="project" href="/">
@@ -215,7 +215,7 @@
 <div class="special_block">
     <div class="special_block1">
         <div class="special_block1_1">
-            <h1 class="special_block_title">У вас уже есть проект или смета на дом?</h1>
+            <h1 class="special_block_title">У вас уже есть проект или смета на дом?</h1>
             <p class="special_block_text">Прикрепите готовую смету, и мы расскажем, как можно сэкономить</p>
             <form method="POST">
                 <label for="file" class="file_input"></label>
@@ -243,5 +243,95 @@
             <span class="checkmark"></span>
         </label>
     </div>
+</div>
+
+<div class="services_block" id="block4">
+    <h1 class="block_title">Наши основные услуги</h1>
+    <div class="services">
+        <div class="service">
+            <img src="{% static 'main/png/home/service1.png' %}" class="service_foto" draggable="false">
+            <div class="service_info">
+                <p class="service_name">Строительство домов из газобетона</p>
+                <p class="service_text">Дома из газобетона - это отличное решение для создания прочных и теплых жилых помещений.
+                    Мы работаем с этим инновационным материалом, обеспечивая высокое качество и долговечность строения.</p>
+            </div>
+        </div>
+
+        <div class="service">
+            <img src="{% static 'main/png/home/service2.png' %}" class="service_foto" draggable="false">
+            <div class="service_info">
+                <p class="service_name">Строительство домов из теплой керамики</p>
+                <p class="service_text">Теплая керамика - это экологичный материал, который обладает прекрасными теплоизоляционными свойствами.
+                    Мы специализируемся на строительстве домов из теплой керамики, обеспечивая комфортное проживание для наших клиентов.</p>
+            </div>
+        </div>
+
+        <div class="service">
+            <img src="{% static 'main/png/home/service3.png' %}" class="service_foto" draggable="false">
+            <div class="service_info">
+                <p class="service_name">Строительство брусовых домов</p>
+                <p class="service_text">Брусовые дома - это классика, которая всегда актуальна и востребована.
+                    Мы строим дома из натурального дерева, обеспечивая уютную и экологически чистую обстановку для жизни.</p>
+            </div>
+        </div>
+
+        <div class="service">
+            <img src="{% static 'main/png/home/service4.png' %}" class="service_foto" draggable="false">
+            <div class="service_info">
+                <p class="service_name">Строительство каркасных домов</p>
+                <p class="service_text">Каркасные дома - это современное и экономичное решение.
+                    Мы специализируемся на строительстве каркасных конструкций, обеспечивая высокую прочность и надежность вашего дома.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="reviews_block" id="block5">
+    <h1 class="block_title">Отзывы</h1>
+    <div class="reviews">
+        <div class="review">
+            <div>
+                <div class="person_info">
+                    <img src="{% static 'main/png/home/person_icon.png' %}" class="person_icon" draggable="false">
+                    <p class="person_name">Олег Артемьев</p>
+                </div>
+                <p class="review_text">
+                    После строительства потребовалось выполнить наружную отделку сооружения. Обратились в компанию.
+                    Ребята помогли выбрать облицовку, заделали щели все с внешней части дома. отличная работа.
+                    Результатом довольны. Будем бытовку строить, обратимся снова вновь.
+                </p>
+            </div>
+            <p class="continue_read">читать далее</p>
+        </div>
+        <div class="review">
+            <div>
+                <div class="person_info">
+                    <img src="{% static 'main/png/home/person_icon.png' %}" class="person_icon" draggable="false">
+                    <p class="person_name">Олег Артемьев</p>
+                </div>
+                <p class="review_text">
+                    После строительства потребовалось выполнить наружную отделку сооружения. Обратились в компанию.
+                    Ребята помогли выбрать облицовку, заделали щели все с внешней части дома. отличная работа.
+                    Результатом довольны. Будем бытовку строить, обратимся снова вновь.
+                </p>
+            </div>
+            <p class="continue_read">читать далее</p>
+        </div>
+        <div class="review">
+            <div>
+                <div class="person_info">
+                    <img src="{% static 'main/png/home/person_icon.png' %}" class="person_icon" draggable="false">
+                    <p class="person_name">Олег Артемьев</p>
+                </div>
+                <p class="review_text">
+                    После строительства потребовалось выполнить наружную отделку сооружения. Обратились в компанию.
+                    Ребята помогли выбрать облицовку, заделали щели все с внешней части дома. отличная работа.
+                    Результатом довольны. Будем бытовку строить, обратимся снова вновь.
+                </p>
+            </div>
+            <p class="continue_read">читать далее</p>
+        </div>
+    </div>
+    <a href="/" class="we_all_projects">Все отзывы</a>
 </div>
 {% endblock %}
