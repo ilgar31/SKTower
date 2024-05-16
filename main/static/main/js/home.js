@@ -10,6 +10,7 @@ var block2 = document.getElementById("block2");
 var block3 = document.getElementById("block3");
 var block4 = document.getElementById("block4");
 var block5 = document.getElementById("block5");
+var block6 = document.getElementById("block6");
 
 function animation() {
     const block1Top = block1.getBoundingClientRect().top;
@@ -17,6 +18,7 @@ function animation() {
     const block3Top = block3.getBoundingClientRect().top;
     const block4Top = block4.getBoundingClientRect().top;
     const block5Top = block5.getBoundingClientRect().top;
+    const block6Top = block6.getBoundingClientRect().top;
     const windowHeight = window.innerHeight;
     if (block1Top < windowHeight) {
         block1.classList.add('visible_block');
@@ -37,6 +39,10 @@ function animation() {
     if (block5Top < windowHeight) {
         block5.classList.add('visible_block');
     }
+
+    if (block6Top < windowHeight) {
+        block6.classList.add('visible_block');
+    }
 }
 
 animation();
@@ -45,3 +51,19 @@ window.addEventListener('scroll', () => {
     animation();
 });
 
+
+const questionContainers = document.querySelectorAll('.question');
+
+for (let i = 0; i < questionContainers.length; i++) {
+  const question = questionContainers[i].querySelector('.question_container');
+  const answerContainer = questionContainers[i].querySelector('.answer_container');
+
+  question.addEventListener('click', () => {
+    answerContainer.classList.add('active_answer');
+    for (let j = 0; j < questionContainers.length; j++) {
+      if (i != j) {
+        questionContainers[j].querySelector('.answer_container').classList.remove('active_answer');
+      }
+    }
+  });
+}

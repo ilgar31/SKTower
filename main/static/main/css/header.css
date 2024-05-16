@@ -31,11 +31,16 @@ mobile_header {
     align-self: flex-start;
     transition: 1s cubic-bezier(0.25, 0.1, 0.28, 1.59);
     margin-top: -200px;
+    margin-left: 30px;
 }
 
 .item_img {
     width: 270px;
-    margin-left: 30px;
+    transition: 0.6s ease;
+}
+
+.item_img:hover {
+    margin-top: 10px;
 }
 
 .navigation {
@@ -52,6 +57,10 @@ mobile_header {
     color: black;
     font-weight: 300;
     font-family: Inter;
+}
+
+.navigation a:hover {
+    font-weight: 600;
 }
 
 .action_buttons {
@@ -75,6 +84,11 @@ mobile_header {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.4s ease;
+}
+
+.compare:hover {
+    background-color: #393e40;
 }
 
 .like {
@@ -85,6 +99,11 @@ mobile_header {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.4s ease;
+}
+
+.like:hover {
+    background-color: #393e40;
 }
 
 .compare_icon {
@@ -134,7 +153,11 @@ mobile_header {
     font-family: Lexend;
     color: black;
     text-decoration: none;
-    font-width: 800;
+    transition: 0.2s ease;
+}
+
+.header_number:hover {
+    font-size: 26px;
 }
 
 @media screen and (max-width: 1175px){
@@ -362,5 +385,299 @@ mobile_header {
     .mobile_action_buttons {
         margin-right: 20px;
         column-gap: 10px;
+    }
+}
+
+
+
+
+
+.footer {
+    width: 100%;
+    margin-top: 40px;
+    background-color: #545454;
+    padding-bottom: 10px;
+}
+
+.footer_body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer_logo_block {
+    margin-top: 30px;
+    width: 300px;
+    height: 200px;
+    background-color: rgba(255,255,255,0.25);
+    display: flex;
+    justify-content: center;
+}
+
+.footer_logo {
+    height: 200px;
+}
+
+.footer_content {
+    display: flex;
+    margin-top: 60px;
+    margin-right: 40px;
+    column-gap: 60px;
+}
+
+.footer_info {
+    display: flex;
+    column-gap: 80px;
+}
+
+.footer_info_title {
+    color: white;
+    font-size: 22px;
+    font-family: 'Gilroy-Bold', sans-serif;
+    letter-spacing: 0.8px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.footer_address_text {
+    color: white;
+    font-size: 12px;
+    font-family: Lexend, sans-serif;
+    letter-spacing: 0.8px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-top: 15px;
+    max-width: 260px;
+}
+
+.footer_navigation_links {
+    margin-top: 15px;
+    display: flex;
+    column-gap: 20px;
+}
+
+.footer_navigation_links_column {
+    display: flex;
+    row-gap: 5px;
+    flex-direction: column;
+}
+
+.footer_link {
+    color: white;
+    font-size: 12px;
+    font-family: Lexend, sans-serif;
+    letter-spacing: 0.8px;
+    text-decoration: none;
+}
+
+.footer_contact {
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 300px;
+}
+
+.footer_work_date {
+    font-size: 11px;
+    font-family: Inter;
+    color: white;
+    margin-block-start: 0;
+    margin-block-end: 5px;
+}
+
+.footer_number {
+    font-size: 30px;
+    font-family: Lexend;
+    color: black;
+    text-decoration: none;
+    transition: 0.2s ease;
+    color: white;
+}
+
+.footer_number:hover {
+    font-size: 32px;
+}
+
+.footer_order_call {
+    color: white;
+    font-size: 14px;
+    font-family: 'Gilroy-Bold', sans-serif;
+    letter-spacing: 0.8px;
+    text-decoration: underline;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.footer_data {
+    margin-top: 25px;
+    margin-left: 20px;
+}
+
+.footer_privacy_policy {
+    cursor: pointer;
+    color: white;
+    font-size: 10px;
+    font-family: Lexend, sans-serif;
+    letter-spacing: 0.8px;
+    text-decoration: underline;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.footer_years_work {
+    color: white;
+    font-size: 10px;
+    font-family: Lexend, sans-serif;
+    letter-spacing: 0.8px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-top: 5px;
+}
+
+.footer_agreement {
+    cursor: pointer;
+    color: white;
+    font-size: 10px;
+    font-family: Lexend, sans-serif;
+    letter-spacing: 0.8px;
+    text-decoration: underline;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-top: 5px;
+}
+
+
+@media screen and (max-width: 1300px){
+    .footer_content {
+        margin-right: 20px;
+        column-gap: 30px;
+    }
+
+    .footer_info {
+        column-gap: 30px;
+    }
+}
+
+@media screen and (max-width: 1170px){
+    .footer_body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer_content {
+        margin-top: 20px;
+        margin-right: 50px;
+        justify-content: space-between;
+    }
+
+    .footer_info {
+        flex-direction: column;
+        row-gap: 20px;
+        margin-left: 40px;
+    }
+
+    .footer_navigation_links {
+        margin-top: 5px;
+    }
+
+    .footer_address_text {
+        margin-top: 5px;
+    }
+
+    .footer_data {
+        margin-top: 30px;
+        margin-left: 40px;
+    }
+
+    .footer {
+        padding-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 660px){
+    .footer_logo_block {
+        margin-top: 30px;
+        width: 250px;
+        height: 170px;
+    }
+
+    .footer_logo {
+        height: 170px;
+    }
+
+    .footer_info_title {
+        font-size: 18px;
+    }
+
+    .footer_address_text {
+        font-size: 10px;
+        max-width: 180px;
+    }
+
+    .footer_link {
+        font-size: 10px;
+    }
+
+    .footer_contact {
+        width: auto;
+    }
+
+    .footer_work_date {
+        font-size: 9px;
+    }
+
+    .footer_number {
+        font-size: 25px;
+    }
+
+    .footer_number:hover {
+        font-size: 25px;
+    }
+
+    .footer_order_call {
+        font-size: 12px;
+        margin-top: 8px;
+    }
+
+    .footer_privacy_policy {
+        font-size: 8px;
+    }
+
+    .footer_years_work {
+        font-size: 8px;
+    }
+
+    .footer_agreement {
+        font-size: 8px;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .footer_content {
+        margin-right: 10px;
+        column-gap: 5px;
+    }
+
+    .footer_number {
+        font-size: 20px;
+    }
+
+    .footer_number:hover {
+        font-size: 20px;
+    }
+
+    .footer_info {
+        margin-left: 10px;
+    }
+
+    .footer_data {
+        margin-top: 20px;
+        margin-left: 10px;
+    }
+}
+
+@media screen and (max-width: 392px){
+    .footer_info {
+        max-width: 120px;
     }
 }

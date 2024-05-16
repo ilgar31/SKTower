@@ -147,10 +147,10 @@
     <div class="projects">
         <a class="project" href="/">
             <div class="project_block1" style="background-image: url('../static/main/png/home/test_project.png');">
-                <div class="project_compare_block">
+                <div class="project_compare_block" onclick="event.preventDefault();">
                     <img src="{% static 'main/png/home/project_compare.png' %}" class="project_action_button" draggable="false">
                 </div>
-                <div class="favourite_block">
+                <div class="favourite_block" onclick="event.preventDefault();">
                     <img src="{% static 'main/png/home/project_favourite.png' %}" class="project_action_button" draggable="false">
                 </div>
             </div>
@@ -333,5 +333,73 @@
         </div>
     </div>
     <a href="/" class="we_all_projects">Все отзывы</a>
+</div>
+
+<div class="questions_block" id="block6">
+    <h1 class="block_title">Часто задаваемые вопросы</h1>
+    <div class="questions">
+        <div class="question">
+            <div class="question_container">
+                <p class="question_text">Вопрос Вопрос Вопрос</p>
+                <img src="{% static 'main/png/home/question_arrow.png' %}" class="arrow_icon" draggable="false">
+            </div>
+
+            <div class="answer_container">
+                <p class="answer_text">Ответ ответ ответ ответ</p>
+            </div>
+        </div>
+        <div class="question">
+            <div class="question_container">
+                <p class="question_text">Вопрос Вопрос Вопрос</p>
+                <img src="{% static 'main/png/home/question_arrow.png' %}" class="arrow_icon" draggable="false">
+            </div>
+
+            <div class="answer_container">
+                <p class="answer_text">Ответ ответ ответ ответ</p>
+            </div>
+        </div>
+        <div class="question">
+            <div class="question_container">
+                <p class="question_text">Вопрос Вопрос Вопрос</p>
+                <img src="{% static 'main/png/home/question_arrow.png' %}" class="arrow_icon" draggable="false">
+            </div>
+
+            <div class="answer_container">
+                <p class="answer_text">Ответ ответ ответ ответ</p>
+            </div>
+        </div>
+        <div class="question">
+            <div class="question_container">
+                <p class="question_text">Вопрос Вопрос Вопрос</p>
+                <img src="{% static 'main/png/home/question_arrow.png' %}" class="arrow_icon" draggable="false">
+            </div>
+
+            <div class="answer_container">
+                <p class="answer_text">Ответ ответ ответ ответ</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question_container">
+                <p class="question_text">Вопрос Вопрос Вопрос</p>
+                <img src="{% static 'main/png/home/question_arrow.png' %}" class="arrow_icon" draggable="false">
+            </div>
+
+            <div class="answer_container">
+                <p class="answer_text">Ответ ответ ответ ответ</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="your_question_block">
+    <div class="your_question_info">
+        <p class="your_question_title">Не нашли ответ на свой вопрос?</p>
+        <p class="your_question_text">Задайте его нашим специалистам</p>
+    </div>
+    <div class="your_question_buttons">
+        <div class="your_question_button1">Заказать звонок</div>
+        <div class="your_question_button2">Позвонить нам</div>
+    </div>
 </div>
 {% endblock %}
