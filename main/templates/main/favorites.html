@@ -1,0 +1,48 @@
+{% extends 'main/header.html' %}
+{% load static %}
+
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/favorites.css' %}">
+{% endblock %}
+
+
+{% block script %}
+<script src="{% static 'main/js/favorites.js' %}" defer></script>
+{% endblock %}
+
+
+{% block title %}
+Избранное
+{% endblock %}
+
+
+{% block navigation %}
+<a href="/">Главная</a> » Избранное
+{% endblock %}
+
+{% block mobile_navigation %}
+<a href="/">Главная</a> » Избранное
+{% endblock %}
+
+
+{% block title_text %}
+Избранные проекты
+{% endblock %}
+
+{% block extra_text %}
+Избранные проекты: ваша личная подборка идеальных решений для вашего дома.
+{% endblock %}
+
+
+{% block mobile_title_text %}
+Избранные проекты
+{% endblock %}
+
+{% block mobile_extra_text %}
+Избранные проекты: ваша личная подборка идеальных решений для вашего дома.
+{% endblock %}
+
+
+{% block content %}
+{% endblock %}

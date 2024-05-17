@@ -40,19 +40,19 @@
             <img src="{% static 'main/png/header/logo.png' %}" class="item_img" draggable="false">
         </a>
         <div class="navigation">
-            <a class="nav1" href="/">О НАС</a>
-            <a class="nav2" href="/">ПРОЕКТЫ</a>
-            <a class="nav3" href="/">УСЛУГИ</a>
-            <a class="nav3" href="/">ЦЕНЫ</a>
-            <a class="nav4" href="/">ПОРТФОЛИО</a>
-            <a class="nav5" href="/">ОТЗЫВЫ</a>
-            <a class="nav6" href="/">КОНТАКТЫ</a>
+            <a class="nav" href="{% url 'about' %}">О НАС</a>
+            <a class="nav" href="{% url 'projects' %}">ПРОЕКТЫ</a>
+            <a class="nav" href="{% url 'services' %}">УСЛУГИ</a>
+            <a class="nav" href="/">ЦЕНЫ</a>
+            <a class="nav" href="{% url 'portfolio' %}">ПОРТФОЛИО</a>
+            <a class="nav" href="{% url 'reviews' %}">ОТЗЫВЫ</a>
+            <a class="nav" href="{% url 'contacts' %}">КОНТАКТЫ</a>
         </div>
     </div>
     <div class="block2">
         <div class="action_buttons">
             <div class="compare_block">
-                <a class="compare" href="/">
+                <a class="compare" href="{% url 'compare' %}">
                     <img src="{% static 'main/png/header/compare.png' %}" class="compare_icon" draggable="false">
                 </a>
                 {% if True %}
@@ -62,7 +62,7 @@
                 {% endif %}
             </div>
             <div class="like_block">
-                <a class="like" href="/">
+                <a class="like" href="{% url 'favorites' %}">
                     <img src="{% static 'main/png/header/like.png' %}" class="like_icon" draggable="false">
                 </a>
                 {% if True %}
@@ -88,7 +88,7 @@
     <div class="mobile_block2">
         <div class="mobile_action_buttons">
             <div class="mobile_compare_block">
-                <a class="mobile_compare" href="/">
+                <a class="mobile_compare" href="{% url 'compare' %}">
                     <img src="{% static 'main/png/header/compare.png' %}" class="mobile_compare_icon" draggable="false">
                 </a>
                 {% if True %}
@@ -98,7 +98,7 @@
                 {% endif %}
             </div>
             <div class="mobile_like_block">
-                <a class="mobile_like" href="/">
+                <a class="mobile_like" href="{% url 'favorites' %}">
                     <img src="{% static 'main/png/header/like.png' %}" class="mobile_like_icon" draggable="false">
                 </a>
                 {% if True %}
@@ -125,21 +125,21 @@
                 </div>
             </div>
             <line></line>
-            <a class="mobile_nav" href="/">Главная</a>
+            <a class="mobile_nav" href="{% url 'home' %}">Главная</a>
             <line></line>
-            <a class="mobile_nav" href="/">О нас</a>
+            <a class="mobile_nav" href="{% url 'about' %}">О нас</a>
             <line></line>
-            <a class="mobile_nav" href="/">Проекты</a>
+            <a class="mobile_nav" href="{% url 'projects' %}">Проекты</a>
             <line></line>
-            <a class="mobile_nav" href="/">Услуги</a>
+            <a class="mobile_nav" href="{% url 'services' %}">Услуги</a>
             <line></line>
             <a class="mobile_nav" href="/">Цены</a>
             <line></line>
-            <a class="mobile_nav" href="/">Портфолио</a>
+            <a class="mobile_nav" href="{% url 'portfolio' %}">Портфолио</a>
             <line></line>
-            <a class="mobile_nav" href="/">Отзывы</a>
+            <a class="mobile_nav" href="{% url 'reviews' %}">Отзывы</a>
             <line></line>
-            <a class="mobile_nav" href="/">Контакты</a>
+            <a class="mobile_nav" href="{% url 'contacts' %}">Контакты</a>
             <line></line>
         </div>
         <div class="mobile_phone_block">
@@ -148,7 +148,57 @@
     </div>
 </mobile_header>
 
+
 <div class="content">
+    <div class="title_block">
+        <div class="site_navigation">
+            {% block navigation %}
+            {% endblock %}
+        </div>
+        <div class="block_info" id="block_info">
+            <h1 class="title_text">
+                {% block title_text %}
+                {% endblock %}
+            </h1>
+            <p class="extra_text">
+                {% block extra_text %}
+                {% endblock %}
+            </p>
+        </div>
+        <div class="block_buttons" id="block_buttons">
+            <div class="button1">
+                Оставить заявку
+                <img src="{% static 'main/png/home/phone.png' %}" class="button1_icon" draggable="false">
+            </div>
+            <a href="/" class="button2">Калькулятор стоимости дома</a>
+            <a href="{% url 'projects' %}" class="button3">Каталог всех проектов домов</a>
+        </div>
+    </div>
+
+    <div class="mobile_title_block">
+        <div class="mobile_site_navigation">
+            {% block mobile_navigation %}
+            {% endblock %}
+        </div>
+        <div class="mobile_block_buttons" id="mobile_block_buttons">
+            <div class="mobile_button1">
+                Оставить заявку
+                <img src="{% static 'main/png/home/phone.png' %}" class="mobile_button1_icon" draggable="false">
+            </div>
+        </div>
+        <div class="mobile_block_info" id="mobile_block_info">
+            <h1 class="mobile_title_text">
+                {% block mobile_title_text %}
+                {% endblock %}
+            </h1>
+            <p class="mobile_extra_text">
+                {% block mobile_extra_text %}
+                {% endblock %}
+            </p>
+            <a href="/" class="mobile_button2">Калькулятор стоимости дома</a>
+            <a href="{% url 'projects' %}" class="mobile_button3">Каталог всех проектов домов</a>
+        </div>
+    </div>
     {% block content %}
     {% endblock %}
 </div>
@@ -164,16 +214,16 @@
                     <p class="footer_info_title">Навигация по сайту</p>
                     <div class="footer_navigation_links">
                         <div  class="footer_navigation_links_column">
-                            <a href="/" class="footer_link">Главная</a>
-                            <a href="/" class="footer_link">О нас</a>
-                            <a href="/" class="footer_link">Проекты</a>
-                            <a href="/" class="footer_link">Услуги</a>
+                            <a href="{% url 'home' %}" class="footer_link">Главная</a>
+                            <a href="{% url 'about' %}" class="footer_link">О нас</a>
+                            <a href="{% url 'projects' %}" class="footer_link">Проекты</a>
+                            <a href="{% url 'services' %}" class="footer_link">Услуги</a>
                         </div>
                         <div  class="footer_navigation_links_column">
                             <a href="/" class="footer_link">Цены</a>
-                            <a href="/" class="footer_link">Портфолио</a>
-                            <a href="/" class="footer_link">Отзывы</a>
-                            <a href="/" class="footer_link">Контакты</a>
+                            <a href="{% url 'portfolio' %}" class="footer_link">Портфолио</a>
+                            <a href="{% url 'reviews' %}" class="footer_link">Отзывы</a>
+                            <a href="{% url 'contacts' %}" class="footer_link">Контакты</a>
                         </div>
                     </div>
                 </div>

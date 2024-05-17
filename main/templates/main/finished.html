@@ -1,0 +1,48 @@
+{% extends 'main/header.html' %}
+{% load static %}
+
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/finished.css' %}">
+{% endblock %}
+
+
+{% block script %}
+<script src="{% static 'main/js/finished.js' %}" defer></script>
+{% endblock %}
+
+
+{% block title %}
+Название проекта
+{% endblock %}
+
+
+{% block navigation %}
+<a href="/">Главная</a> » <a href="{% url 'portfolio' %}">Портфолио</a> » Название проекта
+{% endblock %}
+
+{% block mobile_navigation %}
+<a href="/">Главная</a> » <a href="{% url 'portfolio' %}">Портфолио</a> » Название проекта
+{% endblock %}
+
+
+{% block title_text %}
+Название проекта
+{% endblock %}
+
+{% block extra_text %}
+Ознакомьтесь с нашим готовым проектом и погрузитесь в атмосферу комфорта и качества, которые мы гарантируем в каждом нашем проекте.
+{% endblock %}
+
+
+{% block mobile_title_text %}
+Название проекта
+{% endblock %}
+
+{% block mobile_extra_text %}
+Ознакомьтесь с нашим готовым проектом и погрузитесь в атмосферу комфорта и качества, которые мы гарантируем в каждом нашем проекте.
+{% endblock %}
+
+
+{% block content %}
+{% endblock %}

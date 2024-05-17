@@ -1,0 +1,48 @@
+{% extends 'main/header.html' %}
+{% load static %}
+
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/projects.css' %}">
+{% endblock %}
+
+
+{% block script %}
+<script src="{% static 'main/js/projects.js' %}" defer></script>
+{% endblock %}
+
+
+{% block title %}
+Назваине проекта
+{% endblock %}
+
+
+{% block navigation %}
+<a href="/">Главная</a> » <a href="{% url 'projects' %}">Проекты</a> » Название проекта
+{% endblock %}
+
+{% block mobile_navigation %}
+<a href="/">Главная</a> » <a href="{% url 'projects' %}">Проекты</a> » Название проекта
+{% endblock %}
+
+
+{% block title_text %}
+Назваине проекта
+{% endblock %}
+
+{% block extra_text %}
+Мы реализуем строительство вашего дома на основе готового проекта.
+{% endblock %}
+
+
+{% block mobile_title_text %}
+Назваине проекта
+{% endblock %}
+
+{% block mobile_extra_text %}
+Мы реализуем строительство вашего дома на основе готового проекта.
+{% endblock %}
+
+
+{% block content %}
+{% endblock %}

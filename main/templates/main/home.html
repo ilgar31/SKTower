@@ -6,57 +6,39 @@
 <link rel="stylesheet" type="text/css" href="{% static 'main/css/home.css' %}">
 {% endblock %}
 
+
 {% block script %}
 <script src="{% static 'main/js/home.js' %}" defer></script>
 {% endblock %}
+
 
 {% block title %}
 Главная
 {% endblock %}
 
+
+{% block title_text %}
+От идеи до ключей: Строительство домов и коттеджей
+{% endblock %}
+
+{% block extra_text %}
+Индивидуальный подход к каждому дому: С нами ваша мечта становится реальностью без лишних забот.
+{% endblock %}
+
+
+{% block mobile_title_text %}
+От идеи до ключей: Строительство домов и коттеджей
+{% endblock %}
+
+{% block mobile_extra_text %}
+Индивидуальный подход к каждому дому: С нами ваша мечта становится реальностью без лишних забот.
+{% endblock %}
+
+
 {% block content %}
-<div class="title_block">
-    <div class="block_info" id="block_info">
-        <h1 class="title_text">
-            От идеи до ключей: Строительство домов и коттеджей
-        </h1>
-        <p class="extra_text">
-            Индивидуальный подход к каждому дому: С нами ваша мечта становится реальностью без лишних забот.
-        </p>
-    </div>
-    <div class="block_buttons" id="block_buttons">
-        <div class="button1">
-            Оставить заявку
-            <img src="{% static 'main/png/home/phone.png' %}" class="button1_icon" draggable="false">
-        </div>
-        <a href="/" class="button2">Калькулятор стоимости дома</a>
-        <a href="/" class="button3">Каталог всех проектов домов</a>
-    </div>
-</div>
-
-<div class="mobile_title_block">
-    <div class="mobile_block_buttons" id="mobile_block_buttons">
-        <div class="mobile_button1">
-            Оставить заявку
-            <img src="{% static 'main/png/home/phone.png' %}" class="mobile_button1_icon" draggable="false">
-        </div>
-    </div>
-    <div class="mobile_block_info" id="mobile_block_info">
-        <h1 class="mobile_title_text">
-            От идеи до ключей: Строительство домов и коттеджей
-        </h1>
-        <p class="mobile_extra_text">
-            Индивидуальный подход к каждому дому: С нами ваша мечта становится реальностью без лишних забот.
-        </p>
-        <a href="/" class="mobile_button2">Калькулятор стоимости дома</a>
-        <a href="/" class="mobile_button3">Каталог всех проектов домов</a>
-    </div>
-</div>
-
 <div class="advantages_block" id="block1">
     <h1 class="block_title">Наши преимущества</h1>
     <div class="advantages">
-
         <div class="advantage">
             <div class="advantage_block1">
                 <img src="{% static 'main/png/home/advantage1.png' %}" class="advantage_icon" draggable="false">
