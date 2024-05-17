@@ -67,3 +67,33 @@ for (let i = 0; i < questionContainers.length; i++) {
     }
   });
 }
+
+
+
+$(document).ready(function() {
+
+    $('input[type="file"]').change(function(){
+        var value = $("input[type='file']").val().split("\\").at(-1);
+        $('.file_name').text(value);
+        if (value) {
+            $('.info_file_text').text('');
+        }
+        else {
+            $('.info_file_text').text('*Если у Вас более одного файла, поместите их все в один архив');
+        }
+    });
+});
+
+$(document).ready(function() {
+
+    $('input[type="file"]').change(function(){
+        var value = $("input[type='file']").val().split("\\").at(-1);
+        $('.file_name2').text(value);
+        if (value) {
+            $('.info_file_text2').text('');
+        }
+        else {
+            $('.info_file_text2').text('*Если у Вас более одного файла, поместите их все в один архив');
+        }
+    });
+});

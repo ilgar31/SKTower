@@ -8,9 +8,13 @@ from datetime import datetime
 class Projects(models.Model):
     name = models.CharField(name='Название объекта', max_length=100, blank=True)
     description = models.CharField(name='Описание объекта', max_length=1000, blank=True)
-    living_area = models.IntegerField(name='Жилая прощадь', blank=True)
     total_area = models.IntegerField(name='Общая прощадь', blank=True)
-    # СПРОСИТЬ ПРО ЗАВИСИМОСТЬ ЦЕНЫ ОТ КОМПЛЕКТАЦИИ
+    living_area = models.IntegerField(name='Жилая прощадь', blank=True)
+    price = models.IntegerField(name="Цена базовой комплектации", blank=True)
+    bedrooms = models.IntegerField(name="Количество спален", blank=True)
+    bathroom = models.IntegerField(name="Количество санузлов", blank=True)
+    floors = models.IntegerField(name="Количество этажей", blank=True)
+    terrace = models.BooleanField(name="Наличие террасы", blank=True)
 
     def __str__(self):
         return self.name
@@ -43,15 +47,19 @@ class ProjectLayouts(models.Model):
 class FinishedProjects(models.Model):
     name = models.CharField(name='Название объекта', max_length=100, blank=True)
     description = models.CharField(name='Описание объекта', max_length=1000, blank=True)
-    # СПРОСИТЬ ПРО ОПИСАНИЕ ГОТОВОГО ОБЪЕКТА
-    review = models.CharField(name='Отзыв заказчика', max_length=1000)
+    living_area = models.IntegerField(name='Жилая прощадь', blank=True)
+    address = models.CharField(name='Адрес', max_length=150, blank=True)
+    wall_material = models.CharField(name='Материал стен', max_length=100, blank=True)
+    equipment = models.CharField(name='Комплектация', max_length=100, blank=True)
+    reviewer_name = models.CharField(name='Имя клиента', max_length=100, blank=True)
+    review = models.CharField(name='Отзыв клиента', max_length=1000)
 
     def __str__(self):
-        return self.name
+        return f'{self.name}    {self.address}'
 
     class Meta:
-        verbose_name = "Проект"
-        verbose_name_plural = "Проекты"
+        verbose_name = "Готовый проект"
+        verbose_name_plural = "Готовые проекты"
 
 
 def finished_project_img_save(instance, filename):
@@ -64,3 +72,15 @@ class FinishedProjectImages(models.Model):
 
     def __str__(self):
         return f'{self.image}'
+
+
+class Reviews(models.Model):
+    reviewer_name = models.CharField(name='Имя клиента', max_length=100, blank=True)
+    review = models.CharField(name='Отзыв', max_length=2000, blank=True)
+
+    def __str__(self):
+        return f'Отзыв от {self.reviewer_name}'
+
+    class Meta:
+        verbose_name = "Отзыв"
+        verbose_name_plural = "Отзывы"

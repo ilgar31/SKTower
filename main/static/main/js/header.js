@@ -9,3 +9,4 @@ document.getElementById('exit').addEventListener('click', e=> {
     document.getElementById('exit').classList.add('not-visible');
     document.getElementById('menu_block').style.left = "100%";
 })
+
