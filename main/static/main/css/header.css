@@ -700,12 +700,13 @@ mobile_header {
 }
 
 .block_info {
-    display: flex;
+display: flex;
     flex-direction: column;
     margin-left: -1000px;
-    margin-top: 120px;
+    /* margin-top: 220px; */
     max-width: 55%;
     transition: 1.2s ease-out;
+    justify-content: center;
 }
 
 .title_text {

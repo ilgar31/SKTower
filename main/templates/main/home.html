@@ -117,7 +117,7 @@
     <div class="idea_block_content">
         <h1 class="idea_content_title">Мы превратим вашу идею о доме в живую реальность</h1>
         <p class="idea_content_text">Ознакомьтесь с нашими завершенными проектами.</p>
-        <a href="/" class="we_works_button">Наши работы</a>
+        <a href="{% url 'portfolio' %}" class="we_works_button">Наши работы</a>
     </div>
     <div class="idea_block_photo">
         <img src="{% static 'main/png/home/idea_photo.png' %}" class="idea_photo" draggable="false">
@@ -191,7 +191,7 @@
             </div>
         </a>
     </div>
-    <a href="/" class="we_all_projects">Все объекты</a>
+    <a href="{% url 'projects' %}" class="we_all_projects">Все объекты</a>
 </div>
 
 <div class="special_block">
@@ -314,7 +314,7 @@
             <p class="continue_read">читать далее</p>
         </div>
     </div>
-    <a href="/" class="we_all_projects">Все отзывы</a>
+    <a href="{% url 'reviews' %}" class="we_all_projects">Все отзывы</a>
 </div>
 
 <div class="questions_block" id="block6">

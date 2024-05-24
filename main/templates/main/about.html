@@ -45,4 +45,149 @@ S.K. Tower - это молодая компания, которая была с�
 
 
 {% block content %}
+<div class="about_block">
+    <div class="about_block_icons">
+        <img src="{% static 'main/png/about/about_icon1.png' %}" class="about_icon" draggable="false">
+        <img src="{% static 'main/png/about/about_icon2.png' %}" class="about_icon" draggable="false">
+        <img src="{% static 'main/png/about/about_icon3.png' %}" class="about_icon" draggable="false">
+    </div>
+    <div class="about_block_info">
+        <p class="about_block_title">Наша миссия и ценности</p>
+        <p class="about_block_text">Мы стремимся разрабатывать продукцию, соответствующую самым современным стандартам и технологиям в строительной отрасли. Наша цель - предложить клиентам инновационные и надежные дома, соответствующие последним тенденциям в архитектуре и дизайне.
+            Наша команда постоянно внедряет новые идеи, совершенствуется и стремится стать лучшей в своей сфере.</p>
+    </div>
+</div>
+
+<div class="about_digits_block">
+    <div class="about_digits">
+        <div class="about_digit_value">50+</div>
+        <p class="about_digit_text">Семей нашли свой дом среди наших строений</p>
+    </div>
+    <div class="about_digits">
+        <div class="about_digit_value">80+</div>
+        <p class="about_digit_text">Уникальных проектов было успешно воплощено в жизнь</p>
+    </div>
+    <div class="about_digits">
+        <div class="about_digit_value">10</div>
+        <p class="about_digit_text">Лет непрерывной и надежной работы в индустрии строительства</p>
+    </div>
+    <div class="about_digits">
+        <div class="about_digit_value">96%</div>
+        <p class="about_digit_text">Клиентов рекомендуют нашу компанию своим друзьям и семьям</p>
+    </div>
+</div>
+
+<div class="causes_block">
+    <h1 class="block_title">Причины выбрать нас</h1>
+    <p class="causes_text">Мы гарантируем высокое качество выполняемых работ, внимательное отношение к каждому клиенту и строгое соблюдение сроков.
+        Обратившись к нам, вы получите надежного партнера в реализации ваших строительных задумок!</p>
+    <div class="causes">
+        <div class="cause">
+            <img src="{% static 'main/png/about/cause_icon1.png' %}" class="cause_icon" draggable="false">
+            <p class="cause_text">Мы проектируем с вниманием и заботой.</p>
+        </div>
+        <div class="cause">
+            <img src="{% static 'main/png/about/cause_icon2.png' %}" class="cause_icon" draggable="false">
+            <p class="cause_text">Мы предоставляем гарантию на наши дома от 10 лет.</p>
+        </div>
+        <div class="cause">
+            <img src="{% static 'main/png/about/cause_icon4.png' %}" class="cause_icon" draggable="false">
+            <p class="cause_text">Мы предлагаем удобное поэтапное сопровождение проекта.</p>
+        </div>
+        <div class="cause">
+            <img src="{% static 'main/png/about/cause_icon5.png' %}" class="cause_icon" draggable="false">
+            <p class="cause_text">Мы обеспечиваем независимый контроль качества.</p>
+        </div>
+    </div>
+</div>
+
+<div class="our_works">
+    <h1 class="block_title">Примеры наших выполненных проектов</h1>
+    <div class="slides">
+        <div class="slide">
+            <img src="{% static 'main/png/home/background.png' %}" class="slide_photo" draggable="false">
+        </div>
+        <div class="slide">
+            <img src="{% static 'main/png/home/mobile_background.png' %}" class="slide_photo" draggable="false">
+        </div>
+        <div class="slide">
+            <img src="{% static 'main/png/home/background.png' %}" class="slide_photo" draggable="false">
+        </div>
+        <div class="slide">
+            <img src="{% static 'main/png/home/special_block2_foto.png' %}" class="slide_photo" draggable="false">
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+    <a href="{% url 'portfolio' %}" class="we_all_projects">Все объекты</a>
+</div>
+
+
+<div class="special_block">
+    <p class="special_block_title">Получить консультацию специалиста</p>
+    <div class="special_block_inputs">
+        <input type="text" name="name" placeholder="Ваше имя" class="special_block_input">
+        <input id="phone" type="tel" name="phone" placeholder="Ваш телефон" class="special_block_input">
+    </div>
+    <div class="special_block_buttons">
+        <div class="special_buttons">
+            <div class="special_button1">Отправить заявку</div>
+            <div class="special_button2">Позвонить нам</div>
+        </div>
+        <label class="container">Согласен на обработку персональных данных в соответствии с пользовательским соглашением
+            <input type="checkbox">
+            <span class="checkmark"></span>
+        </label>
+    </div>
+</div>
+
+<div class="reviews_block">
+    <h1 class="block_title">Отзывы</h1>
+    <div class="reviews">
+        <div class="review">
+            <div>
+                <div class="person_info">
+                    <img src="{% static 'main/png/home/person_icon.png' %}" class="person_icon" draggable="false">
+                    <p class="person_name">Олег Артемьев</p>
+                </div>
+                <p class="review_text">
+                    После строительства потребовалось выполнить наружную отделку сооружения. Обратились в компанию.
+                    Ребята помогли выбрать облицовку, заделали щели все с внешней части дома. отличная работа.
+                    Результатом довольны. Будем бытовку строить, обратимся снова вновь.
+                </p>
+            </div>
+            <p class="continue_read">читать далее</p>
+        </div>
+        <div class="review">
+            <div>
+                <div class="person_info">
+                    <img src="{% static 'main/png/home/person_icon.png' %}" class="person_icon" draggable="false">
+                    <p class="person_name">Олег Артемьев</p>
+                </div>
+                <p class="review_text">
+                    После строительства потребовалось выполнить наружную отделку сооружения. Обратились в компанию.
+                    Ребята помогли выбрать облицовку, заделали щели все с внешней части дома. отличная работа.
+                    Результатом довольны. Будем бытовку строить, обратимся снова вновь.
+                </p>
+            </div>
+            <p class="continue_read">читать далее</p>
+        </div>
+        <div class="review">
+            <div>
+                <div class="person_info">
+                    <img src="{% static 'main/png/home/person_icon.png' %}" class="person_icon" draggable="false">
+                    <p class="person_name">Олег Артемьев</p>
+                </div>
+                <p class="review_text">
+                    После строительства потребовалось выполнить наружную отделку сооружения. Обратились в компанию.
+                    Ребята помогли выбрать облицовку, заделали щели все с внешней части дома. отличная работа.
+                    Результатом довольны. Будем бытовку строить, обратимся снова вновь.
+                </p>
+            </div>
+            <p class="continue_read">читать далее</p>
+        </div>
+    </div>
+    <a href="{% url 'reviews' %}" class="we_all_projects">Все отзывы</a>
+</div>
+
 {% endblock %}
