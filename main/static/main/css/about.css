@@ -1,4 +1,49 @@
 .about_block {
+    opacity: 0;
+    margin-top: 100px;
+    transition: 2.5s ease;
+}
+
+.about_digits_block {
+    opacity: 0;
+    margin-top: 100px;
+    transition: 2.5s ease;
+}
+
+.causes_block {
+    opacity: 0;
+    margin-top: 100px;
+    transition: 2.5s ease;
+}
+
+.our_works {
+    opacity: 0;
+    margin-top: 100px;
+    transition: 2.5s ease;
+}
+
+.reviews_block {
+    opacity: 0;
+    margin-top: 100px;
+    transition: 2.5s ease;
+}
+
+.contact_block {
+    opacity: 0;
+    margin-top: 100px;
+    transition: 2.5s ease;
+}
+
+.visible_block {
+    margin-top: 0;
+    opacity: 1;
+}
+
+
+
+
+
+.about_block {
     max-width: 1800px;
     margin: 30px auto;
     display: flex;
@@ -417,6 +462,10 @@
   -webkit-user-select: none;
 }
 
+.next {
+    right: 0;
+}
+
 .prev:hover,
 .next:hover {
   background-color: rgba(0, 0, 0, 0.8);
@@ -440,7 +489,7 @@
 }
 
 .we_all_projects {
-    margin: 40px auto;
+    margin: 70px auto 40px auto;
     width: 280px;
     height: 55px;
     background-color: #101A1E;
@@ -606,6 +655,10 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.container_a {
+    color: white;
 }
 
 .container input {
@@ -943,5 +996,110 @@
 
     .continue_read {
         font-size: 11px;
+    }
+}
+
+
+.contact_block {
+    margin: 60px auto;
+    max-width: 1280px;
+    height: 650px;
+    position: relative;
+}
+
+.contact_info_block {
+    position: absolute;
+    left: 100px;
+    top: 130px;
+    width: 370px;
+    height: 320px;
+    padding: 20px 30px 40px 30px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact_info_title {
+    margin-block-start: 20px;
+    font-size: 17px;
+    font-family: 'Gilroy-Bold', sans-serif;
+    color: black;
+    letter-spacing: 0.7px;
+    margin-block-end: 0;
+}
+
+.contact_info_text {
+    margin-block-start: 10px;
+    margin-block-end: 0;
+    font-size: 14px;
+    font-family: 'Gilroy-Bold', sans-serif;
+    color: grey;
+    letter-spacing: 0.7px;
+    text-decoration: none;
+}
+
+.contact_button {
+    margin-top: 40px;
+    width: 240px;
+    height: 50px;
+    background-color: #101A1E;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    font-size: 15px;
+    font-family: 'Gilroy-Bold', sans-serif;
+    letter-spacing: 0.5px;
+    align-items: center;
+    justify-content: center;
+    transition: 0.8s ease;
+    cursor: pointer;
+}
+
+.contact_button:hover {
+    background-color: #394144;
+}
+
+.map2 {
+    display: none;
+}
+
+@media screen and (max-width: 1000px){
+    .map1 {
+        display: none;
+    }
+
+    .map2 {
+        display: block;
+    }
+
+    .contact_block {
+        margin: 60px auto;
+        height: 760px;
+    }
+
+    .contact_info_block {
+        left: 50%;
+        transform: translateX(-50%);
+        top: 80px;
+        width: 300px;
+        height: 270px;
+        padding: 20px 20px 40px 20px;
+    }
+
+    .contact_info_title {
+        margin-block-start: 15px;
+        font-size: 15px;
+    }
+
+    .contact_info_text {
+        margin-block-start: 8px;
+        font-size: 12px;
+    }
+
+    .contact_button {
+        margin-top: 30px;
+        width: 180px;
+        height: 40px;
+        font-size: 12px;
     }
 }

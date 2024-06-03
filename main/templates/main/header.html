@@ -142,7 +142,7 @@
             <a class="mobile_nav" href="{% url 'contacts' %}">Контакты</a>
             <line></line>
         </div>
-        <div class="mobile_phone_block">
+        <div class="mobile_phone_block" id="openFormBtn4">
             Заказать звонок
         </div>
     </div>
@@ -166,7 +166,7 @@
             </p>
         </div>
         <div class="block_buttons" id="block_buttons">
-            <div class="button1">
+            <div class="button1" id="openFormBtn1">
                 Оставить заявку
                 <img src="{% static 'main/png/home/phone.png' %}" class="button1_icon" draggable="false">
             </div>
@@ -181,7 +181,7 @@
             {% endblock %}
         </div>
         <div class="mobile_block_buttons" id="mobile_block_buttons">
-            <div class="mobile_button1">
+            <div class="mobile_button1" id="openFormBtn2">
                 Оставить заявку
                 <img src="{% static 'main/png/home/phone.png' %}" class="mobile_button1_icon" draggable="false">
             </div>
@@ -200,8 +200,36 @@
         </div>
     </div>
     {% block content %}
+
     {% endblock %}
 </div>
+
+
+<div id="popupForm" class="popup">
+    <div class="popup-content">
+        <span class="close-btn" id="closeFormBtn">&times;</span>
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
+            <h2 class="popup_title">Оставить заявку</h2>
+            <p class="popup_text">Перезвоним как можно скорее</p>
+            <input type="text" id="popup_name" name="popup_name" placeholder="Ваше Имя" class="popup_input" required>
+            <input type="email" id="popup_email" name="popup_email" placeholder="Email" class="popup_input" required>
+            <input type="tel" id="popup_phone" name="popup_phone" placeholder="Телефон" class="popup_input" required>
+            <textarea id="popup_message" name="popup_message" placeholder="Сообщение" class="popup_input popup_message" required></textarea>
+            <button class="popup_button" type="button" onclick="send_feedback()">Отправить</button>
+            <label class="popup_container">Согласен на обработку <a href="/" class="popup_container_a">персональных данных</a> в соответствии с <a href="/" class="popup_container_a">пользовательским соглашением</a href="/">
+                <input type="checkbox"  id="popup_agreement" name="popup_agreement" checked required>
+                <span class="popup_checkmark"></span>
+            </label>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
 
 <div class="footer">
     <div class="footer_body">
@@ -235,7 +263,7 @@
             <div class="footer_contact">
                 <p class="footer_work_date">Пн–Пт 9:00-18:00 / Сб-Вс по записи</p>
                 <a href="/" class="footer_number">+7 (900) 555-40-60</a>
-                <div class="footer_order_call">Заказать звонок</div>
+                <div class="footer_order_call" id="openFormBtn3">Заказать звонок</div>
             </div>
         </div>
     </div>

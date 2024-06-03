@@ -90,3 +90,58 @@ $(document).ready(function() {
         }
     });
 });
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const openForm = document.getElementById('openForm');
+
+    const popupForm = document.getElementById('popupForm');
+    const closeFormBtn = document.getElementById('closeFormBtn');
+
+    openForm.addEventListener('click', () => {
+        popupForm.style.display = 'flex';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === popupForm) {
+            popupForm.style.display = 'none';
+        }
+    });
+});
+
+function send_estimate() {
+    var name = document.getElementById("name").value;
+    var phone = document.getElementById("phone").value;
+    var file = document.getElementById("file").files[0];
+    var checked = document.getElementById('popup_agreement').checked;
+    console.log(file)
+    $.ajax({
+        type: "POST",
+        url: window.location.href,
+        data: {
+            'form_id': 2,
+            'name': name,
+            'phone': phone,
+            'file': file,
+            'checked': checked,
+        },
+        success: (res)=> {
+            if (res.status == 'success') {
+                alert('Форма успешно отправлена!');
+                document.getElementById("name").value = '';
+                document.getElementById("phone").value = '';
+                document.getElementById("file").value = '';
+            }
+            else if (res.status == 'not_checked') {
+                alert('Пожалуйства, подтвердите пользовательское соглашение!');
+            }
+            else if (res.status == 'fail') {
+                alert('Пожалуйства, заполните все поля и прикрепите смету.');
+            }
+        },
+        error: (err)=> {
+            alert('Извините, что-то пошло не так, попробуте немного позже.');
+        }
+    })
+}

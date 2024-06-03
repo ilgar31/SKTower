@@ -199,28 +199,29 @@
         <div class="special_block1_1">
             <h1 class="special_block_title">У вас уже есть проект или смета на дом?</h1>
             <p class="special_block_text">Прикрепите готовую смету, и мы расскажем, как можно сэкономить</p>
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
                 <label for="file" class="file_input"></label>
                 <input type="file" id="file" class="feedback__file" name="file">
                 <p class="file_name" id="file_name"></p>
                 <p class="info_file_text" id="info_file_text">*Если у Вас более одного файла, поместите их все в один архив</p>
-                <input type="text" name="name" placeholder="Ваше имя" class="special_block_input">
+                <input id='name' type="text" name="name" placeholder="Ваше имя" class="special_block_input">
                 <input id="phone" type="tel" name="phone" placeholder="Ваш телефон" class="special_block_input">
             </form>
         </div>
         <label class="mobile_container">Согласен на обработку персональных данных в соответствии с пользовательским соглашением
-            <input type="checkbox">
+            <input type="checkbox" id="agreement" name="agreement" checked required>
             <span class="mobile_checkmark"></span>
         </label>
         <div class="special_block1_2">
-            <div class="special_button1">Отправить заявку</div>
+            <div class="special_button1" onclick="send_estimate()">Отправить заявку</div>
             <div class="special_button2">Позвонить нам</div>
         </div>
     </div>
 
     <div class="special_block2">
         <img src="{% static 'main/png/home/special_block2_foto.png' %}" class="special_block2_foto" draggable="false">
-        <label class="container">Согласен на обработку персональных данных в соответствии с пользовательским соглашением
+        <label class="container">Согласен на обработку <a href="/" class="container_a">персональных данных</a> в соответствии с <a href="/" class="container_a">пользовательским соглашением</a>
             <input type="checkbox">
             <span class="checkmark"></span>
         </label>
@@ -380,7 +381,7 @@
         <p class="your_question_text">Задайте его нашим специалистам</p>
     </div>
     <div class="your_question_buttons">
-        <div class="your_question_button1">Заказать звонок</div>
+        <div class="your_question_button1" id="openForm">Заказать звонок</div>
         <div class="your_question_button2">Позвонить нам</div>
     </div>
 </div>
