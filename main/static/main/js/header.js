@@ -52,12 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+url = window.location.href
 
-const url = window.location.href
-
-const csrf = document.getElementsByName("csrfmiddlewaretoken")[0].value
+csrf = document.getElementsByName("csrfmiddlewaretoken")[0].value
 
 function send_feedback() {
+    button = document.getElementById("send_feedback_button")
+    button.innerHTML = '<div class="loader"></div>'
     var name = document.getElementById("popup_name").value;
     var email = document.getElementById("popup_email").value;
     var phone = document.getElementById("popup_phone").value;
@@ -90,9 +91,11 @@ function send_feedback() {
             else if (res.status == 'fail') {
                 alert('Пожалуйства, заполните все поля.');
             }
+            button.innerHTML = 'Отправить';
         },
         error: (err)=> {
             alert('Извините, что-то пошло не так, попробуте немного позже.');
+            button.innerHTML = 'Отправить';
         }
     })
 }

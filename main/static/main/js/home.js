@@ -111,37 +111,37 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function send_estimate() {
+    button = document.getElementById("send_estimate_button")
+    button.innerHTML = '<div class="loader"></div>'
+    var formData = new FormData();
     var name = document.getElementById("name").value;
     var phone = document.getElementById("phone").value;
     var file = document.getElementById("file").files[0];
     var checked = document.getElementById('popup_agreement').checked;
-    console.log(file)
-    $.ajax({
-        type: "POST",
-        url: window.location.href,
-        data: {
-            'form_id': 2,
-            'name': name,
-            'phone': phone,
-            'file': file,
-            'checked': checked,
-        },
-        success: (res)=> {
-            if (res.status == 'success') {
-                alert('Форма успешно отправлена!');
-                document.getElementById("name").value = '';
-                document.getElementById("phone").value = '';
-                document.getElementById("file").value = '';
-            }
-            else if (res.status == 'not_checked') {
-                alert('Пожалуйства, подтвердите пользовательское соглашение!');
-            }
-            else if (res.status == 'fail') {
-                alert('Пожалуйства, заполните все поля и прикрепите смету.');
-            }
-        },
-        error: (err)=> {
-            alert('Извините, что-то пошло не так, попробуте немного позже.');
+    formData.append('form_id', 2);
+    formData.append('name', name);
+    formData.append('phone', phone);
+    formData.append('checked', checked);
+    formData.append("file", file);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/', true);
+    xhr.onload = function() {
+        var response = JSON.parse(xhr.responseText);
+        if (response.status == 'success') {
+            alert('Форма успешно отправлена!');
+            document.getElementById("name").value = '';
+            document.getElementById("phone").value = '';
+            document.getElementById("file").value = '';
+            document.getElementById("file_name").value = '';
         }
-    })
+        else if (response.status == 'not_checked') {
+            alert('Пожалуйства, подтвердите пользовательское соглашение!');
+        }
+        else if (response.status == 'fail') {
+            alert('Пожалуйства, заполните все поля и прикрепите смету.');
+        }
+        button.innerHTML = 'Отправить';
+    },
+    xhr.send(formData);
 }

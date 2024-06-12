@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.core.mail import send_mail, EmailMessage
 from django.http import JsonResponse, HttpResponseNotFound
+from django.views.decorators.csrf import csrf_exempt
 
 
 def send_feedback(data):
@@ -24,11 +25,10 @@ def send_feedback(data):
 
 
 def send_estimate(data):
-    name = data.get('name')
-    phone = data.get('phone')
-    file = data.get('file')
-    checked = data.get('checked')
-    print(name, phone, file)
+    name = data.POST.get('name')
+    phone = data.POST.get('phone')
+    file = data.FILES.get('file')
+    checked = data.POST.get('checked')
     if checked == "true":
         if name and phone and file:
             email = EmailMessage("На сайте S.K.TOWER оставили данные для обратной связи",
@@ -43,20 +43,22 @@ def send_estimate(data):
     else:
         return JsonResponse({"status": 'not_checked'})
 
-
+@csrf_exempt
 def home(request):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
         if request.POST.get('form_id') == '1':
             return send_feedback(request.POST)
-        elif request.POST.get('form_id') == '2':
-            return send_estimate(request.POST)
+    if request.method == 'POST':
+        return send_estimate(request)
 
     return render(request, 'main/home.html')
 
 
 def about(request):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        if request.POST.get('form_id') == 1:
+        if request.POST.get('form_id') == '1':
+            return send_feedback(request.POST)
+        if request.POST.get('form_id') == '2':
             return send_feedback(request.POST)
 
     return render(request, 'main/about.html')
@@ -64,7 +66,7 @@ def about(request):
 
 def projects(request):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        if request.POST.get('form_id') == 1:
+        if request.POST.get('form_id') == '1':
             return send_feedback(request.POST)
 
     return render(request, 'main/projects.html')
@@ -72,7 +74,7 @@ def projects(request):
 
 def project(request, pk):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        if request.POST.get('form_id') == 1:
+        if request.POST.get('form_id') == '1':
             return send_feedback(request.POST)
 
     return render(request, 'main/project.html')
@@ -80,7 +82,7 @@ def project(request, pk):
 
 def portfolio(request):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        if request.POST.get('form_id') == 1:
+        if request.POST.get('form_id') == '1':
             return send_feedback(request.POST)
 
     return render(request, 'main/portfolio.html')
@@ -88,7 +90,7 @@ def portfolio(request):
 
 def finished(request, pk):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        if request.POST.get('form_id') == 1:
+        if request.POST.get('form_id') == '1':
             return send_feedback(request.POST)
 
     return render(request, 'main/finished.html')
@@ -96,7 +98,7 @@ def finished(request, pk):
 
 def contacts(request):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        if request.POST.get('form_id') == 1:
+        if request.POST.get('form_id') == '1':
             return send_feedback(request.POST)
 
     return render(request, 'main/contacts.html')
@@ -104,7 +106,7 @@ def contacts(request):
 
 def reviews(request):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        if request.POST.get('form_id') == 1:
+        if request.POST.get('form_id') == '1':
             return send_feedback(request.POST)
 
     return render(request, 'main/reviews.html')
@@ -112,7 +114,7 @@ def reviews(request):
 
 def services(request):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        if request.POST.get('form_id') == 1:
+        if request.POST.get('form_id') == '1':
             return send_feedback(request.POST)
 
     return render(request, 'main/services.html')
@@ -120,7 +122,7 @@ def services(request):
 
 def favorites(request):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        if request.POST.get('form_id') == 1:
+        if request.POST.get('form_id') == '1':
             return send_feedback(request.POST)
 
     return render(request, 'main/favorites.html')
@@ -128,7 +130,7 @@ def favorites(request):
 
 def compare(request):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        if request.POST.get('form_id') == 1:
+        if request.POST.get('form_id') == '1':
             return send_feedback(request.POST)
 
     return render(request, 'main/compare.html')
