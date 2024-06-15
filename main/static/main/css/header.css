@@ -307,6 +307,7 @@ mobile_header {
         flex-direction: column;
         justify-content: space-between;
         z-index: 3;
+        overflow-y: auto;
     }
 
     .mobile_navigation_list {
@@ -366,6 +367,8 @@ mobile_header {
         font-weight: 800;
         font-family: Inter;
         cursor: pointer;
+        min-height: 50px;
+        margin-top: 30px;
     }
 }
 
@@ -1218,13 +1221,16 @@ input, textarea {
     }
 }
 
-.loader {
+.loader2 {
   border: 3px solid #f3f3f3;
   border-top: 3px solid #565656;
   border-radius: 50%;
   width: 20px;
   height: 20px;
   animation: spin 2s linear infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @keyframes spin {

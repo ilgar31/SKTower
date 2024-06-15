@@ -58,7 +58,7 @@ csrf = document.getElementsByName("csrfmiddlewaretoken")[0].value
 
 function send_feedback() {
     button = document.getElementById("send_feedback_button")
-    button.innerHTML = '<div class="loader"></div>'
+    button.innerHTML = '<div class="loader2"></div>'
     var name = document.getElementById("popup_name").value;
     var email = document.getElementById("popup_email").value;
     var phone = document.getElementById("popup_phone").value;

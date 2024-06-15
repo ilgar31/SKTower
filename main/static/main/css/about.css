@@ -558,7 +558,7 @@
 
 .special_block_title {
     margin-left: 5%;
-    font-size: 60px;
+    font-size: 50px;
     max-width: 70%;
     font-family: 'Gilroy-Bold', sans-serif;
     letter-spacing: 1px;
@@ -597,6 +597,8 @@
 .special_block_buttons {
     display: flex;
     justify-content: space-between;
+    width: 90%;
+    margin: 20px auto;
 }
 
 .special_button1 {
@@ -610,7 +612,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 10%;
     cursor: pointer;
     transition: 0.7s ease;
 }
@@ -797,17 +798,19 @@
     }
 
     .special_block_title {
+        margin-left: 10%;
         font-size: 30px;
         max-width: 80%;
     }
 
     .special_block_inputs {
         margin: 40px auto 15px auto;
-        row-gap: 20px;
+        row-gap: 5px;
+        width: 80%;
     }
 
     .special_block_input {
-        width: 90%;
+        width: 100%;
         height: 45px;
         margin-bottom: 10px;
         font-size: 15px;
@@ -821,6 +824,8 @@
 
     .special_block_buttons {
         row-gap: 25px;
+        margin: 0px auto;
+        width: 80%;
     }
 
     .special_button1 {

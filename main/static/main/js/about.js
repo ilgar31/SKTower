@@ -73,32 +73,25 @@ csrf = document.getElementsByName("csrfmiddlewaretoken")[0].value
 
 function send_consultation() {
     button = document.getElementById("send_consultation_button")
-    button.innerHTML = '<div class="loader"></div>'
-    var name = document.getElementById("popup_name").value;
-    var email = document.getElementById("popup_email").value;
-    var phone = document.getElementById("popup_phone").value;
-    var message = document.getElementById("popup_message").value;
-    var checked = document.getElementById('popup_agreement').checked;
+    button.innerHTML = '<div class="loader2"></div>'
+    var name = document.getElementById("name").value;
+    var phone = document.getElementById("phone").value;
+    var checked = document.getElementById('agreement').checked;
     $.ajax({
         type: "POST",
         url: url,
         data: {
             "csrfmiddlewaretoken": csrf,
-            'form_id': 1,
+            'form_id': 2,
             'name': name,
-            'email': email,
             'phone': phone,
-            'message': message,
             'checked': checked,
         },
         success: (res)=> {
             if (res.status == 'success') {
                 alert('Форма успешно отправлена!');
-                document.getElementById("popup_name").value = '';
-                document.getElementById("popup_email").value = '';
-                document.getElementById("popup_phone").value = '';
-                document.getElementById("popup_message").value = '';
-                document.getElementById('popupForm').style.display = 'none';
+                document.getElementById("name").value = '';
+                document.getElementById("phone").value = '';
             }
             else if (res.status == 'not_checked') {
                 alert('Пожалуйства, подтвердите пользовательское соглашение!');

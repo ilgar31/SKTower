@@ -112,13 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function send_estimate() {
     button = document.getElementById("send_estimate_button")
-    button.innerHTML = '<div class="loader"></div>'
+    button.innerHTML = '<div class="loader2"></div>'
     var formData = new FormData();
     var name = document.getElementById("name").value;
     var phone = document.getElementById("phone").value;
     var file = document.getElementById("file").files[0];
     var checked = document.getElementById('popup_agreement').checked;
-    formData.append('form_id', 2);
     formData.append('name', name);
     formData.append('phone', phone);
     formData.append('checked', checked);

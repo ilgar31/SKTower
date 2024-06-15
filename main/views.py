@@ -43,6 +43,43 @@ def send_estimate(data):
     else:
         return JsonResponse({"status": 'not_checked'})
 
+
+def send_consultation(data):
+    name = data.get('name')
+    phone = data.get('phone')
+    checked = data.get('checked')
+    if checked == "true":
+        if name and phone:
+            email = EmailMessage("На сайте S.K.TOWER оставили данные для обратной связи",
+                                 f"Имя: {name} \nНомер телефона: {phone} \n",
+                                 "sunclub.stor@gmail.com",
+                                 ["ilgar.bagishev@gmail.com"])
+            email.send()
+            return JsonResponse({"status": 'success'})
+        else:
+            return JsonResponse({"status": 'fail'})
+    else:
+        return JsonResponse({"status": 'not_checked'})
+
+
+def send_review(data):
+    name = data.get('name')
+    review = data.get('review')
+    checked = data.get('checked')
+    if checked == "true":
+        if name and review:
+            email = EmailMessage("На сайте S.K.TOWER оставили новый отзыв!",
+                                 f"Имя: {name} \nОтзыв: {review} \n",
+                                 "sunclub.stor@gmail.com",
+                                 ["ilgar.bagishev@gmail.com"])
+            email.send()
+            return JsonResponse({"status": 'success'})
+        else:
+            return JsonResponse({"status": 'fail'})
+    else:
+        return JsonResponse({"status": 'not_checked'})
+
+
 @csrf_exempt
 def home(request):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
@@ -59,7 +96,7 @@ def about(request):
         if request.POST.get('form_id') == '1':
             return send_feedback(request.POST)
         if request.POST.get('form_id') == '2':
-            return send_feedback(request.POST)
+            return send_consultation(request.POST)
 
     return render(request, 'main/about.html')
 
@@ -108,6 +145,10 @@ def reviews(request):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
         if request.POST.get('form_id') == '1':
             return send_feedback(request.POST)
+        if request.POST.get('form_id') == '2':
+            return send_consultation(request.POST)
+        if request.POST.get('form_id') == '3':
+            return send_review(request.POST)
 
     return render(request, 'main/reviews.html')
 
@@ -116,6 +157,8 @@ def services(request):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
         if request.POST.get('form_id') == '1':
             return send_feedback(request.POST)
+        if request.POST.get('form_id') == '2':
+            return send_consultation(request.POST)
 
     return render(request, 'main/services.html')
 
