@@ -52,6 +52,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const openFormBtn1 = document.getElementById('calculator_open1');
+    const openFormBtn2 = document.getElementById('calculator_open2');
+    const calculator = document.getElementById('calculator');
+    const closeFormBtn = document.getElementById('calculator_close');
+
+    openFormBtn1.addEventListener('click', () => {
+        calculator.style.display = 'flex';
+    });
+
+    openFormBtn2.addEventListener('click', () => {
+        calculator.style.display = 'flex';
+    });
+
+    closeFormBtn.addEventListener('click', () => {
+        calculator.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === calculator) {
+            calculator.style.display = 'none';
+        }
+    });
+});
+
 url = window.location.href
 
 csrf = document.getElementsByName("csrfmiddlewaretoken")[0].value
@@ -98,4 +123,70 @@ function send_feedback() {
             button.innerHTML = 'Отправить';
         }
     })
+}
+
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function next_step(step, button=false) {
+    if (button) {
+        if (!check(step - 1)) {
+            step_error = document.getElementById(`step_error${step-1}`);
+            console.log(step_error)
+            if (typeof step_error.textContent !== "undefined") {
+                step_error.textContent = 'Не выбран ни один пункт';
+            } else {
+                step_error.innerText = 'Не выбран ни один пункт';
+            }
+            step_error.style.paddingTop = '10px';
+            step_error.style.paddingBottom = '10px';
+            return;
+        }
+    }
+    step_error = document.getElementById(`step_error${step-1}`);
+    step_error.style.paddingTop = '0px';
+    step_error.style.paddingBottom = '0px';
+    console.log(step);
+    if (typeof step_error.textContent !== "undefined") {
+        step_error.textContent = '';
+    } else {
+        step_error.innerText = '';
+    }
+    await delay(1000);
+    document.getElementById(`step${step - 1}`).classList.remove('select');
+    document.getElementById(`step${step}`).classList.add('select');
+}
+
+
+async function old_step(step) {
+    await delay(500);
+    document.getElementById(`step${step + 1}`).classList.remove('select');
+    document.getElementById(`step${step}`).classList.add('select');
+}
+
+
+function check(step) {
+    if (step == 1) {
+        step_1_1 = document.getElementById('step_1_1');
+        step_1_2 = document.getElementById('step_1_2');
+        step_1_3 = document.getElementById('step_1_3');
+        step_1_4 = document.getElementById('step_1_4');
+        return step_1_1.checked || step_1_2.checked || step_1_3.checked || step_1_4.checked;
+    }
+    if (step == 2) {
+        step_2_1 = document.getElementById('step_2_1');
+        step_2_2 = document.getElementById('step_2_2');
+        step_2_3 = document.getElementById('step_2_3');
+        step_2_4 = document.getElementById('step_2_4');
+        return step_2_1.checked || step_2_2.checked || step_2_3.checked || step_2_4.checked;
+    }
+    if (step == 3) {
+        step_3_1 = document.getElementById('step_3_1');
+        step_3_2 = document.getElementById('step_3_2');
+        step_3_3 = document.getElementById('step_3_3');
+        step_3_4 = document.getElementById('step_3_4');
+        step_3_5 = document.getElementById('step_3_5');
+        return step_3_1.checked || step_3_2.checked || step_3_3.checked || step_3_4.checked || step_3_5.checked;
+    }
 }

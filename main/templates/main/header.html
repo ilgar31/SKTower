@@ -149,7 +149,7 @@
 </mobile_header>
 
 
-<div class="content">
+<div class="content" id="content">
     <div class="title_block">
         <div class="site_navigation">
             {% block navigation %}
@@ -170,7 +170,7 @@
                 Оставить заявку
                 <img src="{% static 'main/png/home/phone.png' %}" class="button1_icon" draggable="false">
             </div>
-            <a href="/" class="button2">Калькулятор стоимости дома</a>
+            <div class="button2" id="calculator_open1">Калькулятор стоимости дома</div>
             <a href="{% url 'projects' %}" class="button3">Каталог всех проектов домов</a>
         </div>
     </div>
@@ -195,7 +195,7 @@
                 {% block mobile_extra_text %}
                 {% endblock %}
             </p>
-            <a href="/" class="mobile_button2">Калькулятор стоимости дома</a>
+            <div class="mobile_button2" id="calculator_open2">Калькулятор стоимости дома</div>
             <a href="{% url 'projects' %}" class="mobile_button3">Каталог всех проектов домов</a>
         </div>
     </div>
@@ -225,6 +225,204 @@
     </div>
 </div>
 
+
+
+<div class="calculator" id="calculator">
+    <div class="calculator_content">
+        <span class="close-btn" id="calculator_close">&times;</span>
+        <h2 class="calculator_title">РАССЧИТАТЬ СТОИМОСТЬ ДОМА</h2>
+        <div class="step select" id="step1">
+            <p class="calculator_text">Сколько этажей вы хотите в доме?</p>
+            <div class="step_container">
+                <div class="step1_item">
+                    <input tabindex="1" name="step_1" type="radio" id="step_1_1" value="1 этаж" class="radio-input" onclick="next_step(2)">
+                    <label for="step_1_1" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_1_1.jpg);"></div>
+                        <span>1 этаж</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_1" type="radio" id="step_1_2" value="2 этажа" class="radio-input" onclick="next_step(2)">
+                    <label for="step_1_2" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_1_2.jpg);"></div>
+                        <span>2 этажа</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_1" type="radio" id="step_1_3" value="3 этажа" class="radio-input" onclick="next_step(2)">
+                    <label for="step_1_3" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_1_3.jpg);"></div>
+                        <span>3 этажа</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_1" type="radio" id="step_1_4" value="Нужна помощь" class="radio-input" onclick="next_step(2)">
+                    <label for="step_1_4" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_1_4.jpg);"></div>
+                        <span>Нужна помощь</span>
+                    </label>
+                </div>
+            </div>
+            <div class="step_error" id="step_error1"></div>
+            <div class="step_buttons">
+                <div class="old_step" style="opacity: 0.4; cursor: default">
+                    НАЗАД
+                </div>
+                <div class="step_counter">
+                    Шаг: 1 из 8
+                </div>
+                <div class="next_step" onclick="next_step(2, true)">
+                    ДАЛЕЕ
+                </div>
+            </div>
+        </div>
+
+        <div class="step" id="step2">
+            <p class="calculator_text">Какие размеры дома вы бы хотели?</p>
+            <div class="step_container">
+                <div class="step1_item">
+                    <input tabindex="1" name="step_2" type="radio" id="step_2_1" value="До 100 кв.м." class="radio-input" onclick="next_step(3)">
+                    <label for="step_2_1" class="radio-label">
+                        <div class="image-placeholder" style="height: 130px;">До 100 кв.м.</div>
+                        <span>Маленький</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_2" type="radio" id="step_2_2" value="100 - 150 кв.м." class="radio-input" onclick="next_step(3)">
+                    <label for="step_2_2" class="radio-label">
+                        <div class="image-placeholder" style="height: 130px;">100 - 150 кв.м.</div>
+                        <span>Средний</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_2" type="radio" id="step_2_3" value="150 - 200 кв.м." class="radio-input" onclick="next_step(3)">
+                    <label for="step_2_3" class="radio-label">
+                        <div class="image-placeholder" style="height: 130px;">150 - 200 кв.м.</div>
+                        <span>Большой</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_2" type="radio" id="step_2_4" value="Более 200 кв.м." class="radio-input" onclick="next_step(3)">
+                    <label for="step_2_4" class="radio-label">
+                        <div class="image-placeholder" style="height: 130px;">Более 200 кв.м.</div>
+                        <span>Очень большой</span>
+                    </label>
+                </div>
+            </div>
+            <div class="step_error" id="step_error2"></div>
+            <div class="step_buttons">
+                <div class="old_step" onclick="old_step(1)">
+                    НАЗАД
+                </div>
+                <div class="step_counter">
+                    Шаг: 2 из 8
+                </div>
+                <div class="next_step" onclick="next_step(3, true)">
+                    ДАЛЕЕ
+                </div>
+            </div>
+        </div>
+
+        <div class="step" id="step3">
+            <p class="calculator_text">Выберете фундамент, который вы бы хотели для своего будущего дома</p>
+            <div class="step_container">
+                <div class="step1_item">
+                    <input tabindex="1" name="step_3" type="radio" id="step_3_1" value="Ленточный с полами по грунту" class="radio-input" onclick="next_step(4)">
+                    <label for="step_3_1" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_3_1.jpg);"></div>
+                        <span>Ленточный с полами по грунту</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_3" type="radio" id="step_3_2" value="Мелкозаглубленная утепленаня фундаментаная лента" class="radio-input" onclick="next_step(4)">
+                    <label for="step_3_2" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_3_2.jpg);"></div>
+                        <span>Мелкозаглубленная утепленаня фундаментаная лента</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_3" type="radio" id="step_3_3" value="Плитный" class="radio-input" onclick="next_step(4)">
+                    <label for="step_3_3" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_3_3.jpg);"></div>
+                        <span>Плитный</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_3" type="radio" id="step_3_4" value="Свайно-ростверковый с плитой" class="radio-input" onclick="next_step(4)">
+                    <label for="step_3_4" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_3_4.jpg);"></div>
+                        <span>Свайно-ростверковый с плитой</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_3" type="radio" id="step_3_5" value="Нужна помощь" class="radio-input" onclick="next_step(4)">
+                    <label for="step_3_5" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_1_4.jpg);"></div>
+                        <span>Нужна помощь</span>
+                    </label>
+                </div>
+            </div>
+            <div class="step_error" id="step_error3"></div>
+            <div class="step_buttons">
+                <div class="old_step" onclick="old_step(2)">
+                    НАЗАД
+                </div>
+                <div class="step_counter">
+                    Шаг: 3 из 8
+                </div>
+                <div class="next_step" onclick="next_step(4, true)">
+                    ДАЛЕЕ
+                </div>
+            </div>
+        </div>
+
+        <div class="step" id="step4">
+            <p class="calculator_text">Какие размеры дома вы бы хотели?</p>
+            <div class="step_container">
+                <div class="step1_item">
+                    <input tabindex="1" name="step_1" type="radio" id="step_4_1" value="До 100 кв.м." class="radio-input" onclick="next_step(3)">
+                    <label for="step_4_1" class="radio-label">
+                        <div class="image-placeholder" style="height: 130px;">До 100 кв.м.</div>
+                        <span>Маленький</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_1" type="radio" id="step_4_2" value="100 - 150 кв.м." class="radio-input" onclick="next_step(3)">
+                    <label for="step_4_2" class="radio-label">
+                        <div class="image-placeholder" style="height: 130px;">100 - 150 кв.м.</div>
+                        <span>Средний</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_1" type="radio" id="step_4_3" value="150 - 200 кв.м." class="radio-input" onclick="next_step(3)">
+                    <label for="step_4_3" class="radio-label">
+                        <div class="image-placeholder" style="height: 130px;">150 - 200 кв.м.</div>
+                        <span>Большой</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_1" type="radio" id="step_4_4" value="Более 200 кв.м." class="radio-input" onclick="next_step(3)">
+                    <label for="step_4_4" class="radio-label">
+                        <div class="image-placeholder" style="height: 130px;">Более 200 кв.м.</div>
+                        <span>Очень большой</span>
+                    </label>
+                </div>
+            </div>
+            <div class="step_error" id="step_error4"></div>
+            <div class="step_buttons">
+                <div class="old_step" onclick="old_step(3)">
+                    НАЗАД
+                </div>
+                <div class="step_counter">
+                    Шаг: 4 из 8
+                </div>
+                <div class="next_step" onclick="next_step(5, true)">
+                    ДАЛЕЕ
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
