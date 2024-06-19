@@ -119,7 +119,7 @@ function send_feedback() {
             button.innerHTML = 'Отправить';
         },
         error: (err)=> {
-            alert('Извините, что-то пошло не так, попробуте немного позже.');
+            alert('Извините, что-то пошло не так, попройбуте немного позже.');
             button.innerHTML = 'Отправить';
         }
     })
@@ -133,7 +133,6 @@ async function next_step(step, button=false) {
     if (button) {
         if (!check(step - 1)) {
             step_error = document.getElementById(`step_error${step-1}`);
-            console.log(step_error)
             if (typeof step_error.textContent !== "undefined") {
                 step_error.textContent = 'Не выбран ни один пункт';
             } else {
@@ -147,15 +146,17 @@ async function next_step(step, button=false) {
     step_error = document.getElementById(`step_error${step-1}`);
     step_error.style.paddingTop = '0px';
     step_error.style.paddingBottom = '0px';
-    console.log(step);
     if (typeof step_error.textContent !== "undefined") {
         step_error.textContent = '';
     } else {
         step_error.innerText = '';
     }
-    await delay(1000);
+    await delay(500);
     document.getElementById(`step${step - 1}`).classList.remove('select');
     document.getElementById(`step${step}`).classList.add('select');
+    if (step == 9) {
+        document.getElementById(`step${step}`).style.display = "flex";
+    }
 }
 
 
@@ -189,4 +190,190 @@ function check(step) {
         step_3_5 = document.getElementById('step_3_5');
         return step_3_1.checked || step_3_2.checked || step_3_3.checked || step_3_4.checked || step_3_5.checked;
     }
+    if (step == 4) {
+        step_4_1 = document.getElementById('step_4_1');
+        step_4_2 = document.getElementById('step_4_2');
+        step_4_3 = document.getElementById('step_4_3');
+        step_4_4 = document.getElementById('step_4_4');
+        return step_4_1.checked || step_4_2.checked || step_4_3.checked || step_4_4.checked;
+    }
+    if (step == 5) {
+        step_5_1 = document.getElementById('step_5_1');
+        step_5_2 = document.getElementById('step_5_2');
+        return step_5_1.checked || step_5_2.checked;
+    }
+    if (step == 6) {
+        step_6_1 = document.getElementById('step_6_1');
+        step_6_2 = document.getElementById('step_6_2');
+        step_6_3 = document.getElementById('step_6_3');
+        step_6_4 = document.getElementById('step_6_4');
+        step_6_5 = document.getElementById('step_6_5');
+        return step_6_1.checked || step_6_2.checked || step_6_3.checked || step_6_4.checked || step_6_5.checked;
+    }
+    if (step == 7) {
+        step_7_1 = document.getElementById('step_7_1');
+        step_7_2 = document.getElementById('step_7_2');
+        step_7_3 = document.getElementById('step_7_3');
+        return step_7_1.checked || step_7_2.checked || step_7_3.checked;
+    }
+    if (step == 8) {
+        step_8_1 = document.getElementById('step_8_1');
+        step_8_2 = document.getElementById('step_8_2');
+        step_8_3 = document.getElementById('step_8_3');
+        step_8_4 = document.getElementById('step_8_4');
+        step_8_5 = document.getElementById('step_8_5');
+        return step_8_1.checked || step_8_2.checked || step_8_3.checked || step_8_4.checked || step_8_5.checked;
+    }
+}
+
+document.querySelectorAll('.option').forEach(option => {
+    option.addEventListener('click', function() {
+        document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+        this.classList.add('selected');
+
+        let contactMethod = this.getAttribute('data-contact');
+        let inputPlaceholder = '';
+
+        switch(contactMethod) {
+            case 'WhatsApp':
+                inputPlaceholder = 'Ваш телефон в WhatsApp';
+                break;
+            case 'Viber':
+                inputPlaceholder = 'Ваш телефон в Viber';
+                break;
+            case 'Telegram':
+                inputPlaceholder = 'Ваш телефон в Telegram';
+                break;
+            case 'Телефон':
+                inputPlaceholder = 'Ваш телефон для звонка';
+                break;
+        }
+
+        document.getElementById('contact-input').placeholder = inputPlaceholder;
+    });
+});
+
+
+function send_calculator() {
+    phone_number = document.getElementById('contact-input').value;
+    if (phone_number == '') {
+        alert('Введите свой номер телефона!')
+        return
+    }
+
+    options = document.querySelectorAll('.option');
+    option_value = '';
+    for (i = 0; i < options.length; i++) {
+        if (options[i].classList.length == 2) {
+            option_value = options[i].getAttribute('data-contact');
+        }
+    }
+
+    step1 = document.getElementsByName('step_1');
+    step1_value = '';
+    for (i = 0; i < step1.length; i++) {
+        if (step1[i].checked) {
+            step1_value = step1[i].value;
+        }
+    }
+
+    step2 = document.getElementsByName('step_2');
+    step2_value = '';
+    for (i = 0; i < step2.length; i++) {
+        if (step2[i].checked) {
+            step2_value = step2[i].value;
+        }
+    }
+
+    step3 = document.getElementsByName('step_3');
+    step3_value = '';
+    for (i = 0; i < step3.length; i++) {
+        if (step3[i].checked) {
+            step3_value = step3[i].value;
+        }
+    }
+
+    step4 = document.getElementsByName('step_4');
+    step4_value = '';
+    for (i = 0; i < step4.length; i++) {
+        if (step4[i].checked) {
+            step4_value = step4[i].value;
+        }
+    }
+
+    step5 = document.getElementsByName('step_5');
+    step5_value = '';
+    for (i = 0; i < step5.length; i++) {
+        if (step5[i].checked) {
+            step5_value = step5[i].value;
+        }
+    }
+
+    step6 = document.getElementsByName('step_6');
+    step6_value = '';
+    for (i = 0; i < step6.length; i++) {
+        if (step6[i].checked) {
+            step6_value = step6[i].value;
+        }
+    }
+
+    step7 = document.getElementsByName('step_7');
+    step7_value = '';
+    for (i = 0; i < step7.length; i++) {
+        if (step7[i].checked) {
+            step7_value = step7[i].value;
+        }
+    }
+
+    step8 = document.getElementsByName('step_8');
+    step8_value = '';
+    for (i = 0; i < step8.length; i++) {
+        if (step8[i].checked) {
+            step8_value = step8[i].value;
+        }
+    }
+
+    button = document.getElementById("calculator_button")
+    button.innerHTML = '<div class="loader2"></div>'
+
+    var checked = document.getElementById('calculator_agreement').checked;
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: {
+            "csrfmiddlewaretoken": csrf,
+            'form_id': 4,
+            'phone': phone_number,
+            'phone_type': option_value,
+            'step1': step1_value,
+            'step2': step2_value,
+            'step3': step3_value,
+            'step4': step4_value,
+            'step5': step5_value,
+            'step6': step6_value,
+            'step7': step7_value,
+            'step8': step8_value,
+            'checked': checked,
+        },
+        success: (res)=> {
+            if (res.status == 'success') {
+                alert('Форма успешно отправлена!');
+                document.getElementById("step9").style.display = 'none';
+                document.getElementById("step1").style.display = 'block';
+                document.getElementById('calculator').style.display = 'none';
+            }
+            else if (res.status == 'not_checked') {
+                alert('Пожалуйства, подтвердите пользовательское соглашение!');
+            }
+            else if (res.status == 'fail') {
+                alert('Извините, что-то пошло не так, попробуйте немного позже.');
+            }
+            button.innerHTML = 'Отправить';
+        },
+        error: (err)=> {
+            alert('Извините, что-то пошло не так, попробуйте немного позже.');
+            button.innerHTML = 'Отправить';
+        }
+    })
 }

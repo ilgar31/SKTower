@@ -64,7 +64,7 @@ function send_consultation() {
             button.innerHTML = 'Отправить';
         },
         error: (err)=> {
-            alert('Извините, что-то пошло не так, попробуте немного позже.');
+            alert('Извините, что-то пошло не так, попробуйте немного позже.');
             button.innerHTML = 'Отправить';
         }
     })

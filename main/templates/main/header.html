@@ -217,7 +217,7 @@
             <input type="tel" id="popup_phone" name="popup_phone" placeholder="Телефон" class="popup_input" required>
             <textarea id="popup_message" name="popup_message" placeholder="Сообщение" class="popup_input popup_message" required></textarea>
             <button class="popup_button" type="button" id='send_feedback_button' onclick="send_feedback()">Отправить</button>
-            <label class="popup_container">Согласен на обработку <a href="/" class="popup_container_a">персональных данных</a> в соответствии с <a href="/" class="popup_container_a">пользовательским соглашением</a href="/">
+            <label class="popup_container">Согласен на обработку <a href="/" class="popup_container_a">персональных данных</a> в соответствии с <a href="/" class="popup_container_a">пользовательским соглашением</a>
                 <input type="checkbox"  id="popup_agreement" name="popup_agreement" checked required>
                 <span class="popup_checkmark"></span>
             </label>
@@ -377,34 +377,34 @@
         </div>
 
         <div class="step" id="step4">
-            <p class="calculator_text">Какие размеры дома вы бы хотели?</p>
+            <p class="calculator_text">Какой дом вам нужен?</p>
             <div class="step_container">
                 <div class="step1_item">
-                    <input tabindex="1" name="step_1" type="radio" id="step_4_1" value="До 100 кв.м." class="radio-input" onclick="next_step(3)">
+                    <input tabindex="1" name="step_4" type="radio" id="step_4_1" value="Для постоянного проживания" class="radio-input" onclick="next_step(5)">
                     <label for="step_4_1" class="radio-label">
-                        <div class="image-placeholder" style="height: 130px;">До 100 кв.м.</div>
-                        <span>Маленький</span>
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_4_1.jpg);"></div>
+                        <span>Для постоянного проживания</span>
                     </label>
                 </div>
                 <div class="step1_item">
-                    <input tabindex="1" name="step_1" type="radio" id="step_4_2" value="100 - 150 кв.м." class="radio-input" onclick="next_step(3)">
+                    <input tabindex="1" name="step_4" type="radio" id="step_4_2" value="Дачныый/загородный дом" class="radio-input" onclick="next_step(5)">
                     <label for="step_4_2" class="radio-label">
-                        <div class="image-placeholder" style="height: 130px;">100 - 150 кв.м.</div>
-                        <span>Средний</span>
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_4_2.jpg);"></div>
+                        <span>Дачныый/загородный дом</span>
                     </label>
                 </div>
                 <div class="step1_item">
-                    <input tabindex="1" name="step_1" type="radio" id="step_4_3" value="150 - 200 кв.м." class="radio-input" onclick="next_step(3)">
+                    <input tabindex="1" name="step_4" type="radio" id="step_4_3" value="Гостевой дом" class="radio-input" onclick="next_step(5)">
                     <label for="step_4_3" class="radio-label">
-                        <div class="image-placeholder" style="height: 130px;">150 - 200 кв.м.</div>
-                        <span>Большой</span>
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_4_3.jpg);"></div>
+                        <span>Гостевой дом</span>
                     </label>
                 </div>
                 <div class="step1_item">
-                    <input tabindex="1" name="step_1" type="radio" id="step_4_4" value="Более 200 кв.м." class="radio-input" onclick="next_step(3)">
+                    <input tabindex="1" name="step_4" type="radio" id="step_4_4" value="Нужна помощь" class="radio-input" onclick="next_step(5)">
                     <label for="step_4_4" class="radio-label">
-                        <div class="image-placeholder" style="height: 130px;">Более 200 кв.м.</div>
-                        <span>Очень большой</span>
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_1_4.jpg);"></div>
+                        <span>Нужна помощь</span>
                     </label>
                 </div>
             </div>
@@ -420,6 +420,214 @@
                     ДАЛЕЕ
                 </div>
             </div>
+        </div>
+
+        <div class="step" id="step5">
+            <p class="calculator_text">Выберете тип стен, который вы бы хотели для своего будущего дома</p>
+            <div class="step_container">
+                <div class="step1_item">
+                    <input tabindex="1" name="step_5" type="radio" id="step_5_1" value="Газобетон" class="radio-input" onclick="next_step(6)">
+                    <label for="step_5_1" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_5_1.jpg);"></div>
+                        <span>Газобетон</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_5" type="radio" id="step_5_2" value="Теплая керамика" class="radio-input" onclick="next_step(6)">
+                    <label for="step_5_2" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_5_2.jpg);"></div>
+                        <span>Теплая керамика</span>
+                    </label>
+                </div>
+            </div>
+            <div class="step_error" id="step_error5"></div>
+            <div class="step_buttons">
+                <div class="old_step" onclick="old_step(4)">
+                    НАЗАД
+                </div>
+                <div class="step_counter">
+                    Шаг: 5 из 8
+                </div>
+                <div class="next_step" onclick="next_step(6, true)">
+                    ДАЛЕЕ
+                </div>
+            </div>
+        </div>
+
+        <div class="step" id="step6">
+            <p class="calculator_text">Выберете покрытие кровли, которое вы бы хотели для своего будущего дома</p>
+            <div class="step_container">
+                <div class="step1_item">
+                    <input tabindex="1" name="step_6" type="radio" id="step_6_1" value="Металлочерепица" class="radio-input" onclick="next_step(7)">
+                    <label for="step_6_1" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_6_1.jpg);"></div>
+                        <span>Металлочерепица</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_6" type="radio" id="step_6_2" value="Кликфальц" class="radio-input" onclick="next_step(7)">
+                    <label for="step_6_2" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_6_2.jpg);"></div>
+                        <span>Кликфальц</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_6" type="radio" id="step_6_3" value="Битумная черепица" class="radio-input" onclick="next_step(7)">
+                    <label for="step_6_3" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_6_3.jpg);"></div>
+                        <span>Битумная черепица</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_6" type="radio" id="step_6_4" value="Цементно-песчаная черепица" class="radio-input" onclick="next_step(7)">
+                    <label for="step_6_4" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_6_4.jpg);"></div>
+                        <span>Цементно-песчаная черепица</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_6" type="radio" id="step_6_5" value="Нужна помощь" class="radio-input" onclick="next_step(7)">
+                    <label for="step_6_5" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_1_4.jpg);"></div>
+                        <span>Нужна помощь</span>
+                    </label>
+                </div>
+            </div>
+            <div class="step_error" id="step_error6"></div>
+            <div class="step_buttons">
+                <div class="old_step" onclick="old_step(5)">
+                    НАЗАД
+                </div>
+                <div class="step_counter">
+                    Шаг: 6 из 8
+                </div>
+                <div class="next_step" onclick="next_step(7, true)">
+                    ДАЛЕЕ
+                </div>
+            </div>
+        </div>
+
+        <div class="step" id="step7">
+            <p class="calculator_text">Выберете отмостку, которую вы бы хотели для своего будущего дома</p>
+            <div class="step_container">
+                <div class="step1_item">
+                    <input tabindex="1" name="step_7" type="radio" id="step_7_1" value="Утепленная бетонная отмостка с дренажем и ливневой системой" class="radio-input" onclick="next_step(8)">
+                    <label for="step_7_1" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_7_1.jpg);"></div>
+                        <span>Утепленная бетонная отмостка с дренажем и ливневой системой</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_7" type="radio" id="step_7_2" value="Утепленная мягкая отмостка с дренажем и ливневой системой" class="radio-input" onclick="next_step(8)">
+                    <label for="step_7_2" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_7_2.jpg);"></div>
+                        <span>Утепленная мягкая отмостка с дренажем и ливневой системой</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_7" type="radio" id="step_7_3" value="Нужна помощь" class="radio-input" onclick="next_step(8)">
+                    <label for="step_7_3" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_1_4.jpg);"></div>
+                        <span>Нужна помощь</span>
+                    </label>
+                </div>
+            </div>
+            <div class="step_error" id="step_error7"></div>
+            <div class="step_buttons">
+                <div class="old_step" onclick="old_step(6)">
+                    НАЗАД
+                </div>
+                <div class="step_counter">
+                    Шаг: 7 из 8
+                </div>
+                <div class="next_step" onclick="next_step(8, true)">
+                    ДАЛЕЕ
+                </div>
+            </div>
+        </div>
+
+        <div class="step" id="step8">
+            <p class="calculator_text">Выберете фасад, который вы бы хотели для своего будущего дома</p>
+            <div class="step_container">
+                <div class="step1_item">
+                    <input tabindex="1" name="step_8" type="radio" id="step_8_1" value="ISKULT DECOR декоративная плитка из газобетона под покраску" class="radio-input" onclick="next_step(9)">
+                    <label for="step_8_1" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_8_1.jpg);"></div>
+                        <span>ISKULT DECOR декоративная плитка из газобетона под покраску</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_8" type="radio" id="step_8_2" value="Штукатурный фасад готовыми смесями с фактурой 'Короед' или 'Камешковая'" class="radio-input" onclick="next_step(9)">
+                    <label for="step_8_2" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_8_2.jpg);"></div>
+                        <span>Штукатурный фасад готовыми смесями</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_8" type="radio" id="step_8_3" value="Планкен из лиственницы скошенный или прямой покрытый маслом" class="radio-input" onclick="next_step(9)">
+                    <label for="step_8_3" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_8_3.jpg);"></div>
+                        <span>Планкен из лиственницы скошенный или прямой покрытый маслом</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_8" type="radio" id="step_8_4" value="Фиброцементный сайдинг с фактурой древесины, камня, мозаики и др." class="radio-input" onclick="next_step(9)">
+                    <label for="step_8_4" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_8_4.jpg);"></div>
+                        <span>Фиброцементный сайдинг с фактурой древесины, камня, мозаики и др.</span>
+                    </label>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_8" type="radio" id="step_8_5" value="Нужна помощь" class="radio-input" onclick="next_step(9)">
+                    <label for="step_8_5" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_1_4.jpg);"></div>
+                        <span>Нужна помощь</span>
+                    </label>
+                </div>
+            </div>
+            <div class="step_error" id="step_error8"></div>
+            <div class="step_buttons">
+                <div class="old_step" onclick="old_step(7)">
+                    НАЗАД
+                </div>
+                <div class="step_counter">
+                    Шаг: 8 из 8
+                </div>
+                <div class="next_step" onclick="next_step(9, true)">
+                    ДАЛЕЕ
+                </div>
+            </div>
+        </div>
+
+        <div class="step" id="step9" style="flex-direction: column;align-items: center;">
+            <p class="calculator_text">Ваши ответы получены и мы уже приступили к расчету!</p>
+            <p class="calculator_text" style="color: black;">Укажите, как вам удобнее получить результат:</p>
+            <div class="options">
+                <div class="option selected" data-contact="WhatsApp">
+                    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp">
+                    <p>WhatsApp</p>
+                </div>
+                <div class="option" data-contact="Viber">
+                    <img src="https://img.icons8.com/color/48/000000/viber.png" alt="Viber">
+                    <p>Viber</p>
+                </div>
+                <div class="option" data-contact="Telegram">
+                    <img src="https://img.icons8.com/color/48/000000/telegram-app.png" alt="Telegram">
+                    <p>Telegram</p>
+                </div>
+                <div class="option" data-contact="Телефон">
+                    <img src="https://img.icons8.com/color/48/000000/phone.png" alt="Телефон">
+                    <p>Жду звонка</p>
+                </div>
+            </div>
+            <div class="input-container">
+                <input class="calculator_input" type="text" id="contact-input" placeholder="Ваш телефон в WhatsApp">
+            </div>
+            <button class="calculator_button" id="calculator_button" onclick="send_calculator()">Получить результат</button>
+            <label class="calculator_container">Согласен на обработку <a href="/" class="calculator_container_a">персональных данных</a> в соответствии с <a href="/" class="calculator_container_a">пользовательским соглашением</a>
+                <input type="checkbox"  id="calculator_agreement" name="calculator_agreement" checked required>
+                <span class="calculator_checkmark"></span>
+            </label>
         </div>
     </div>
 </div>

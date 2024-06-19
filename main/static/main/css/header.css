@@ -1472,7 +1472,7 @@ input, textarea {
 
 @media screen and (max-width: 550px){
     .calculator_content {
-        padding: 40px 0 30px 0;
+        padding: 40px 10px 30px 10px;
     }
 
     .step_buttons {
@@ -1495,5 +1495,149 @@ input, textarea {
 
     .calculator_text {
         font-size: 15px;
+    }
+}
+
+
+.options {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 10px;
+}
+
+.option {
+    cursor: pointer;
+    text-align: center;
+    width: 100px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.option img {
+    width: 48px;
+    height: 48px;
+}
+
+.option p {
+    margin-top: 10px;
+    font-family: 'Gilroy-Bold', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.7px;
+}
+
+.input-container {
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.calculator_input {
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Gilroy-Bold', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.7px;
+}
+
+.calculator_button {
+    background-color: #101A1E;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    max-width: 250px;
+    font-family: 'Gilroy-Bold', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.7px;
+}
+
+.calculator_button:hover {
+    background-color: #3f4a4f;
+}
+
+.selected {
+    background-color: #d8d8d8;
+}
+
+
+
+.calculator_container {
+    margin-right: 30px;
+    display: block;
+    position: relative;
+    margin-top: 20px;
+    padding-left: 30px;
+    cursor: pointer;
+    font-size: 10px;
+    font-family: 'Gilroy-Bold', sans-serif;
+    letter-spacing: 0.7px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.calculator_container_a {
+    color: black;
+}
+
+.calculator_container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.calculator_checkmark {
+    position: absolute;
+    top: -4px;
+    left: 0;
+    height: 12px;
+    width: 12px;
+    border-radius: 5px;
+    border: black 3px solid;
+    transition: 0.4s ease;
+}
+
+.calculator_container input:checked ~ .calculator_checkmark {
+    background-color: black;
+}
+
+.calculator_checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.calculator_container input:checked ~ .calculator_checkmark:after {
+    display: block;
+}
+
+.calculator_container .calculator_checkmark:after {
+    left: 4px;
+    top: 2px;
+    width: 2px;
+    height: 5px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+@media screen and (max-width: 650px){
+    .calculator_checkmark {
+        top: 3px;
     }
 }
