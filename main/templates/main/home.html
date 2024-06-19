@@ -209,7 +209,7 @@
                 <input id="phone" type="tel" name="phone" placeholder="Ваш телефон" class="special_block_input">
             </form>
         </div>
-        <label class="mobile_container">Согласен на обработку персональных данных в соответствии с пользовательским соглашением
+        <label class="mobile_container">Согласен на обработку <a href="#soglasie1" id="soglasie_open4" class="container_a">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="container_a">пользовательским соглашением</a>
             <input type="checkbox" id="agreement" name="agreement" checked required>
             <span class="mobile_checkmark"></span>
         </label>
@@ -221,7 +221,7 @@
 
     <div class="special_block2">
         <img src="{% static 'main/png/home/special_block2_foto.png' %}" class="special_block2_foto" draggable="false">
-        <label class="container">Согласен на обработку <a href="/" class="container_a">персональных данных</a> в соответствии с <a href="/" class="container_a">пользовательским соглашением</a>
+        <label class="container">Согласен на обработку <a href="#soglasie1" id="soglasie_open5" class="container_a">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="container_a">пользовательским соглашением</a>
             <input type="checkbox" checked required>
             <span class="checkmark"></span>
         </label>

@@ -238,3 +238,7 @@ def compare(request):
             return send_calculator(request.POST)
 
     return render(request, 'main/compare.html')
+
+
+def agreement(request):
+    return render(request, 'main/agreement.html')

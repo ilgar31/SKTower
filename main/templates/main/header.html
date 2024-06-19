@@ -217,11 +217,47 @@
             <input type="tel" id="popup_phone" name="popup_phone" placeholder="Телефон" class="popup_input" required>
             <textarea id="popup_message" name="popup_message" placeholder="Сообщение" class="popup_input popup_message" required></textarea>
             <button class="popup_button" type="button" id='send_feedback_button' onclick="send_feedback()">Отправить</button>
-            <label class="popup_container">Согласен на обработку <a href="/" class="popup_container_a">персональных данных</a> в соответствии с <a href="/" class="popup_container_a">пользовательским соглашением</a>
+            <label class="popup_container">Согласен на обработку <a href="#soglasie1" class="popup_container_a" id="soglasie_open1">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="popup_container_a">пользовательским соглашением</a>
                 <input type="checkbox"  id="popup_agreement" name="popup_agreement" checked required>
                 <span class="popup_checkmark"></span>
             </label>
         </form>
+    </div>
+</div>
+
+
+
+<div class="soglasie1" id="soglasie1">
+    <div class="soglasie_content">
+        <span class="close-btn" id="soglasie_close">&times;</span>
+        <h2 class="soglasie_title">Согласие на обработку персональных данных посетителей сайта</h2>
+        <p class="soglasie_text">Настоящим, свободно, своей волей и в своем интересе выражаю свое согласие ООО «S.K. TOWER» по адресу: Российская Федерация, г. Ярославль, ... на автоматизированную обработку моих персональных данных в соответствии со следующим перечнем:
+— IP-адрес;
+— MAC-адрес;
+— Информация из cookies;
+— Геолокация пользователя;
+— Язык браузера;
+— Внешний источник перехода на сайт;
+— Устройство пользователя, включая модель и производителя устройства;
+— Операционная система;
+— Тип и версия браузера;
+— Размер экрана пользователя;
+— Фамилия, имя;
+— E-mail адрес;
+— Телефон;
+— Интернет-провайдер пользователя;
+— Адрес доставки.
+
+Для целей оптимизации Оператором своих web-ресурсов, с учетом моих индивидуальных особенностей и предпочтений для продвижения товаров, работ и услуг на рынке.
+
+Оператор вправе осуществлять обработку моих персональных данных следующими способами: сбор, систематизация, накопление, хранение, обновление, изменение, использование, передача третьим лицам
+(предоставление, доступ).
+
+Указанные персональные данные могут обрабатываться следующими интернет-сервисами: Яндекс.Метрика, VK pixel, Tilda.
+
+Настоящее согласие вступает в силу с момента моего перехода на сайт оператора и на срок выполнения запрашиваемой услуги
+
+Согласие на обработку персональных данных может быть отозвано мною путем направления Оператору письменного уведомления об этом не менее чем за один месяц до даты фактического прекращения обработки моих персональных данных Оператором.</p>
     </div>
 </div>
 
@@ -624,7 +660,7 @@
                 <input class="calculator_input" type="text" id="contact-input" placeholder="Ваш телефон в WhatsApp">
             </div>
             <button class="calculator_button" id="calculator_button" onclick="send_calculator()">Получить результат</button>
-            <label class="calculator_container">Согласен на обработку <a href="/" class="calculator_container_a">персональных данных</a> в соответствии с <a href="/" class="calculator_container_a">пользовательским соглашением</a>
+            <label class="calculator_container">Согласен на обработку <a href="#soglasie1" class="calculator_container_a" id="soglasie_open2">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="calculator_container_a">пользовательским соглашением</a>
                 <input type="checkbox"  id="calculator_agreement" name="calculator_agreement" checked required>
                 <span class="calculator_checkmark"></span>
             </label>
@@ -674,9 +710,9 @@
         </div>
     </div>
     <div class="footer_data">
-        <p class="footer_privacy_policy">ПОЛИТИКА КОНФЕДЕНЦИАЛЬНОСТИ</p>
+        <a href="{% url 'agreement' %}" class="footer_privacy_policy">ПОЛИТИКА КОНФЕДЕНЦИАЛЬНОСТИ</a>
         <p class="footer_years_work">© 20?? – 2024 ООО «S.K. TOWER»</p>
-        <p class="footer_agreement">СОГЛАСИЕ НА ОБРАБОТКУ ПЕРСОНАЛЬНЫХ ДАННЫХ ПОСЕТИТЕЛЕЙ САЙТА</p>
+        <p class="footer_agreement" id="soglasie_open3">СОГЛАСИЕ НА ОБРАБОТКУ ПЕРСОНАЛЬНЫХ ДАННЫХ ПОСЕТИТЕЛЕЙ САЙТА</p>
     </div>
 </div>
 

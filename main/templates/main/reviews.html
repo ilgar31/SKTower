@@ -152,7 +152,7 @@
         <div class="make_review_form">
             <input id='review_name' type="text" name="review_name" placeholder="Ваше имя" class="review_name_input">
             <textarea id="review" name="review" placeholder="Ваш отзыв" class="review_input"></textarea>
-            <label class="container2">Согласен на обработку <a href="/" class="container_a2">персональных данных</a> в соответствии с <a href="/" class="container_a2">пользовательским соглашением</a>
+            <label class="container2">Согласен на обработку <a href="#soglasie1" id="soglasie_open6" class="container_a2">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="container_a2">пользовательским соглашением</a>
                 <input type="checkbox" id="review_agreement" name="review_agreement" checked>
                 <span class="checkmark2"></span>
             </label>
@@ -173,7 +173,7 @@
             <div class="special_button1" id='send_consultation_button' onclick="send_consultation()">Отправить заявку</div>
             <div class="special_button2">Позвонить нам</div>
         </div>
-        <label class="container">Согласен на обработку <a href="/" class="container_a">персональных данных</a> в соответствии с <a href="/" class="container_a">пользовательским соглашением</a>
+        <label class="container">Согласен на обработку <a href="#soglasie1" id="soglasie_open7" class="container_a">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="container_a">пользовательским соглашением</a>
             <input type="checkbox" id="agreement" name="agreement" checked>
             <span class="checkmark"></span>
         </label>

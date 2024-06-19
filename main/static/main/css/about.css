@@ -660,6 +660,7 @@
 
 .container_a {
     color: white;
+    text-decoration: underline;
 }
 
 .container input {

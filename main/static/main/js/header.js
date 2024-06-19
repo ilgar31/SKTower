@@ -377,3 +377,89 @@ function send_calculator() {
         }
     })
 }
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const openFormBtn1 = document.getElementById('soglasie_open1');
+    const openFormBtn2 = document.getElementById('soglasie_open2');
+    const openFormBtn3 = document.getElementById('soglasie_open3');
+    const openFormBtn4 = document.getElementById('soglasie_open4');
+    const openFormBtn5 = document.getElementById('soglasie_open5');
+    const openFormBtn6 = document.getElementById('soglasie_open6');
+    const openFormBtn7 = document.getElementById('soglasie_open7');
+    const openFormBtn8 = document.getElementById('soglasie_open8');
+    const openFormBtn9 = document.getElementById('soglasie_open9');
+
+    const soglasie = document.getElementById('soglasie1');
+    const closeFormBtn = document.getElementById('soglasie_close');
+
+    openFormBtn1.addEventListener('click', () => {
+        soglasie.style.display = 'flex';
+    });
+
+    openFormBtn2.addEventListener('click', () => {
+        soglasie.style.display = 'flex';
+    });
+
+    openFormBtn3.addEventListener('click', () => {
+        soglasie.style.display = 'flex';
+    });
+
+    try {
+        openFormBtn4.addEventListener('click', () => {
+            soglasie.style.display = 'flex';
+        });
+    }
+    catch {}
+
+    try {
+        openFormBtn5.addEventListener('click', () => {
+            soglasie.style.display = 'flex';
+        });
+    }
+    catch {}
+
+    try {
+        openFormBtn6.addEventListener('click', () => {
+            soglasie.style.display = 'flex';
+        });
+    }
+    catch {}
+
+    try {
+        openFormBtn7.addEventListener('click', () => {
+            soglasie.style.display = 'flex';
+        });
+    }
+    catch {}
+
+    try {
+        openFormBtn8.addEventListener('click', () => {
+            soglasie.style.display = 'flex';
+        });
+    }
+    catch {}
+
+    try {
+        openFormBtn9.addEventListener('click', () => {
+            soglasie.style.display = 'flex';
+        });
+    }
+    catch {}
+
+    closeFormBtn.addEventListener('click', () => {
+        soglasie.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === soglasie) {
+            soglasie.style.display = 'none';
+        }
+    });
+});

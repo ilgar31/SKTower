@@ -13,4 +13,5 @@ urlpatterns = [
     path('services', views.services, name='services'),
     path('favorites', views.favorites, name='favorites'),
     path('compare', views.compare, name='compare'),
+    path('agreement', views.agreement, name='agreement')
 ]

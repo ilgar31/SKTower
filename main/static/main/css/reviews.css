@@ -355,6 +355,7 @@
 
 .container_a2 {
     color: black;
+    text-decoration: underline;
 }
 
 .container2 input {
@@ -641,6 +642,7 @@
 
 .container_a {
     color: white;
+    text-decoration: underline;
 }
 
 .container input {
