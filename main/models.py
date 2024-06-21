@@ -6,15 +6,15 @@ from datetime import datetime
 
 
 class Projects(models.Model):
-    name = models.CharField(name='Название объекта', max_length=100, blank=True)
-    description = models.CharField(name='Описание объекта', max_length=1000, blank=True)
-    total_area = models.IntegerField(name='Общая прощадь', blank=True)
-    living_area = models.IntegerField(name='Жилая прощадь', blank=True)
-    price = models.IntegerField(name="Цена базовой комплектации", blank=True)
-    bedrooms = models.IntegerField(name="Количество спален", blank=True)
-    bathroom = models.IntegerField(name="Количество санузлов", blank=True)
-    floors = models.IntegerField(name="Количество этажей", blank=True)
-    terrace = models.BooleanField(name="Наличие террасы", blank=True)
+    name = models.CharField(verbose_name='Название объекта', max_length=100, blank=True)
+    description = models.CharField(verbose_name='Описание объекта', max_length=1000, blank=True)
+    total_area = models.IntegerField(verbose_name='Общая прощадь', blank=True)
+    living_area = models.IntegerField(verbose_name='Жилая прощадь', blank=True)
+    price = models.IntegerField(verbose_name="Цена базовой комплектации", blank=True)
+    bedrooms = models.IntegerField(verbose_name="Количество спален", blank=True)
+    bathroom = models.IntegerField(verbose_name="Количество санузлов", blank=True)
+    floors = models.IntegerField(verbose_name="Количество этажей", blank=True)
+    terrace = models.BooleanField(verbose_name="Наличие террасы", blank=True)
 
     def __str__(self):
         return self.name
@@ -45,17 +45,18 @@ class ProjectLayouts(models.Model):
 
 
 class FinishedProjects(models.Model):
-    name = models.CharField(name='Название объекта', max_length=100, blank=True)
-    description = models.CharField(name='Описание объекта', max_length=1000, blank=True)
-    living_area = models.IntegerField(name='Жилая прощадь', blank=True)
-    address = models.CharField(name='Адрес', max_length=150, blank=True)
-    wall_material = models.CharField(name='Материал стен', max_length=100, blank=True)
-    equipment = models.CharField(name='Комплектация', max_length=100, blank=True)
-    reviewer_name = models.CharField(name='Имя клиента', max_length=100, blank=True)
-    review = models.CharField(name='Отзыв клиента', max_length=1000)
+    deadlines = models.IntegerField(verbose_name='Срок выполнения', blank=True)
+    object_name = models.CharField(verbose_name='Название объекта', max_length=100, blank=True)
+    total_area = models.IntegerField(verbose_name='Общая прощадь', blank=True)
+    living_area = models.IntegerField(verbose_name='Жилая прощадь', blank=True)
+    address = models.CharField(verbose_name='Адрес', max_length=150, default='')
+    wall_material = models.CharField(verbose_name='Материал стен', max_length=100, blank=True)
+    equipment = models.CharField(verbose_name='Комплектация', max_length=100, blank=True)
+    reviewer_name = models.CharField(verbose_name='Имя клиента', max_length=100, default='')
+    review = models.CharField(verbose_name='Отзыв клиента', max_length=1000, default='')
 
     def __str__(self):
-        return f'{self.name}    {self.address}'
+        return f'{self.object_name} ({self.address})'
 
     class Meta:
         verbose_name = "Готовый проект"
@@ -63,7 +64,7 @@ class FinishedProjects(models.Model):
 
 
 def finished_project_img_save(instance, filename):
-    return f'main/png/finished_projects/{instance.project.name}/{filename}'
+    return f'main/png/finished_projects/{instance.project.object_name}/{filename}'
 
 
 class FinishedProjectImages(models.Model):
@@ -75,8 +76,9 @@ class FinishedProjectImages(models.Model):
 
 
 class Reviews(models.Model):
-    reviewer_name = models.CharField(name='Имя клиента', max_length=100, blank=True)
-    review = models.CharField(name='Отзыв', max_length=2000, blank=True)
+    reviewer_name = models.CharField(verbose_name='Имя клиента', max_length=100, blank=True)
+    review = models.CharField(verbose_name='Отзыв', max_length=2000, blank=True)
+    review_date = models.DateTimeField(verbose_name='Дата отзыва', default=datetime.now, blank=True)
 
     def __str__(self):
         return f'Отзыв от {self.reviewer_name}'
