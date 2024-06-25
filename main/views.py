@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.core.mail import send_mail, EmailMessage
 from django.http import JsonResponse, HttpResponseNotFound
 from django.views.decorators.csrf import csrf_exempt
+from .models import FinishedProjects
 
 
 def send_feedback(data):
@@ -165,23 +166,25 @@ def project(request, pk):
 
 
 def portfolio(request):
+    finished_projects = FinishedProjects.objects.all()
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
         if request.POST.get('form_id') == '1':
             return send_feedback(request.POST)
         if request.POST.get('form_id') == '4':
             return send_calculator(request.POST)
 
-    return render(request, 'main/portfolio.html')
+    return render(request, 'main/portfolio.html', {'projects': finished_projects})
 
 
 def finished(request, pk):
+    finished_project = FinishedProjects.objects.get(id=pk)
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
         if request.POST.get('form_id') == '1':
             return send_feedback(request.POST)
         if request.POST.get('form_id') == '4':
             return send_calculator(request.POST)
 
-    return render(request, 'main/finished.html')
+    return render(request, 'main/finished.html', {'project': finished_project})
 
 
 def contacts(request):

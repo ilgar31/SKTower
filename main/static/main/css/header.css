@@ -1264,7 +1264,8 @@ input, textarea {
     justify-content: center;
     align-items: center;
     overflow-y: auto;
-    padding: 20px 0 20px 0;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .calculator_content {
@@ -1661,7 +1662,8 @@ input, textarea {
     justify-content: center;
     align-items: center;
     overflow-y: auto;
-    padding: 20px 0 20px 0;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .soglasie_content {
