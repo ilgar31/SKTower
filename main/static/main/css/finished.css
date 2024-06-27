@@ -8,6 +8,7 @@
     display: flex;
     width: 90%;
     max-width: 1800px;
+    column-gap: 40px;
     margin: auto;
     justify-content: space-around;
 }
@@ -21,16 +22,16 @@
 }
 
 .slides {
-  position: relative;
-  width: 500px;
-  margin-top: 30px;
-  height: 500px;
-  max-width: 900px;
+    position: relative;
+    width: 60%;
+    margin-top: 30px;
+    height: 500px;
+    max-width: 900px;
 }
 
 .slide {
     display: none;
-    line-height: 500px;
+    line-height: 100%;
 }
 
 .prev,
@@ -80,8 +81,6 @@
 
 
 
-
-
 .description {
     width: 350px;
     height: 500px;
@@ -121,6 +120,41 @@
     letter-spacing: 0.7px;
     text-align: right;
 }
+
+
+@media screen and (max-width: 1175px){
+    .finished_project {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .slides {
+        width: 80%;
+    }
+
+    .description {
+        height: auto;
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .slides {
+        width: 90%;
+        height: 400px;
+    }
+
+    .slide_photo {
+        max-height: 400px;
+    }
+
+    .description {
+        width: 90%;
+    }
+}
+
+
+
 
 
 
