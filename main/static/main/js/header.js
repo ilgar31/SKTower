@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const openFormBtn1 = document.getElementById('calculator_open1');
     const openFormBtn2 = document.getElementById('calculator_open2');
+    const openFormBtn3 = document.getElementById('calculator_open3');
     const calculator = document.getElementById('calculator');
     const closeFormBtn = document.getElementById('calculator_close');
 
@@ -65,6 +66,13 @@ document.addEventListener('DOMContentLoaded', () => {
     openFormBtn2.addEventListener('click', () => {
         calculator.style.display = 'flex';
     });
+
+    try {
+        openFormBtn3.addEventListener('click', () => {
+            calculator.style.display = 'flex';
+        });
+    }
+    catch {}
 
     closeFormBtn.addEventListener('click', () => {
         calculator.style.display = 'none';

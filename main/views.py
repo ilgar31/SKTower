@@ -170,6 +170,8 @@ def portfolio(request):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
         if request.POST.get('form_id') == '1':
             return send_feedback(request.POST)
+        if request.POST.get('form_id') == '2':
+            return send_consultation(request.POST)
         if request.POST.get('form_id') == '4':
             return send_calculator(request.POST)
 
@@ -181,10 +183,12 @@ def finished(request, pk):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
         if request.POST.get('form_id') == '1':
             return send_feedback(request.POST)
+        if request.POST.get('form_id') == '2':
+            return send_consultation(request.POST)
         if request.POST.get('form_id') == '4':
             return send_calculator(request.POST)
 
-    return render(request, 'main/finished.html', {'project': finished_project})
+    return render(request, 'main/finished.html', {'project': finished_project, 'images_count': range(len(finished_project.images.all()))})
 
 
 def contacts(request):

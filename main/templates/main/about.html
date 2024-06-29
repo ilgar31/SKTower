@@ -103,21 +103,31 @@ S.K. Tower - это молодая компания, которая была с�
 
 <div class="our_works" id="block4">
     <h1 class="block_title">Примеры наших выполненных проектов</h1>
-    <div class="slides">
-        <div class="slide">
-            <img src="{% static 'main/png/home/background.png' %}" class="slide_photo" draggable="false">
+    <div class="slider">
+        <div class="slider__wrapper">
+            <div class="slider__items">
+                <div class="slider__item">
+                    <img src="{% static 'main/png/finished_projects/Индивидуальное проектирование/photo_3_2024-06-22_23-36-25.jpg' %}" class="slide_photo" draggable="false">
+                </div>
+                <div class="slider__item">
+                    <img src="{% static 'main/png/finished_projects/Дессау/photo_2024-06-20_21-48-23.jpg' %}" class="slide_photo" draggable="false">
+                </div>
+                <div class="slider__item">
+                    <img src="{% static 'main/png/home/background.png' %}" class="slide_photo" draggable="false">
+                </div>
+                <div class="slider__item">
+                    <img src="{% static 'main/png/home/special_block2_foto.png' %}" class="slide_photo" draggable="false">
+                </div>
+            </div>
         </div>
-        <div class="slide">
-            <img src="{% static 'main/png/home/mobile_background.png' %}" class="slide_photo" draggable="false">
-        </div>
-        <div class="slide">
-            <img src="{% static 'main/png/home/background.png' %}" class="slide_photo" draggable="false">
-        </div>
-        <div class="slide">
-            <img src="{% static 'main/png/home/special_block2_foto.png' %}" class="slide_photo" draggable="false">
-        </div>
-        <a class="prev" onclick="plusSlides(-1)">❮</a>
-        <a class="next" onclick="plusSlides(1)">❯</a>
+        <a class="slider__control slider__control_prev" href="#" role="button" data-slide="prev" style="color: white; border: 0;"></a>
+        <a class="slider__control slider__control_next" href="#" role="button" data-slide="next" style="color: white; border: 0;"></a>
+        <ol class="slider__indicators">
+            <li class="slider__indicator" data-slide-to='0'></li>
+            <li class="slider__indicator" data-slide-to='1'></li>
+            <li class="slider__indicator" data-slide-to='2'></li>
+            <li class="slider__indicator" data-slide-to='3'></li>
+        </ol>
     </div>
     <a href="{% url 'portfolio' %}" class="we_all_projects">Все объекты</a>
 </div>
