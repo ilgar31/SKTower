@@ -1,5 +1,6 @@
 {% extends 'main/header.html' %}
 {% load static %}
+{% load custom_filters %}
 
 
 {% block link %}
@@ -45,4 +46,159 @@
 
 
 {% block content %}
+
+<div class="projects_block" id="block1">
+    <div class="filter_block">
+        <div class="filter_title_block">
+            <p class="filter_title">Фильтр</p>
+            <img src="{% static 'main/png/projects/filter.png' %}" class="filter_img" draggable="false">
+        </div>
+        <div class="filter_body">
+            <div class="filter_item">
+                <p class="filter_item_name">Общая площадь</p>
+                <div class="long_filter">
+                    <div class="filter_input_block">
+                        <span class="span1">от</span>
+                        <input type="text" value="10" name="total_area_from">
+                        <span class="span2">м²</span>
+                    </div>
+                    <div class="line"></div>
+                    <div class="filter_input_block">
+                        <span class="span1">до</span>
+                        <input type="text" value="250" name="total_area_to">
+                        <span class="span2">м²</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter_item">
+                <p class="filter_item_name">Жилая площадь</p>
+                <div class="long_filter">
+                    <div class="filter_input_block">
+                        <span class="span1">от</span>
+                        <input type="text" value="10" name="living_area_from">
+                        <span class="span2">м²</span>
+                    </div>
+                    <div class="line"></div>
+                    <div class="filter_input_block">
+                        <span class="span1">до</span>
+                        <input type="text" value="250" name="living_area_to">
+                        <span class="span2">м²</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter_item">
+                <p class="filter_item_name">Количество этажей</p>
+                <div class="long_filter">
+                    <div class="filter_input_block">
+                        <span class="span1">от</span>
+                        <input type="text" value="1" name="floors_from">
+                    </div>
+                    <div class="line"></div>
+                    <div class="filter_input_block">
+                        <span class="span1">до</span>
+                        <input type="text" value="4" name="floors_to">
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter_item">
+                <p class="filter_item_name">Количество спален</p>
+                <div class="long_filter">
+                    <div class="filter_input_block">
+                        <span class="span1">от</span>
+                        <input type="text" value="1" name="bedrooms_from">
+                    </div>
+                    <div class="line"></div>
+                    <div class="filter_input_block">
+                        <span class="span1">до</span>
+                        <input type="text" value="6" name="bedrooms_to">
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter_item">
+                <p class="filter_item_name">Количество санузлов</p>
+                <div class="long_filter">
+                    <div class="filter_input_block">
+                        <span class="span1">от</span>
+                        <input type="text" value="1" name="bathroom_from">
+                    </div>
+                    <div class="line"></div>
+                    <div class="filter_input_block">
+                        <span class="span1">до</span>
+                        <input type="text" value="3" name="bathroom_to">
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter_item">
+                <p class="filter_item_name">Наличие террасы</p>
+                <select name="terrace" class="filter_select">
+                  <option value="">Неважно</option>
+                  <option value="false">Нет</option>
+                  <option value="true">Да</option>
+                </select>
+            </div>
+        </div>
+        <button class="filter_button">Найти</button>
+
+        <div class="consultation_block">
+            <p class="consultation_title">Получить консультацию</p>
+            <img src="{% static 'main/png/projects/consultation_img.png' %}" class="consultation_image" draggable="false">
+            <p class="consultation_text">Наши специалисты всегда готовы ответить на все ваши вопросы</p>
+            <button class="consultation_special_button">Оставить заявку</button>
+        </div>
+    </div>
+
+    <div class="content_block">
+        <div class="sort_block">
+            <p class="sort_title">Сортировать по:</p>
+            <p class="sort_variant">Площадь</p>
+            <p class="sort_variant">Жилых комнат</p>
+        </div>
+        <div class="projects" id="projects">
+            {% for project in main_projects %}
+                <a class="project" href="{% url 'project' project.id %}">
+                    <div class="project_block1" style="background-image: url('../static/{{ project.images.all.0 }}');">
+                        <div class="project_compare_block" onclick="event.preventDefault();">
+                            <img src="{% static 'main/png/home/project_compare.png' %}" class="project_action_button" draggable="false">
+                        </div>
+                        <div class="favourite_block" onclick="event.preventDefault();">
+                            <img src="{% static 'main/png/home/project_favourite.png' %}" id='project_like_{{ project.id }}' class="project_action_button" onclick="addToFavorites({{ project.id }})" data-active-src="{% static 'main/png/home/project_favourite_active.png' %}" data-inactive-src="{% static 'main/png/home/project_favourite.png' %}" draggable="false">
+                        </div>
+                    </div>
+                    <div class="project_block2">
+                        <p class="project_name">{{ project.name }}</p>
+                        <p class="project_price">от {{ project.min_price|format_price }} руб</p>
+                        <div class="consultation_button" onclick="event.preventDefault();">Получить консультацию</div>
+                    </div>
+                </a>
+            {% endfor %}
+            <div class="special_block">
+                <p class="special_title">Оцените стоимость вашего жилья</p>
+                <button class="special_button">Рассчитать</button>
+            </div>
+            {% for project in projects %}
+                <a class="project" href="{% url 'project' project.id %}">
+                    <div class="project_block1" style="background-image: url('../static/{{ project.images.all.0 }}');">
+                        <div class="project_compare_block" onclick="event.preventDefault();">
+                            <img src="{% static 'main/png/home/project_compare.png' %}" class="project_action_button" draggable="false">
+                        </div>
+                        <div class="favourite_block" onclick="event.preventDefault();">
+                            <img src="{% static 'main/png/home/project_favourite.png' %}" id='project_like_{{ project.id }}' class="project_action_button" onclick="addToFavorites({{ project.id }})" data-active-src="{% static 'main/png/home/project_favourite_active.png' %}" data-inactive-src="{% static 'main/png/home/project_favourite.png' %}" draggable="false">
+                        </div>
+                    </div>
+                    <div class="project_block2">
+                        <p class="project_name">{{ project.name }}</p>
+                        <p class="project_price">от {{ project.min_price|format_price }} руб</p>
+                        <div class="consultation_button" onclick="event.preventDefault();">Получить консультацию</div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        <button class="more_button" id="more_button" onclick="show_more()">Показать ещё</button>
+    </div>
+</div>
 {% endblock %}

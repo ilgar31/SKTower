@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.core.mail import send_mail, EmailMessage
 from django.http import JsonResponse, HttpResponseNotFound
 from django.views.decorators.csrf import csrf_exempt
-from .models import FinishedProjects
+from .models import FinishedProjects, Projects
 
 
 def send_feedback(data):
@@ -120,6 +120,7 @@ def send_calculator(data):
     else:
         return JsonResponse({"status": 'not_checked'})
 
+
 @csrf_exempt
 def home(request):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
@@ -145,14 +146,33 @@ def about(request):
     return render(request, 'main/about.html')
 
 
+def show_more_projects(data):
+    count = int(data.get('count'))
+    all_projects = Projects.objects.all()
+    new_projects = []
+    for item in all_projects[count:count+12]:
+        new_projects.append({'id': item.id, 'image': str(item.images.all()[0]), 'name': item.name, 'price': item.min_price})
+    if len(all_projects) > count+12:
+        more = True
+    else:
+        more = False
+    return JsonResponse({"projects": new_projects, 'more': more})
+
+
 def projects(request):
+    all_projects = Projects.objects.all()
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
         if request.POST.get('form_id') == '1':
             return send_feedback(request.POST)
         if request.POST.get('form_id') == '4':
             return send_calculator(request.POST)
+        if request.POST.get('form_id') == '5':
+            return show_more_projects(request.POST)
 
-    return render(request, 'main/projects.html')
+    data = {}
+    data['main_projects'] = all_projects[:6]
+    data['projects'] = all_projects[6:12]
+    return render(request, 'main/projects.html', data)
 
 
 def project(request, pk):

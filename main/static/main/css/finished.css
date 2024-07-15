@@ -219,6 +219,7 @@
     font-family: 'Gilroy-Bold', sans-serif;
     color: black;
     text-align: center;
+    margin-top: 50px;
 }
 
 @media screen and (max-width: 1175px){

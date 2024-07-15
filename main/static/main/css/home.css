@@ -526,23 +526,23 @@
 .consultation_button {
     width: 85%;
     height: 35px;
-    background-color: #A0A0A0;
     border-radius: 5px;
     display: flex;
     align-items: center;
     text-align: center;
-    font-size: 10px;
+    font-size: 12px;
     font-family: 'Gilroy-Bold', sans-serif;
     letter-spacing: 0.5px;
     justify-content: center;
     margin: 15px auto;
+    border: white solid 2px;
     cursor: pointer;
-    color: black;
+    color: white;
     transition: 0.5s ease;
 }
 
 .consultation_button:hover {
-    background-color: #6b6b6b;
+    background-color: #373737;
 }
 
 .we_all_projects {
@@ -592,14 +592,14 @@
 @media screen and (max-width: 575px){
     .projects {
         margin: 25px auto;
-        width: 70%;
+        width: 60%;
         grid-template-columns: repeat(1, 100%);
-        grid-auto-rows: 500px;
+        grid-auto-rows: 440px;
         grid-row-gap: 25px;
     }
 
     .project_block1 {
-        height: 360px;
+        height: 300px;
     }
 
     .we_all_projects {
@@ -628,12 +628,11 @@
 
 @media screen and (max-width: 480px){
     .projects {
-        width: 75%;
-        grid-auto-rows: 470px;
+        grid-auto-rows: 380px;
     }
 
     .project_block1 {
-        height: 330px;
+        height: 240px;
     }
 
     .we_all_projects {
@@ -643,26 +642,13 @@
     }
 }
 
-@media screen and (max-width: 440px){
-    .projects {
-        width: 75%;
-        grid-auto-rows: 450px;
-    }
-
-    .project_block1 {
-        height: 310px;
-    }
-}
-
-
 @media screen and (max-width: 400px){
     .projects {
-        width: 80%;
-        grid-auto-rows: 420px;
+        grid-auto-rows: 350px;
     }
 
     .project_block1 {
-        height: 280px;
+        height: 210px;
     }
 
     .we_all_projects {

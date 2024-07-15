@@ -8,13 +8,13 @@ from datetime import datetime
 class Projects(models.Model):
     name = models.CharField(verbose_name='Название объекта', max_length=100, blank=True)
     description = models.CharField(verbose_name='Описание объекта', max_length=1000, blank=True)
-    total_area = models.IntegerField(verbose_name='Общая прощадь', blank=True)
-    living_area = models.IntegerField(verbose_name='Жилая прощадь', blank=True)
-    price = models.IntegerField(verbose_name="Цена базовой комплектации", blank=True)
+    total_area = models.IntegerField(verbose_name='Общая площадь', blank=True)
+    living_area = models.IntegerField(verbose_name='Жилая площадь', blank=True)
     bedrooms = models.IntegerField(verbose_name="Количество спален", blank=True)
     bathroom = models.IntegerField(verbose_name="Количество санузлов", blank=True)
     floors = models.IntegerField(verbose_name="Количество этажей", blank=True)
     terrace = models.BooleanField(verbose_name="Наличие террасы", blank=True)
+    min_price = models.IntegerField(verbose_name="Минимальная стоимость", null = True, blank = True)
 
     def __str__(self):
         return self.name
@@ -44,11 +44,21 @@ class ProjectLayouts(models.Model):
         return f'{self.layout}'
 
 
+class ProjectPrices(models.Model):
+    project = models.ForeignKey(Projects, on_delete=models.CASCADE, related_name="prices")
+    equipment = models.CharField(verbose_name='Комплектация', max_length=100, blank=True)
+    type_of_walls = models.CharField(verbose_name='Тип стен', max_length=100, blank=True)
+    price = models.IntegerField(verbose_name='Стоимость', blank=True)
+
+    def __str__(self):
+        return f'{self.equipment} - {self.type_of_walls}'
+
+
 class FinishedProjects(models.Model):
     deadlines = models.IntegerField(verbose_name='Срок выполнения', blank=True)
     object_name = models.CharField(verbose_name='Название объекта', max_length=100, blank=True)
-    total_area = models.IntegerField(verbose_name='Общая прощадь', blank=True)
-    living_area = models.IntegerField(verbose_name='Жилая прощадь', blank=True)
+    total_area = models.IntegerField(verbose_name='Общая площадь', blank=True)
+    living_area = models.IntegerField(verbose_name='Жилая площадь', blank=True)
     address = models.CharField(verbose_name='Адрес', max_length=150, default='')
     wall_material = models.CharField(verbose_name='Материал стен', max_length=100, blank=True)
     equipment = models.CharField(verbose_name='Комплектация', max_length=100, blank=True)

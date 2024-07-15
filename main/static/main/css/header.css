@@ -134,7 +134,6 @@ mobile_header {
     font-size: 11px;
     font-family: Lexend;
     font-weight: 900;
-
 }
 
 .info_container {
@@ -1811,13 +1810,13 @@ input, textarea {
     margin-right: 3px;
     border-radius: 100%;
     margin-left: 3px;
-    background-color: #939393;
+    background-color: #e5e5e5;
     border: 2px solid #939393;
     cursor: pointer;
 }
 
 .slider__indicator_active {
-    background-color: #fff;
+    background-color: #101a1e;
     border: 2px solid rgba(0,0,0,0.2);
 }
 

@@ -471,3 +471,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+
+
+
+function getFavorites() {
+    const favorites = document.cookie.split('; ').find(row => row.startsWith('favorites='));
+    return favorites ? JSON.parse(decodeURIComponent(favorites.split('=')[1])) : [];
+}
+
+
+function updateFavorites() {
+    const favorites = getFavorites();
+    if (favorites.length) {
+        var favorites_block = document.getElementById('like_count_block')
+        var favorites_count = document.getElementById('like_count')
+        favorites_block.style.display = 'flex';
+        favorites_count.innerHTML = favorites.length;
+    }
+    else {
+        var favorites_block = document.getElementById('like_count_block')
+        favorites_block.style.display = 'none';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', updateFavorites);

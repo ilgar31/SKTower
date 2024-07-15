@@ -1,11 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
   // инициализация слайдера
-  var slider = new SimpleAdaptiveSlider('.slider', {
-    loop: false,
-    autoplay: false,
-    interval: 5000,
-    swipe: true,
-  });
+  try {
+      var slider = new SimpleAdaptiveSlider('.slider', {
+        loop: false,
+        autoplay: false,
+        interval: 5000,
+        swipe: true,
+      });
+  }
+  catch {}
 });
 var WRAPPER_SELECTOR = ".slider__wrapper"
   , ITEMS_SELECTOR = ".slider__items"
