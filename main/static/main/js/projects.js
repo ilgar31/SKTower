@@ -94,7 +94,7 @@ function show_more() {
         url: url,
         data: {
             "csrfmiddlewaretoken": csrf,
-            'form_id': 5,
+            'type': 'load_more',
             'count': currentCount,
         },
         success: (res)=> {
@@ -110,7 +110,10 @@ function show_more() {
                             </div>
                         </div>
                         <div class="project_block2">
-                            <p class="project_name">${project.name}</p>
+                        <div class="project_stat">
+                            <p class="project_name">${project.name }</p>
+                            <p class="project_area">${project.area } м²</p>
+                        </div>
                             <p class="project_price">от ${formatPrice(project.price)} руб</p>
                             <div class="consultation_button" onclick="event.preventDefault();">Получить консультацию</div>
                         </div>
@@ -130,3 +133,119 @@ function show_more() {
         }
     })
 }
+
+
+
+
+var area_sort_state = ''
+var price_sort_state = ''
+
+function change_state(state) {
+    if (state == '') {
+        state = 1
+    }
+    else if (state == 1) {
+        state = 2
+    }
+    else {
+        state = 1
+    }
+    return state
+}
+
+
+function area_sort() {
+    price_sort_state = ''
+    area_sort_state = change_state(area_sort_state)
+    sort('area', area_sort_state)
+}
+
+
+
+function sort(type, state) {
+    button = document.getElementById("more_button");
+    currentCount = 12;
+    if (type == 'area') {
+        method = document.getElementById("area_sort")
+    }
+    else {
+        method = document.getElementById("price_sort")
+    }
+    if (state == 1) {
+        method.innerHTML = 'Площадь &uarr;'
+    }
+    else {
+        method.innerHTML = 'Площадь &darr;'
+    }
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: {
+            "csrfmiddlewaretoken": csrf,
+            'type': 'sort',
+            'key': type,
+            'state': state,
+        },
+        success: (res)=> {
+            projects.innerHTML = ''
+            res.main_projects.forEach(project => {
+                projects.innerHTML += `
+                    <a class="project" href="/project/${project.id}">
+                        <div class="project_block1" style="background-image: url('../static/${project.image}');">
+                            <div class="project_compare_block" onclick="event.preventDefault();">
+                                <img src="/static/main/png/home/project_compare.png" class="project_action_button" draggable="false">
+                            </div>
+                            <div class="favourite_block" onclick="event.preventDefault();">
+                                <img src="/static/main/png/home/project_favourite.png" id="project_like_${project.id}" class="project_action_button" onclick="toggleFavorite(${project.id})" data-active-src="/static/main/png/home/project_favourite_active.png" data-inactive-src="/static/main/png/home/project_favourite.png" draggable="false">
+                            </div>
+                        </div>
+                        <div class="project_block2">
+                        <div class="project_stat">
+                            <p class="project_name">${project.name }</p>
+                            <p class="project_area">${project.area } м²</p>
+                        </div>
+                            <p class="project_price">от ${formatPrice(project.price)} руб</p>
+                            <div class="consultation_button" onclick="event.preventDefault();">Получить консультацию</div>
+                        </div>
+                    </a>
+                `;
+            });
+
+            projects.innerHTML += `
+                    <div class="special_block">
+                        <p class="special_title">Оцените стоимость вашего жилья</p>
+                        <button class="special_button">Рассчитать</button>
+                    </div>
+                `;
+
+            res.projects.forEach(project => {
+                projects.innerHTML += `
+                    <a class="project" href="/project/${project.id}">
+                        <div class="project_block1" style="background-image: url('../static/${project.image}');">
+                            <div class="project_compare_block" onclick="event.preventDefault();">
+                                <img src="/static/main/png/home/project_compare.png" class="project_action_button" draggable="false">
+                            </div>
+                            <div class="favourite_block" onclick="event.preventDefault();">
+                                <img src="/static/main/png/home/project_favourite.png" id="project_like_${project.id}" class="project_action_button" onclick="toggleFavorite(${project.id})" data-active-src="/static/main/png/home/project_favourite_active.png" data-inactive-src="/static/main/png/home/project_favourite.png" draggable="false">
+                            </div>
+                        </div>
+                        <div class="project_block2">
+                        <div class="project_stat">
+                            <p class="project_name">${project.name }</p>
+                            <p class="project_area">${project.area } м²</p>
+                        </div>
+                            <p class="project_price">от ${formatPrice(project.price)} руб</p>
+                            <div class="consultation_button" onclick="event.preventDefault();">Получить консультацию</div>
+                        </div>
+                    </a>
+                `;
+            });
+            updateFavoritesUI()
+        },
+        error: (err)=> {
+            alert('Извините, что-то пошло не так, попробуйте немного позже.');
+        }
+    })
+}
+

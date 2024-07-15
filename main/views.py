@@ -121,107 +121,7 @@ def send_calculator(data):
         return JsonResponse({"status": 'not_checked'})
 
 
-@csrf_exempt
-def home(request):
-    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        if request.POST.get('form_id') == '1':
-            return send_feedback(request.POST)
-        if request.POST.get('form_id') == '4':
-            return send_calculator(request.POST)
-    if request.method == 'POST':
-        return send_estimate(request)
-
-    return render(request, 'main/home.html')
-
-
-def about(request):
-    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        if request.POST.get('form_id') == '1':
-            return send_feedback(request.POST)
-        if request.POST.get('form_id') == '2':
-            return send_consultation(request.POST)
-        if request.POST.get('form_id') == '4':
-            return send_calculator(request.POST)
-
-    return render(request, 'main/about.html')
-
-
-def show_more_projects(data):
-    count = int(data.get('count'))
-    all_projects = Projects.objects.all()
-    new_projects = []
-    for item in all_projects[count:count+12]:
-        new_projects.append({'id': item.id, 'image': str(item.images.all()[0]), 'name': item.name, 'price': item.min_price})
-    if len(all_projects) > count+12:
-        more = True
-    else:
-        more = False
-    return JsonResponse({"projects": new_projects, 'more': more})
-
-
-def projects(request):
-    all_projects = Projects.objects.all()
-    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        if request.POST.get('form_id') == '1':
-            return send_feedback(request.POST)
-        if request.POST.get('form_id') == '4':
-            return send_calculator(request.POST)
-        if request.POST.get('form_id') == '5':
-            return show_more_projects(request.POST)
-
-    data = {}
-    data['main_projects'] = all_projects[:6]
-    data['projects'] = all_projects[6:12]
-    return render(request, 'main/projects.html', data)
-
-
-def project(request, pk):
-    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        if request.POST.get('form_id') == '1':
-            return send_feedback(request.POST)
-        if request.POST.get('form_id') == '4':
-            return send_calculator(request.POST)
-
-    return render(request, 'main/project.html')
-
-
-def portfolio(request):
-    finished_projects = FinishedProjects.objects.all()
-    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        if request.POST.get('form_id') == '1':
-            return send_feedback(request.POST)
-        if request.POST.get('form_id') == '2':
-            return send_consultation(request.POST)
-        if request.POST.get('form_id') == '4':
-            return send_calculator(request.POST)
-
-    return render(request, 'main/portfolio.html', {'projects': finished_projects})
-
-
-def finished(request, pk):
-    finished_project = FinishedProjects.objects.get(id=pk)
-    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        if request.POST.get('form_id') == '1':
-            return send_feedback(request.POST)
-        if request.POST.get('form_id') == '2':
-            return send_consultation(request.POST)
-        if request.POST.get('form_id') == '4':
-            return send_calculator(request.POST)
-
-    return render(request, 'main/finished.html', {'project': finished_project, 'images_count': range(len(finished_project.images.all()))})
-
-
-def contacts(request):
-    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        if request.POST.get('form_id') == '1':
-            return send_feedback(request.POST)
-        if request.POST.get('form_id') == '4':
-            return send_calculator(request.POST)
-
-    return render(request, 'main/contacts.html')
-
-
-def reviews(request):
+def forms(request):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
         if request.POST.get('form_id') == '1':
             return send_feedback(request.POST)
@@ -232,40 +132,100 @@ def reviews(request):
         if request.POST.get('form_id') == '4':
             return send_calculator(request.POST)
 
+
+@csrf_exempt
+def home(request):
+    if request.method == 'POST':
+        return send_estimate(request)
+
+    return render(request, 'main/home.html')
+
+
+def about(request):
+    return render(request, 'main/about.html')
+
+
+def show_more_projects(data):
+    count = int(data.get('count'))
+    all_projects = Projects.objects.all()
+    new_projects = []
+    for item in all_projects[count:count+12]:
+        new_projects.append({'id': item.id, 'image': str(item.images.all()[0]), 'name': item.name, 'price': item.min_price, 'area': item.total_area})
+    if len(all_projects) > count+12:
+        more = True
+    else:
+        more = False
+    return JsonResponse({"projects": new_projects, 'more': more})
+
+
+def sort_projects(data):
+    sorted_projects = Projects.objects.all().order_by('total_area')
+    print(sorted_projects)
+    if data.get('state') == "2":
+        sorted_projects = sorted_projects[::-1]
+
+    main_projects = []
+    projects = []
+    for item in sorted_projects[:6]:
+        main_projects.append({'id': item.id, 'image': str(item.images.all()[0]), 'name': item.name, 'price': item.min_price, 'area': item.total_area})
+    for item in sorted_projects[6:12]:
+        projects.append({'id': item.id, 'image': str(item.images.all()[0]), 'name': item.name, 'price': item.min_price,
+                    'area': item.total_area})
+    return JsonResponse({"main_projects": main_projects, 'projects': projects})
+
+
+def projects(request):
+    all_projects = Projects.objects.all()
+    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
+        if request.POST.get('type') == 'load_more':
+            return show_more_projects(request.POST)
+        if request.POST.get('type') == 'sort':
+            return sort_projects(request.POST)
+
+    data = {}
+    data['main_projects'] = all_projects[:6]
+    data['projects'] = all_projects[6:12]
+    return render(request, 'main/projects.html', data)
+
+
+def project(request, pk):
+    return render(request, 'main/project.html')
+
+
+def portfolio(request):
+    finished_projects = FinishedProjects.objects.all()
+    return render(request, 'main/portfolio.html', {'projects': finished_projects})
+
+
+def finished(request, pk):
+    finished_project = FinishedProjects.objects.get(id=pk)
+    return render(request, 'main/finished.html', {'project': finished_project, 'images_count': range(len(finished_project.images.all()))})
+
+
+def contacts(request):
+    return render(request, 'main/contacts.html')
+
+
+def reviews(request):
     return render(request, 'main/reviews.html')
 
 
 def services(request):
-    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        if request.POST.get('form_id') == '1':
-            return send_feedback(request.POST)
-        if request.POST.get('form_id') == '2':
-            return send_consultation(request.POST)
-        if request.POST.get('form_id') == '4':
-            return send_calculator(request.POST)
-
     return render(request, 'main/services.html')
 
 
 def favorites(request):
-    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        if request.POST.get('form_id') == '1':
-            return send_feedback(request.POST)
-        if request.POST.get('form_id') == '4':
-            return send_calculator(request.POST)
-
     return render(request, 'main/favorites.html')
 
 
 def compare(request):
-    if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-        if request.POST.get('form_id') == '1':
-            return send_feedback(request.POST)
-        if request.POST.get('form_id') == '4':
-            return send_calculator(request.POST)
-
     return render(request, 'main/compare.html')
 
 
 def agreement(request):
     return render(request, 'main/agreement.html')
+
+
+
+
+

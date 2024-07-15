@@ -28,7 +28,7 @@ function send_consultation() {
     var checked = document.getElementById('agreement').checked;
     $.ajax({
         type: "POST",
-        url: url,
+        url: ajax_url,
         data: {
             "csrfmiddlewaretoken": csrf,
             'form_id': 2,
@@ -48,11 +48,11 @@ function send_consultation() {
             else if (res.status == 'fail') {
                 alert('Пожалуйства, заполните все поля.');
             }
-            button.innerHTML = 'Отправить';
+            button.innerHTML = 'Отправить заявку';
         },
         error: (err)=> {
             alert('Извините, что-то пошло не так, попробуйте немного позже.');
-            button.innerHTML = 'Отправить';
+            button.innerHTML = 'Отправить заявку';
         }
     })
 }

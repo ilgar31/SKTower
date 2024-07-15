@@ -155,8 +155,8 @@
     <div class="content_block">
         <div class="sort_block">
             <p class="sort_title">Сортировать по:</p>
-            <p class="sort_variant">Площадь</p>
-            <p class="sort_variant">Жилых комнат</p>
+            <p class="sort_variant" id='area_sort' onclick="area_sort()">Площадь</p>
+            <p class="sort_variant" id="price_sort">Цена</p>
         </div>
         <div class="projects" id="projects">
             {% for project in main_projects %}
@@ -170,7 +170,10 @@
                         </div>
                     </div>
                     <div class="project_block2">
-                        <p class="project_name">{{ project.name }}</p>
+                        <div class="project_stat">
+                            <p class="project_name">{{ project.name }}</p>
+                            <p class="project_area">{{ project.total_area }} м²</p>
+                        </div>
                         <p class="project_price">от {{ project.min_price|format_price }} руб</p>
                         <div class="consultation_button" onclick="event.preventDefault();">Получить консультацию</div>
                     </div>
@@ -191,7 +194,10 @@
                         </div>
                     </div>
                     <div class="project_block2">
-                        <p class="project_name">{{ project.name }}</p>
+                        <div class="project_stat">
+                            <p class="project_name">{{ project.name }}</p>
+                            <p class="project_area">{{ project.total_area }} м²</p>
+                        </div>
                         <p class="project_price">от {{ project.min_price|format_price }} руб</p>
                         <div class="consultation_button" onclick="event.preventDefault();">Получить консультацию</div>
                     </div>

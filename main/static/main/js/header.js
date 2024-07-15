@@ -85,9 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-url = window.location.href
 
 csrf = document.getElementsByName("csrfmiddlewaretoken")[0].value
+ajax_url = document.getElementById('popupForm').getAttribute('data-ajax-url');
 
 function send_feedback() {
     button = document.getElementById("send_feedback_button")
@@ -99,7 +99,7 @@ function send_feedback() {
     var checked = document.getElementById('popup_agreement').checked;
     $.ajax({
         type: "POST",
-        url: url,
+        url: ajax_url,
         data: {
             "csrfmiddlewaretoken": csrf,
             'form_id': 1,
@@ -348,7 +348,7 @@ function send_calculator() {
 
     $.ajax({
         type: "POST",
-        url: url,
+        url: ajax_url,
         data: {
             "csrfmiddlewaretoken": csrf,
             'form_id': 4,
@@ -377,11 +377,11 @@ function send_calculator() {
             else if (res.status == 'fail') {
                 alert('Извините, что-то пошло не так, попробуйте немного позже.');
             }
-            button.innerHTML = 'Отправить';
+            button.innerHTML = 'Получить результат';
         },
         error: (err)=> {
             alert('Извините, что-то пошло не так, попробуйте немного позже.');
-            button.innerHTML = 'Отправить';
+            button.innerHTML = 'Получить результат';
         }
     })
 }
