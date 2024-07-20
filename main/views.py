@@ -3,6 +3,7 @@ from django.core.mail import send_mail, EmailMessage
 from django.http import JsonResponse, HttpResponseNotFound
 from django.views.decorators.csrf import csrf_exempt
 from .models import FinishedProjects, Projects
+import json
 
 
 def send_feedback(data):
@@ -138,20 +139,88 @@ def home(request):
     if request.method == 'POST':
         return send_estimate(request)
 
-    return render(request, 'main/home.html')
+    home_projects = list(filter(lambda x: x.id in [7, 13, 5, 3], Projects.objects.all()))
+
+    return render(request, 'main/home.html', {'projects': home_projects})
 
 
 def about(request):
     return render(request, 'main/about.html')
 
 
+def sort_data(data):
+    if data.get('sort_key') == 'area':
+        if data.get('state') == "2":
+            sorted_projects = Projects.objects.all().order_by('-total_area')
+        else:
+            sorted_projects = Projects.objects.all().order_by('total_area')
+    else:
+        if data.get('state') == "2":
+            sorted_projects = Projects.objects.all().order_by('-min_price')
+        else:
+            sorted_projects = Projects.objects.all().order_by('min_price')
+
+
+    return sorted_projects
+
+
+def filter_data(data, projects):
+    filters = json.loads(data.get('filter_data'))
+
+    total_area_from = filters['total_area_from']
+    total_area_to = filters['total_area_to']
+    living_area_from = filters['living_area_from']
+    living_area_to = filters['living_area_to']
+    floors_from = filters['floors_from']
+    floors_to = filters['floors_to']
+    bedrooms_from = filters['bedrooms_from']
+    bedrooms_to = filters['bedrooms_to']
+    bathroom_from = filters['bathroom_from']
+    bathroom_to = filters['bathroom_to']
+    terrace = filters['terrace']
+
+    if total_area_from:
+        projects = projects.filter(total_area__gte=total_area_from)
+    if total_area_to:
+        projects = projects.filter(total_area__lte=total_area_to)
+    if living_area_from:
+        projects = projects.filter(living_area__gte=living_area_from)
+    if living_area_to:
+        projects = projects.filter(living_area__lte=living_area_to)
+    if floors_from:
+        projects = projects.filter(floors__gte=floors_from)
+    if floors_to:
+        projects = projects.filter(floors__lte=floors_to)
+    if bedrooms_from:
+        projects = projects.filter(bedrooms__gte=bedrooms_from)
+    if bedrooms_to:
+        projects = projects.filter(bedrooms__lte=bedrooms_to)
+    if bathroom_from:
+        projects = projects.filter(bathroom__gte=bathroom_from)
+    if bathroom_to:
+        projects = projects.filter(bathroom__lte=bathroom_to)
+    if terrace != "":
+        terrace_value = True if terrace == 'true' else False
+        projects = projects.filter(terrace=terrace_value)
+
+    return projects
+
+
 def show_more_projects(data):
     count = int(data.get('count'))
-    all_projects = Projects.objects.all()
+
+    if data.get('sort_key'):
+        projects = sort_data(data)
+    else:
+        projects = Projects.objects.all()
+
+    if data.get('filter'):
+        projects = filter_data(data, projects)
+
     new_projects = []
-    for item in all_projects[count:count+12]:
+    for item in projects[count:count+12]:
         new_projects.append({'id': item.id, 'image': str(item.images.all()[0]), 'name': item.name, 'price': item.min_price, 'area': item.total_area})
-    if len(all_projects) > count+12:
+    if len(projects) > count+12:
         more = True
     else:
         more = False
@@ -159,10 +228,10 @@ def show_more_projects(data):
 
 
 def sort_projects(data):
-    sorted_projects = Projects.objects.all().order_by('total_area')
-    print(sorted_projects)
-    if data.get('state') == "2":
-        sorted_projects = sorted_projects[::-1]
+    sorted_projects = sort_data(data)
+
+    if data.get('filter'):
+        sorted_projects = filter_data(data, sorted_projects)
 
     main_projects = []
     projects = []
@@ -171,7 +240,24 @@ def sort_projects(data):
     for item in sorted_projects[6:12]:
         projects.append({'id': item.id, 'image': str(item.images.all()[0]), 'name': item.name, 'price': item.min_price,
                     'area': item.total_area})
-    return JsonResponse({"main_projects": main_projects, 'projects': projects})
+    return JsonResponse({"main_projects": main_projects, 'projects': projects, 'more': len(sorted_projects) > 12, 'fail': len(main_projects) == 0})
+
+
+def filter_projects(data):
+    if data.get('sort_key'):
+        projects = sort_data(data)
+    else:
+        projects = Projects.objects.all()
+
+    filter_projects_mas = filter_data(data, projects)
+    main_projects = []
+    projects = []
+    for item in filter_projects_mas[:6]:
+        main_projects.append({'id': item.id, 'image': str(item.images.all()[0]), 'name': item.name, 'price': item.min_price, 'area': item.total_area})
+    for item in filter_projects_mas[6:12]:
+        projects.append({'id': item.id, 'image': str(item.images.all()[0]), 'name': item.name, 'price': item.min_price,
+                    'area': item.total_area})
+    return JsonResponse({"main_projects": main_projects, 'projects': projects, 'more': len(filter_projects_mas) > 12, 'fail': len(main_projects) == 0})
 
 
 def projects(request):
@@ -181,6 +267,8 @@ def projects(request):
             return show_more_projects(request.POST)
         if request.POST.get('type') == 'sort':
             return sort_projects(request.POST)
+        if request.POST.get('type') == 'filter':
+            return filter_projects(request.POST)
 
     data = {}
     data['main_projects'] = all_projects[:6]
@@ -189,7 +277,8 @@ def projects(request):
 
 
 def project(request, pk):
-    return render(request, 'main/project.html')
+    project = Projects.objects.get(id=pk)
+    return render(request, 'main/project.html', {'project': project})
 
 
 def portfolio(request):
@@ -215,7 +304,8 @@ def services(request):
 
 
 def favorites(request):
-    return render(request, 'main/favorites.html')
+    all_projects = Projects.objects.all()
+    return render(request, 'main/favorites.html', {'projects': all_projects})
 
 
 def compare(request):

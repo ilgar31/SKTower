@@ -3,31 +3,31 @@
 
 
 {% block link %}
-<link rel="stylesheet" type="text/css" href="{% static 'main/css/projects.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/project.css' %}">
 {% endblock %}
 
 
 {% block script %}
-<script src="{% static 'main/js/projects.js' %}" defer></script>
+<script src="{% static 'main/js/project.js' %}" defer></script>
 {% endblock %}
 
 
 {% block title %}
-Назваине проекта
+Проект {{ project.name }}
 {% endblock %}
 
 
 {% block navigation %}
-<a href="/">Главная</a> » <a href="{% url 'projects' %}">Проекты</a> » Название проекта
+<a href="/">Главная</a> » <a href="{% url 'projects' %}">Проекты</a> » {{ project.name }}
 {% endblock %}
 
 {% block mobile_navigation %}
-<a href="/">Главная</a> » <a href="{% url 'projects' %}">Проекты</a> » Название проекта
+<a href="/">Главная</a> » <a href="{% url 'projects' %}">Проекты</a> » {{ project.name }}
 {% endblock %}
 
 
 {% block title_text %}
-Назваине проекта
+{{ project.name }}
 {% endblock %}
 
 {% block extra_text %}
@@ -36,7 +36,7 @@
 
 
 {% block mobile_title_text %}
-Назваине проекта
+{{ project.name }}
 {% endblock %}
 
 {% block mobile_extra_text %}
@@ -45,4 +45,23 @@
 
 
 {% block content %}
+<div class="my_project" id="block1">
+    <div class="project_head">
+        <a class="project_back_block" href="{% url 'projects' %}">
+            <img src="{% static 'main/png/project/project_back.png' %}" class="project_back_img" draggable="false">
+            <p class="back_project_text">Вернуться в каталог проектов</p>
+        </a>
+        <div class="action_project_buttons">
+            <div class="project_action_block">
+                <img src="{% static 'main/png/home/project_compare.png' %}" class="project_compare_img" draggable="false">
+                <p class="project_compare_text">Добавить для сравнения</p>
+            </div>
+
+            <div class="project_action_block">
+                <img src="{% static 'main/png/home/project_favourite.png' %}" class="project_like_img" draggable="false">
+                <p class="project_like_text">Добавить в избранное</p>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

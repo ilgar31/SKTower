@@ -140,7 +140,7 @@ function send_estimate() {
         else if (response.status == 'fail') {
             alert('Пожалуйства, заполните все поля и прикрепите смету.');
         }
-        button.innerHTML = 'Отправить';
+        button.innerHTML = 'Отправить заявку';
     },
     xhr.send(formData);
 }

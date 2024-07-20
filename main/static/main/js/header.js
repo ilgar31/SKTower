@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const openFormBtn2 = document.getElementById('openFormBtn2');
     const openFormBtn3 = document.getElementById('openFormBtn3');
     const openFormBtn4 = document.getElementById('openFormBtn4');
+    const openFormBtn5 = document.getElementById('openFormBtn5');
     const popupForm = document.getElementById('popupForm');
     const closeFormBtn = document.getElementById('closeFormBtn');
 
@@ -41,6 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
         popupForm.style.display = 'flex';
     });
 
+    try {
+        openFormBtn5.addEventListener('click', () => {
+            popupForm.style.display = 'flex';
+        });
+    }
+    catch {}
+
     closeFormBtn.addEventListener('click', () => {
         popupForm.style.display = 'none';
     });
@@ -56,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const openFormBtn1 = document.getElementById('calculator_open1');
     const openFormBtn2 = document.getElementById('calculator_open2');
     const openFormBtn3 = document.getElementById('calculator_open3');
+    const openFormBtn4 = document.getElementById('calculator_open4');
     const calculator = document.getElementById('calculator');
     const closeFormBtn = document.getElementById('calculator_close');
 
@@ -69,6 +78,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
         openFormBtn3.addEventListener('click', () => {
+            calculator.style.display = 'flex';
+        });
+    }
+    catch {}
+
+    try {
+        openFormBtn4.addEventListener('click', () => {
             calculator.style.display = 'flex';
         });
     }
@@ -480,18 +496,51 @@ function getFavorites() {
     return favorites ? JSON.parse(decodeURIComponent(favorites.split('=')[1])) : [];
 }
 
+function getCompares() {
+    const compares = document.cookie.split('; ').find(row => row.startsWith('compares='));
+    return compares ? JSON.parse(decodeURIComponent(compares.split('=')[1])) : [];
+}
+
 
 function updateFavorites() {
     const favorites = getFavorites();
+    const compares = getCompares();
     if (favorites.length) {
         var favorites_block = document.getElementById('like_count_block')
         var favorites_count = document.getElementById('like_count')
         favorites_block.style.display = 'flex';
         favorites_count.innerHTML = favorites.length;
+
+        var mobile_favorites_block = document.getElementById('mobile_like_count_block')
+        var mobile_favorites_count = document.getElementById('mobile_like_count')
+        mobile_favorites_block.style.display = 'flex';
+        mobile_favorites_count.innerHTML = favorites.length;
     }
     else {
         var favorites_block = document.getElementById('like_count_block')
         favorites_block.style.display = 'none';
+
+        var mobile_favorites_block = document.getElementById('mobile_like_count_block')
+        mobile_favorites_block.style.display = 'none';
+    }
+
+    if (compares.length) {
+        var compares_block = document.getElementById('compare_count_block')
+        var compares_count = document.getElementById('compare_count')
+        compares_block.style.display = 'flex';
+        compares_count.innerHTML = compares.length;
+
+        var mobile_compares_block = document.getElementById('mobile_compare_count_block')
+        var mobile_compares_count = document.getElementById('mobile_compare_count')
+        mobile_compares_block.style.display = 'flex';
+        mobile_compares_count.innerHTML = compares.length;
+    }
+    else {
+        var compares_block = document.getElementById('compare_count_block')
+        compares_block.style.display = 'none';
+
+        var mobile_compares_block = document.getElementById('mobile_compare_count_block')
+        mobile_compares_block.style.display = 'none';
     }
 }
 

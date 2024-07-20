@@ -57,11 +57,9 @@
                 <a class="compare" href="{% url 'compare' %}">
                     <img src="{% static 'main/png/header/compare.png' %}" class="compare_icon" draggable="false">
                 </a>
-                {% if True %}
-                <div class="compare_count_block">
-                    <p class="compare_count">{{ 2 }}</p>
+                <div class="compare_count_block" id="compare_count_block" style="display: none;">
+                    <p class="compare_count" id="compare_count"></p>
                 </div>
-                {% endif %}
             </div>
             <div class="like_block">
                 <a class="like" href="{% url 'favorites' %}">
@@ -91,21 +89,17 @@
                 <a class="mobile_compare" href="{% url 'compare' %}">
                     <img src="{% static 'main/png/header/compare.png' %}" class="mobile_compare_icon" draggable="false">
                 </a>
-                {% if True %}
-                <div class="mobile_compare_count_block">
-                    <p class="mobile_compare_count">{{ 2 }}</p>
+                <div class="mobile_compare_count_block" id='mobile_compare_count_block'>
+                    <p class="mobile_compare_count"  id='mobile_compare_count'></p>
                 </div>
-                {% endif %}
             </div>
             <div class="mobile_like_block">
                 <a class="mobile_like" href="{% url 'favorites' %}">
                     <img src="{% static 'main/png/header/like.png' %}" class="mobile_like_icon" draggable="false">
                 </a>
-                {% if True %}
-                <div class="mobile_like_count_block">
-                    <p class="mobile_like_count">{{ 4 }}</p>
+                <div class="mobile_like_count_block" id='mobile_like_count_block'>
+                    <p class="mobile_like_count" id='mobile_like_count'></p>
                 </div>
-                {% endif %}
             </div>
         </div>
         <div id="menu" class="mobile_menu">

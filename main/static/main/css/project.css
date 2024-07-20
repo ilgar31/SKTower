@@ -1,0 +1,135 @@
+.my_project {
+    opacity: 0;
+    margin-top: 150px;
+    transition: 2.5s ease;
+    max-width: 1800px;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+
+.visible_block {
+    margin-top: 50px;
+    opacity: 1;
+}
+
+.project_head {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.project_back_block {
+    display: flex;
+    column-gap: 15px;
+    text-decoration: none;
+    align-items: center;
+}
+
+.project_back_img {
+    width: 40px;
+}
+
+.back_project_text {
+    font-family: 'Gilroy-Bold', sans-serif;
+    letter-spacing: 0.7px;
+    font-size: 28px;
+    color: black;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.action_project_buttons {
+    display: flex;
+    column-gap: 25px;
+}
+
+.project_action_block {
+    display: flex;
+    column-gap: 10px;
+        align-items: center;
+}
+
+.project_compare_img, .project_like_img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.project_compare_text, .project_like_text {
+    font-family: 'Gilroy-Bold', sans-serif;
+    letter-spacing: 0.7px;
+    font-size: 18px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+@media screen and (max-width: 1175px){
+    .project_action_block {
+        width: 170px;
+    }
+
+    .project_back_block {
+        max-width: 50%;
+    }
+
+    .visible_block {
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .project_head {
+        flex-direction: column;
+        row-gap: 20px;
+    }
+
+    .project_back_block {
+        column-gap: 5px;
+    }
+
+    .back_project_text {
+        font-size: 24px;
+    }
+
+    .project_compare_text, .project_like_text {
+        font-size: 15px;
+    }
+
+    .project_action_block {
+        width: auto;
+    }
+
+    .project_back_block {
+        max-width: 100%;
+    }
+
+    .action_project_buttons {
+        column-gap: 25px;
+        justify-content: flex-end;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .back_project_text {
+        font-size: 22px;
+    }
+
+    .project_compare_text, .project_like_text {
+        font-size: 13px;
+    }
+
+    .project_action_block {
+        width: 130px;
+    }
+
+    .project_back_block {
+        max-width: 100%;
+    }
+
+    .action_project_buttons {
+        column-gap: 25px;
+        justify-content: flex-end;
+    }
+}

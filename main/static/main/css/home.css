@@ -503,6 +503,11 @@
     flex-direction: column;
 }
 
+.project_stat {
+    display: flex;
+    justify-content: space-between;
+}
+
 .project_name {
     font-size: 18px;
     font-family: 'Gilroy-Bold', sans-serif;
@@ -512,6 +517,20 @@
     margin-block-end: 0;
     margin-left: 15px;
 }
+
+.project_area {
+    font-size: 16px;
+    font-family: 'Gilroy-Bold', sans-serif;
+    letter-spacing: 1.5px;
+    margin-block-start: 20px;
+    margin-block-end: 0;
+    margin-right: 15px;
+    background-color: #e7e7e7;
+    color: black;
+    border-radius: 10px;
+    padding: 2px 7px;
+}
+
 
 .project_price {
     font-size: 20px;
