@@ -63,5 +63,32 @@
             </div>
         </div>
     </div>
+
+    <div class="my_project_body">
+        <div class="project_first_block">
+
+        </div>
+
+        <div class="project_second_block">
+            <div class="slider">
+                <div class="slider__wrapper">
+                    <div class="slider__items">
+                        {% for image in project.images.all %}
+                            <div class="slider__item">
+                                <img src="{% static image %}" class="slide_photo" draggable="false">
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <a class="slider__control slider__control_prev" href="#" role="button" data-slide="prev" style="color: white; border: 0;"></a>
+                <a class="slider__control slider__control_next" href="#" role="button" data-slide="next" style="color: white; border: 0;"></a>
+                <ol class="slider__indicators">
+                    {% for i in images_count %}
+                        <li class="slider__indicator" data-slide-to={{ i }}></li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

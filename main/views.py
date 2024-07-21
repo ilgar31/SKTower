@@ -278,7 +278,7 @@ def projects(request):
 
 def project(request, pk):
     project = Projects.objects.get(id=pk)
-    return render(request, 'main/project.html', {'project': project})
+    return render(request, 'main/project.html', {'project': project, 'images_count': range(len(project.images.all()))})
 
 
 def portfolio(request):
