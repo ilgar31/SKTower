@@ -1,5 +1,6 @@
 {% extends 'main/header.html' %}
 {% load static %}
+{% load custom_filters %}
 
 
 {% block link %}
@@ -66,7 +67,80 @@
 
     <div class="my_project_body">
         <div class="project_first_block">
+            <p class="project_description">
+                {{ project.description }}
+            </p>
 
+            <div class="project_area_block">
+                <div class="project_living_area_block">
+                    <p class="project_living_area_title">Жилая площадь</p>
+                    <p class="project_living_area_value">{{ project.living_area }} кв.м.</p>
+                </div>
+
+                <div class="project_total_area_block">
+                    <p class="project_total_area_title">Общая площадь</p>
+                    <p class="project_total_area_value">{{ project.total_area }} кв.м.</p>
+                </div>
+            </div>
+
+            <div class="project_extra_info">
+                <div class="project_extra_info_block" style="padding-bottom: 0;">
+                    <p class="project_extra_info_title">Спален:</p>
+                    <p class="project_extra_info_value">{{ project.bedrooms }}</p>
+                </div>
+                <div class="project_extra_info_block" style="padding-bottom: 0;">
+                    <p class="project_extra_info_title">Санузлов:</p>
+                    <p class="project_extra_info_value">{{ project.bathroom }}</p>
+                </div>
+            </div>
+
+            <div class="project_extra_info">
+                <div class="project_extra_info_block">
+                    <p class="project_extra_info_title">Этажей:</p>
+                    <p class="project_extra_info_value">{{ project.floors }}</p>
+                </div>
+                <div class="project_extra_info_block">
+                    <p class="project_extra_info_title">Терраса:</p>
+                    {% if project.terrace %}
+                        <p class="project_extra_info_value">Есть</p>
+                    {% else %}
+                        <p class="project_extra_info_value">Нет</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="project_equipment_block">
+                <div class="project_equipment_title_block">
+                    <p class="project_equipment_title">КОМПЛЕКТАЦИЯ</p>
+                    <img src="" alt="">
+                </div>
+                <select class="project_equipment_selector">
+                    {% for equipment in equipments %}
+                        <option value="{{ equipment }}">{{ equipment }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="project_equipment_block">
+                <div class="project_equipment_title_block">
+                    <p class="project_equipment_title">ТИП СТЕН</p>
+                    <img src="" alt="">
+                </div>
+                <select class="project_equipment_selector">
+                    {% for equipment in types_walls %}
+                        <option value="{{ equipment }}">{{ equipment }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <p class="project_price_title">ЦЕНА СТРОИТЕЛЬСТВА ДОМА ОТ</p>
+            <p class="project_price_value" id="project_value">{{ project.min_price|format_price }} РУБ</p>
+
+            <div class="project_create_order">Сделать заказ</div>
+
+
+            <p class="project_new_price_text">При исключении некоторых организационных позиций можно уменьшить стоимость наших услуг</p>
+            <div class="project_new_price">Сделать дешевле</div>
         </div>
 
         <div class="project_second_block">
@@ -87,6 +161,23 @@
                         <li class="slider__indicator" data-slide-to={{ i }}></li>
                     {% endfor %}
                 </ol>
+            </div>
+            <div class="layouts_block">
+                <div class="layouts_count">
+                    {% for i in layouts_count %}
+                        <div class="layout_count_block" id="layout_{{ i }}" onclick="new_layout({{ i }})">
+                            Этаж {{ i }}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="layouts_images">
+                    {% for i, image in layouts %}
+                        <div class="layout_image" id="layout_image_{{ i }}">
+                            <img src="{% static image %}" class="layout_photo" draggable="false">
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>

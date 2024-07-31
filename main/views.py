@@ -278,7 +278,18 @@ def projects(request):
 
 def project(request, pk):
     project = Projects.objects.get(id=pk)
-    return render(request, 'main/project.html', {'project': project, 'images_count': range(len(project.images.all()))})
+    layouts_images = map(lambda x: (x[0] + 1, x[1]), enumerate(project.layouts.all()))
+
+    equipments = []
+    types_walls = []
+    for price in project.prices.all():
+        if price.equipment not in equipments:
+            equipments.append(price.equipment)
+        if price.type_of_walls not in types_walls:
+            types_walls.append(price.type_of_walls)
+
+    return render(request, 'main/project.html', {'project': project, 'images_count': range(len(project.images.all())), 'layouts_count': map(lambda x: x + 1, range(len(project.layouts.all()))), 'layouts_len': len(project.layouts.all()),
+                                                 'layouts': layouts_images, 'equipments': equipments, 'types_walls': types_walls})
 
 
 def portfolio(request):
