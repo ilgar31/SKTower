@@ -1828,7 +1828,6 @@ input, textarea {
 
 .slider__item {
   counter-increment: slide;
-  height: 400px;
   background-color: white;
   display: flex;
   justify-content: center;

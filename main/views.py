@@ -122,6 +122,17 @@ def send_calculator(data):
         return JsonResponse({"status": 'not_checked'})
 
 
+def change_price(data):
+    complect1 = data.get('complect1')
+    complect2 = data.get('complect2')
+
+    project = Projects.objects.get(id=int(data.get('project_id')))
+
+    for price in project.prices.all():
+        if price.equipment == complect1 and price.type_of_walls == complect2:
+            return JsonResponse({"price": price.price})
+
+
 def forms(request):
     if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
         if request.POST.get('form_id') == '1':
@@ -132,6 +143,8 @@ def forms(request):
             return send_review(request.POST)
         if request.POST.get('form_id') == '4':
             return send_calculator(request.POST)
+        if request.POST.get('form_id') == '5':
+            return change_price(request.POST)
 
 
 @csrf_exempt

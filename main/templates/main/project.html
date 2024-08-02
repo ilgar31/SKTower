@@ -67,80 +67,85 @@
 
     <div class="my_project_body">
         <div class="project_first_block">
-            <p class="project_description">
-                {{ project.description }}
-            </p>
+            <div class="project_first_block1">
+                <p class="project_description">
+                    {{ project.description }}
+                </p>
 
-            <div class="project_area_block">
-                <div class="project_living_area_block">
-                    <p class="project_living_area_title">Жилая площадь</p>
-                    <p class="project_living_area_value">{{ project.living_area }} кв.м.</p>
+                <div class="project_area_block">
+                    <div class="project_living_area_block">
+                        <p class="project_living_area_title">Жилая площадь</p>
+                        <p class="project_living_area_value">{{ project.living_area }} кв.м.</p>
+                    </div>
+
+                    <div class="project_total_area_block">
+                        <p class="project_total_area_title">Общая площадь</p>
+                        <p class="project_total_area_value">{{ project.total_area }} кв.м.</p>
+                    </div>
                 </div>
 
-                <div class="project_total_area_block">
-                    <p class="project_total_area_title">Общая площадь</p>
-                    <p class="project_total_area_value">{{ project.total_area }} кв.м.</p>
+                <div class="project_extra_info">
+                    <div class="project_extra_info_block" style="padding-bottom: 0;">
+                        <p class="project_extra_info_title">Спален:</p>
+                        <p class="project_extra_info_value">{{ project.bedrooms }}</p>
+                    </div>
+                    <div class="project_extra_info_block" style="padding-bottom: 0;">
+                        <p class="project_extra_info_title">Санузлов:</p>
+                        <p class="project_extra_info_value">{{ project.bathroom }}</p>
+                    </div>
+                </div>
+
+                <div class="project_extra_info">
+                    <div class="project_extra_info_block">
+                        <p class="project_extra_info_title">Этажей:</p>
+                        <p class="project_extra_info_value">{{ project.floors }}</p>
+                    </div>
+                    <div class="project_extra_info_block">
+                        <p class="project_extra_info_title">Терраса:</p>
+                        {% if project.terrace %}
+                            <p class="project_extra_info_value">Есть</p>
+                        {% else %}
+                            <p class="project_extra_info_value">Нет</p>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
 
-            <div class="project_extra_info">
-                <div class="project_extra_info_block" style="padding-bottom: 0;">
-                    <p class="project_extra_info_title">Спален:</p>
-                    <p class="project_extra_info_value">{{ project.bedrooms }}</p>
+            <div class="project_first_block2">
+                <div class="project_equipment_block">
+                    <div class="project_equipment_title_block">
+                        <p class="project_equipment_title">КОМПЛЕКТАЦИЯ</p>
+                        <img src="" alt="">
+                    </div>
+                    <select class="project_equipment_selector" id="complect1">
+                        {% for equipment in equipments %}
+                            <option value="{{ equipment }}">{{ equipment }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
-                <div class="project_extra_info_block" style="padding-bottom: 0;">
-                    <p class="project_extra_info_title">Санузлов:</p>
-                    <p class="project_extra_info_value">{{ project.bathroom }}</p>
+
+                <div class="project_equipment_block">
+                    <div class="project_equipment_title_block">
+                        <p class="project_equipment_title">ТИП СТЕН</p>
+                        <img src="" alt="">
+                    </div>
+                    <select class="project_equipment_selector" id="complect2">
+                        {% for equipment in types_walls %}
+                            <option value="{{ equipment }}">{{ equipment }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
+
+                <p class="project_price_title">ЦЕНА СТРОИТЕЛЬСТВА ДОМА ОТ</p>
+                <p class="project_price_value" id="project_value">{{ project.min_price|format_price }} РУБ</p>
+
+                <div class="project_create_order">Сделать заказ</div>
+
+
+                <p class="project_new_price_text">При исключении некоторых организационных позиций можно уменьшить стоимость наших услуг</p>
+                <div class="project_new_price">Сделать дешевле</div>
             </div>
 
-            <div class="project_extra_info">
-                <div class="project_extra_info_block">
-                    <p class="project_extra_info_title">Этажей:</p>
-                    <p class="project_extra_info_value">{{ project.floors }}</p>
-                </div>
-                <div class="project_extra_info_block">
-                    <p class="project_extra_info_title">Терраса:</p>
-                    {% if project.terrace %}
-                        <p class="project_extra_info_value">Есть</p>
-                    {% else %}
-                        <p class="project_extra_info_value">Нет</p>
-                    {% endif %}
-                </div>
-            </div>
-
-            <div class="project_equipment_block">
-                <div class="project_equipment_title_block">
-                    <p class="project_equipment_title">КОМПЛЕКТАЦИЯ</p>
-                    <img src="" alt="">
-                </div>
-                <select class="project_equipment_selector">
-                    {% for equipment in equipments %}
-                        <option value="{{ equipment }}">{{ equipment }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-
-            <div class="project_equipment_block">
-                <div class="project_equipment_title_block">
-                    <p class="project_equipment_title">ТИП СТЕН</p>
-                    <img src="" alt="">
-                </div>
-                <select class="project_equipment_selector">
-                    {% for equipment in types_walls %}
-                        <option value="{{ equipment }}">{{ equipment }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-
-            <p class="project_price_title">ЦЕНА СТРОИТЕЛЬСТВА ДОМА ОТ</p>
-            <p class="project_price_value" id="project_value">{{ project.min_price|format_price }} РУБ</p>
-
-            <div class="project_create_order">Сделать заказ</div>
-
-
-            <p class="project_new_price_text">При исключении некоторых организационных позиций можно уменьшить стоимость наших услуг</p>
-            <div class="project_new_price">Сделать дешевле</div>
         </div>
 
         <div class="project_second_block">
@@ -180,6 +185,90 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="price_block" id="block2">
+    <div class="price">
+        <div class="price_info">
+            <p class="price_title">Стоимость строительства</p>
+            <p class="price_text">Конечная стоимость строительства зависит от множества факторов</p>
+            <p class="price_item">• План и инженерные решения предстоящего строительства;</p>
+            <p class="price_item">• Особенности геологического состава грунтов на участке строительства;</p>
+            <p class="price_item">• Список строительных материалов (с указанием марок прочности и производителя);</p>
+            <p class="price_item">• Сложность строительно-монтажных процессов (включая укладку стен, создание фундамента и крыши, и другие работы).</p>
+            <div class="price_buttons">
+                <button type="button" class="price_button1" id="calculator_open3">Рассчитать стоимость дома</button>
+                <a href="#consultation" type="button" class="price_button2">Получить консультацию</a>
+            </div>
+        </div>
+        <img src="{% static 'main/png/finished_projects/price_foto.png' %}" class="price_foto" draggable="false">
+    </div>
+</div>
+
+<div class="causes_block" id="consultation">
+    <h1 class="block_title">Причины выбрать нас</h1>
+    <div class="causes">
+        <div class="cause">
+            <img src="{% static 'main/png/home/advantage1.png' %}" class="cause_foto" draggable="false">
+            <p class="cause_text">Богатый опыт</p>
+        </div>
+        <div class="cause">
+            <img src="{% static 'main/png/home/advantage2.png' %}" class="cause_foto" draggable="false">
+            <p class="cause_text">Индивидуальный подход</p>
+        </div>
+        <div class="cause">
+            <img src="{% static 'main/png/home/advantage3.png' %}" class="cause_foto" draggable="false">
+            <p class="cause_text">Современные стандарты</p>
+        </div>
+        <div class="cause">
+            <img src="{% static 'main/png/home/advantage4.png' %}" class="cause_foto" draggable="false">
+            <p class="cause_text">Активное развитие</p>
+        </div>
+        <div class="cause">
+            <img src="{% static 'main/png/home/advantage5.png' %}" class="cause_foto" draggable="false">
+            <p class="cause_text">Гарантия качества</p>
+        </div>
+        <div class="cause">
+            <img src="{% static 'main/png/home/advantage6.png' %}" class="cause_foto" draggable="false">
+            <p class="cause_text">Помощь и содействие</p>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="special_block222">
+    <div class="special_block1">
+        <div class="special_block1_1">
+            <h1 class="special_block_title">У вас уже есть проект или смета на дом?</h1>
+            <p class="special_block_text">Прикрепите готовую смету, и мы расскажем, как можно сэкономить</p>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="file" class="file_input"></label>
+                <input type="file" id="file" class="feedback__file" name="file">
+                <p class="file_name" id="file_name"></p>
+                <p class="info_file_text" id="info_file_text">*Если у Вас более одного файла, поместите их все в один архив</p>
+                <input id='name' type="text" name="name" placeholder="Ваше имя" class="special_block_input">
+                <input id="phone" type="tel" name="phone" placeholder="Ваш телефон" class="special_block_input">
+            </form>
+        </div>
+        <label class="mobile_container">Согласен на обработку <a href="#soglasie1" id="soglasie_open4" class="container_a">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="container_a">пользовательским соглашением</a>
+            <input type="checkbox" id="agreement" name="agreement" checked required>
+            <span class="mobile_checkmark"></span>
+        </label>
+        <div class="special_block1_2">
+            <div class="special_button1" id='send_estimate_button' onclick="send_estimate()">Отправить заявку</div>
+            <div class="special_button2">Позвонить нам</div>
+        </div>
+    </div>
+
+    <div class="special_block2">
+        <img src="{% static 'main/png/home/special_block2_foto.png' %}" class="special_block2_foto" draggable="false">
+        <label class="container">Согласен на обработку <a href="#soglasie1" id="soglasie_open5" class="container_a">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="container_a">пользовательским соглашением</a>
+            <input type="checkbox" checked required>
+            <span class="checkmark"></span>
+        </label>
     </div>
 </div>
 {% endblock %}
