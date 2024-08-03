@@ -53,14 +53,14 @@
             <p class="back_project_text">Вернуться в каталог проектов</p>
         </a>
         <div class="action_project_buttons">
-            <div class="project_action_block">
-                <img src="{% static 'main/png/home/project_compare.png' %}" class="project_compare_img" draggable="false">
-                <p class="project_compare_text">Добавить для сравнения</p>
+            <div class="project_action_block" onclick="addCompares({{ project.id }})">
+                <img src="{% static 'main/png/home/project_compare.png' %}" id='project_compare_{{ project.id }}' class="project_compare_img" data-active-src="{% static 'main/png/home/project_compare_active.png' %}" data-inactive-src="{% static 'main/png/home/project_compare.png' %}" draggable="false">
+                <p class="project_compare_text" id="project_compare_text">Добавить для сравнения</p>
             </div>
 
-            <div class="project_action_block">
-                <img src="{% static 'main/png/home/project_favourite.png' %}" class="project_like_img" draggable="false">
-                <p class="project_like_text">Добавить в избранное</p>
+            <div class="project_action_block" onclick="addFavorites({{ project.id }})">
+                <img src="{% static 'main/png/home/project_favourite.png' %}" id='project_like_{{ project.id }}' class="project_like_img" data-active-src="{% static 'main/png/home/project_favourite_active.png' %}" data-inactive-src="{% static 'main/png/home/project_favourite.png' %}" draggable="false">
+                <p class="project_like_text" id="project_like_text">Добавить в избранное</p>
             </div>
         </div>
     </div>
@@ -154,7 +154,7 @@
                     <div class="slider__items">
                         {% for image in project.images.all %}
                             <div class="slider__item">
-                                <img src="{% static image %}" class="slide_photo" draggable="false">
+                                <img src="{% static image %}" class="slide_photo" onclick="zoom_img(this);" draggable="false">
                             </div>
                         {% endfor %}
                     </div>
@@ -179,7 +179,7 @@
                 <div class="layouts_images">
                     {% for i, image in layouts %}
                         <div class="layout_image" id="layout_image_{{ i }}">
-                            <img src="{% static image %}" class="layout_photo" draggable="false">
+                            <img src="{% static image %}" class="layout_photo" onclick="zoom_img(this);" draggable="false">
                         </div>
                     {% endfor %}
                 </div>

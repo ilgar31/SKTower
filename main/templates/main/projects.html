@@ -175,7 +175,7 @@
                             <p class="project_area">{{ project.total_area }} м²</p>
                         </div>
                         <p class="project_price">от {{ project.min_price|format_price }} руб</p>
-                        <div class="consultation_button" onclick="event.preventDefault();">Получить консультацию</div>
+                        <div class="consultation_button">Получить консультацию</div>
                     </div>
                 </a>
             {% endfor %}
@@ -187,7 +187,7 @@
                 <a class="project" href="{% url 'project' project.id %}">
                     <div class="project_block1" style="background-image: url('../static/{{ project.images.all.0 }}');">
                         <div class="project_compare_block" onclick="event.preventDefault();">
-                            <img src="{% static 'main/png/home/project_compare.png' %}" id='project_compare_{{ project.id }}' class="project_action_button" onclick="addToCompares({{ project.id }})" data-active-src="{% static 'main/png/home/project_compare_active.png' %}" data-inactive-src="{% static 'main/png/home/project_compare.png' %}"draggable="false">
+                            <img src="{% static 'main/png/home/project_compare.png' %}" id='project_compare_{{ project.id }}' class="project_action_button" onclick="addToCompares({{ project.id }})" data-active-src="{% static 'main/png/home/project_compare_active.png' %}" data-inactive-src="{% static 'main/png/home/project_compare.png' %}" draggable="false">
                         </div>
                         <div class="favourite_block" onclick="event.preventDefault();">
                             <img src="{% static 'main/png/home/project_favourite.png' %}" id='project_like_{{ project.id }}' class="project_action_button" onclick="addToFavorites({{ project.id }})" data-active-src="{% static 'main/png/home/project_favourite_active.png' %}" data-inactive-src="{% static 'main/png/home/project_favourite.png' %}" draggable="false">
@@ -199,7 +199,7 @@
                             <p class="project_area">{{ project.total_area }} м²</p>
                         </div>
                         <p class="project_price">от {{ project.min_price|format_price }} руб</p>
-                        <div class="consultation_button" onclick="event.preventDefault();">Получить консультацию</div>
+                        <div class="consultation_button">Получить консультацию</div>
                     </div>
                 </a>
             {% endfor %}

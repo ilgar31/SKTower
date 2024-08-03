@@ -333,7 +333,8 @@ def favorites(request):
 
 
 def compare(request):
-    return render(request, 'main/compare.html')
+    all_projects = Projects.objects.all()
+    return render(request, 'main/compare.html', {'projects': all_projects})
 
 
 def agreement(request):

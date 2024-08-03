@@ -52,7 +52,7 @@
             <div class="slider__items">
                 {% for image in project.images.all %}
                     <div class="slider__item">
-                        <img src="{% static image %}" class="slide_photo" draggable="false">
+                        <img src="{% static image %}" class="slide_photo"  onclick="zoom_img(this);" draggable="false">
                     </div>
                 {% endfor %}
             </div>

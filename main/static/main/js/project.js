@@ -130,3 +130,153 @@ function send_estimate() {
     },
     xhr.send(formData);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+function getFavorites() {
+    const favorites = document.cookie.split('; ').find(row => row.startsWith('favorites='));
+    return favorites ? JSON.parse(decodeURIComponent(favorites.split('=')[1])) : [];
+}
+
+function setFavorites(favorites) {
+    document.cookie = `favorites=${encodeURIComponent(JSON.stringify(favorites))}; path=/; max-age=${60 * 60 * 24 * 30}`; // Сохранение на 30 дней
+}
+
+function addFavorites(projectId) {
+    let favorites = getFavorites();
+    var img = document.getElementById(`project_like_${projectId}`);
+    var activeSrc = img.getAttribute('data-active-src');
+    var inactiveSrc = img.getAttribute('data-inactive-src');
+    if (!favorites.includes(projectId)) {
+        favorites.push(projectId);
+        setFavorites(favorites);
+        img.src = activeSrc;
+    }
+    else {
+        removeFromFavorites(projectId);
+        img.src = inactiveSrc;
+    }
+    updateFavorites();
+    updateUI();
+}
+
+function removeFromFavorites(projectId) {
+    let favorites = getFavorites();
+    favorites = favorites.filter(id => id !== projectId);
+    setFavorites(favorites);
+}
+
+
+function getCompares() {
+    const compares = document.cookie.split('; ').find(row => row.startsWith('compares='));
+    return compares ? JSON.parse(decodeURIComponent(compares.split('=')[1])) : [];
+}
+
+function setCompares(compares) {
+    document.cookie = `compares=${encodeURIComponent(JSON.stringify(compares))}; path=/; max-age=${60 * 60 * 24 * 30}`; // Сохранение на 30 дней
+}
+
+function addCompares(projectId) {
+    let compares = getCompares();
+    var img = document.getElementById(`project_compare_${projectId}`);
+    var activeSrc = img.getAttribute('data-active-src');
+    var inactiveSrc = img.getAttribute('data-inactive-src');
+    if (!compares.includes(projectId)) {
+        compares.push(projectId);
+        setCompares(compares);
+        img.src = activeSrc;
+    }
+    else {
+        removeFromCompares(projectId);
+        img.src = inactiveSrc;
+    }
+    updateFavorites();
+    updateUI();
+}
+
+function removeFromCompares(projectId) {
+    let compares = getCompares();
+    compares = compares.filter(id => id !== projectId);
+    setCompares(compares);
+}
+
+function updateUI() {
+    project_id = Number(new URL(window.location.href).pathname.split('/').pop());
+
+    const favorites = getFavorites();
+    const compares = getCompares();
+    var img = document.getElementById(`project_like_${project_id}`);
+
+    try {
+        var activeSrc = img.getAttribute('data-active-src');
+        var inactiveSrc = img.getAttribute('data-inactive-src');
+
+
+        if (favorites.includes(project_id)) {
+            img.src = activeSrc;
+            document.getElementById('project_like_text').innerHTML = 'В избранном';
+            console.log('ldfks')
+        }
+        else {
+            img.src = inactiveSrc;
+            document.getElementById('project_like_text').innerHTML = 'Добавить в избранное';
+            console.log('ldfkdfgsdfgs')
+        }
+
+    }
+    catch {}
+
+    var img = document.getElementById(`project_compare_${project_id}`);
+    try {
+        var activeSrc = img.getAttribute('data-active-src');
+        var inactiveSrc = img.getAttribute('data-inactive-src');
+
+        if (compares.includes(project_id)) {
+            img.src = activeSrc;
+            document.getElementById('project_compare_text').innerHTML = 'В сравнении';
+        }
+        else {
+            img.src = inactiveSrc;
+            document.getElementById('project_compare_text').innerHTML = 'Добавить для сравнения';
+        }
+    }
+    catch {}
+}
+
+document.addEventListener('DOMContentLoaded', updateUI);
+
+
+
+
+
+
+
+
+
+
+
+var modal = document.getElementById('myModal');
+var modalImg = document.getElementById("img01");
+
+function zoom_img(identifier) {
+    modal.style.display = "flex";
+    modalImg.src = identifier.src;
+}
+
+modal.onclick = function() {
+    img01.className += " out";
+    setTimeout(function() {
+       modal.style.display = "none";
+       img01.className = "modal-content";
+     }, 400);
+
+ }

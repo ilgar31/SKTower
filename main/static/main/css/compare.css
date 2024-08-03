@@ -1,0 +1,118 @@
+.compare_page {
+    max-width: 1045px;
+    width: 90%;
+    margin: 50px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.compare_buttons {
+    display: flex;
+    column-gap: 5px;
+    justify-content: flex-end;
+}
+
+.compare_button {
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    margin-right: -5px;
+}
+
+.compare_content {
+    display: flex;
+    column-gap: 15px;
+    margin-top: 10px;
+    transition: transform 0.5s ease-in-out;
+    min-width: 1045px;
+    max-width: 1045px;
+}
+
+.compare_head {
+    min-width: 250px;
+    width: 250px;
+    position: relative;
+    z-index: 2;
+}
+
+.compare_head1, .compare_head2, .compare_head3, .compare_head4, .compare_head5, .compare_head6, .compare_head7, .compare_head8 {
+    width: 100%;
+    height: 60px;
+    font-weight: 500;
+    font-size: 16px;
+    padding-left: 25px;
+    box-sizing: border-box;
+    display: flex;
+    font-family: Inter, 'Gilroy-Bold', sans-serif;
+    align-items: center;
+}
+
+.compare_head1, .compare_head3, .compare_head5, .compare_head7 {
+    background-color: #dcdcdc;
+}
+
+.compare_head2, .compare_head4, .compare_head6, .compare_head8 {
+    background-color: #ECECEC;
+}
+
+.compare_head1 {
+    height: 250px;
+}
+
+
+.projects_compare {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    column-gap: 15px;
+    max-width: 780px;
+}
+
+
+.project_compare {
+    width: 250px;
+}
+
+.project_compare_head1, .project_compare_head2, .project_compare_head3, .project_compare_head4, .project_compare_head5, .project_compare_head6, .project_compare_head7, .project_compare_head8 {
+    width: 100%;
+    height: 60px;
+    font-weight: 500;
+    font-size: 18px;
+    box-sizing: border-box;
+    display: flex;
+    font-family: 'Gilroy-Bold', sans-serif;
+    align-items: center;
+    justify-content: center;
+}
+
+.project_compare_head1, .project_compare_head3, .project_compare_head5, .project_compare_head7 {
+    background-color: #dcdcdc;
+}
+
+.project_compare_head2, .project_compare_head4, .project_compare_head6, .project_compare_head8 {
+    background-color: #ECECEC;
+}
+
+.project_compare_head1 {
+    height: 250px;
+    justify-content: flex-start;
+    flex-direction: column;
+    position: relative;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.project_compare_image {
+    height: 200px;
+    object-fit: cover;
+    width: 250px;
+}
+
+.project_compare_delete {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}

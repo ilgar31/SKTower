@@ -63,3 +63,31 @@ function send_consultation() {
         }
     })
 }
+
+
+
+
+
+
+
+
+
+
+
+
+var modal = document.getElementById('myModal');
+var modalImg = document.getElementById("img01");
+
+function zoom_img(identifier) {
+    modal.style.display = "flex";
+    modalImg.src = identifier.src;
+}
+
+modal.onclick = function() {
+    img01.className += " out";
+    setTimeout(function() {
+       modal.style.display = "none";
+       img01.className = "modal-content";
+     }, 400);
+
+ }

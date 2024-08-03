@@ -1,5 +1,6 @@
 {% extends 'main/header.html' %}
 {% load static %}
+{% load custom_filters %}
 
 
 {% block link %}
@@ -45,4 +46,47 @@
 
 
 {% block content %}
+
+<div class="compare_page">
+    <div class="compare_buttons">
+        <img src="{% static 'main/png/compare/compare_prev.png' %}" id='compare_prev' class="compare_button" onclick="move_compare(-1)" data-active-src="{% static 'main/png/compare/compare_prev_active.png' %}" data-inactive-src="{% static 'main/png/compare/compare_prev.png' %}" draggable="false">
+        <img src="{% static 'main/png/compare/compare_next.png' %}" id='compare_next' class="compare_button" onclick="move_compare(1)" data-active-src="{% static 'main/png/compare/compare_next_active.png' %}" data-inactive-src="{% static 'main/png/compare/compare_next.png' %}" draggable="false">
+    </div>
+    <div class="compare_content">
+        <div class="compare_head">
+            <div class="compare_head1"></div>
+            <div class="compare_head2">Цена</div>
+            <div class="compare_head3">Общая площадь</div>
+            <div class="compare_head4">Жилая площадь</div>
+            <div class="compare_head5">Количество спален</div>
+            <div class="compare_head6">Количество санузлов</div>
+            <div class="compare_head7">Количество этажей</div>
+            <div class="compare_head8">Наличие террасы</div>
+        </div>
+
+        <div class="projects_compare">
+            {% for project in projects %}
+                <div class="project_compare" id="project_{{ project.id }}">
+                    <div class="project_compare_head1">
+                        <img src="{% static project.images.all.0 %}" alt="" class="project_compare_image">
+                        <img src="{% static 'main/png/compare/delete_compare.png' %}" alt="" class="project_compare_delete" onclick="addCompares({{ project.id }})">
+                        <p class="project_compare_name">{{ project.name }}</p>
+                    </div>
+                    <div class="project_compare_head2">от {{ project.min_price|format_price }} руб</div>
+                    <div class="project_compare_head3">{{ project.total_area }} м²</div>
+                    <div class="project_compare_head4">{{ project.living_area }} м²</div>
+                    <div class="project_compare_head5">{{ project.bedrooms }}</div>
+                    <div class="project_compare_head6">{{ project.bathroom }}</div>
+                    <div class="project_compare_head7">{{ project.floors }}</div>
+                    {% if project.terrace %}
+                        <div class="project_compare_head8">Есть</div>
+                    {% else %}
+                        <div class="project_compare_head8">Нет</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
 {% endblock %}

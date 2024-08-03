@@ -54,6 +54,7 @@
     display: flex;
     column-gap: 10px;
     align-items: center;
+    cursor: pointer;
 }
 
 .project_compare_img, .project_like_img {
@@ -144,7 +145,12 @@
 }
 
 
-
+@media screen and (min-width: 1175px){
+    .project_action_block {
+        width: 265px;
+        justify-content: flex-end;
+    }
+}
 
 
 
@@ -180,6 +186,7 @@
   width: 100%;
   max-height: 500px;
   object-fit: contain;
+  cursor: pointer;
 }
 
 .slides {
@@ -311,6 +318,7 @@
     object-fit: cover;
     width: 600px;
     height: 330px;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 500px){
