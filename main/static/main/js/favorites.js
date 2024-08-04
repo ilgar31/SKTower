@@ -90,14 +90,16 @@ function updateFavoritesUI() {
     const compares = getCompares();
     projectId = 1;
     while (true) {
-        var project = document.getElementById(`project_${projectId}`);
-        if (!favorites.includes(projectId)) {
-            project.style.display = 'none';
+        try {
+            var project = document.getElementById(`project_${projectId}`);
+            if (!favorites.includes(projectId)) {
+                project.style.display = 'none';
+            }
+            else {
+                document.getElementById('none_projects').style.display = 'none';
+            }
         }
-        else {
-            document.getElementById('none_projects').style.display = 'none';
-        }
-
+        catch {}
 
         var img = document.getElementById(`project_like_${projectId}`);
         try {

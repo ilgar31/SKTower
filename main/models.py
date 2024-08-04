@@ -96,3 +96,17 @@ class Reviews(models.Model):
     class Meta:
         verbose_name = "Отзыв"
         verbose_name_plural = "Отзывы"
+
+
+class MakeSale(models.Model):
+    name = models.CharField(verbose_name='Критерий', max_length=100, blank=True)
+    price = models.IntegerField(verbose_name="Стоимость", blank=True)
+
+    def __str__(self):
+        return f'{self.name}'
+
+    class Meta:
+        verbose_name = "Сделать дешевле"
+        verbose_name_plural = "Сделать дешевле"
+
+

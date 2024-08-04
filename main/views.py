@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.core.mail import send_mail, EmailMessage
 from django.http import JsonResponse, HttpResponseNotFound
 from django.views.decorators.csrf import csrf_exempt
-from .models import FinishedProjects, Projects
+from .models import FinishedProjects, Projects, MakeSale, Reviews
 import json
 
 
@@ -95,25 +95,25 @@ def send_calculator(data):
     step8 = data.get('step8')
     checked = data.get('checked')
     if checked == "true":
-        email = EmailMessage("На сайте S.K.TOWER оставили новый отзыв!",
+        email = EmailMessage("На сайте S.K.TOWER оставили заявку на подсчет дома!",
                              f'''Телефон: {phone}
 Тип связи: {phone_type}
 
-Вопрос: Сколько этажей вы хотите в доме?   Ответ: {step1}
+Этажей: {step1}
 
-Вопрос: Какие размеры дома вы бы хотели?   Ответ: {step2}
+Размеры дома: {step2}
 
-Вопрос: Выберете фундамент, который вы бы хотели для своего будущего дома.   Ответ: {step3}
+Фундамент: {step3}
 
-Вопрос: Какой дом вам нужен?   Ответ: {step4}
+Тип дома: {step4}
 
-Вопрос: Выберете тип стен, который вы бы хотели для своего будущего дома.   Ответ: {step5}
+Тип стен: {step5}
 
-Вопрос: Выберете покрытие кровли, которое вы бы хотели для своего будущего дома.   Ответ: {step6}
+Покрытие кровли: {step6}
 
-Вопрос: Выберете отмостку, которую вы бы хотели для своего будущего дома.   Ответ: {step7}
+Отмостка: {step7}
 
-Вопрос: Выберете фасад, который вы бы хотели для своего будущего дома.   Ответ: {step8}''',
+Фасад: {step8}''',
                              "sunclub.stor@gmail.com",
                              ["ilgar.bagishev@gmail.com"])
         email.send()
@@ -301,8 +301,9 @@ def project(request, pk):
         if price.type_of_walls not in types_walls:
             types_walls.append(price.type_of_walls)
 
+    sales = MakeSale.objects.all()
     return render(request, 'main/project.html', {'project': project, 'images_count': range(len(project.images.all())), 'layouts_count': map(lambda x: x + 1, range(len(project.layouts.all()))), 'layouts_len': len(project.layouts.all()),
-                                                 'layouts': layouts_images, 'equipments': equipments, 'types_walls': types_walls})
+                                                 'layouts': layouts_images, 'equipments': equipments, 'types_walls': types_walls, 'sales': sales})
 
 
 def portfolio(request):
@@ -320,7 +321,8 @@ def contacts(request):
 
 
 def reviews(request):
-    return render(request, 'main/reviews.html')
+    reviews = Reviews.objects.all()
+    return render(request, 'main/reviews.html', {'reviews': reviews})
 
 
 def services(request):

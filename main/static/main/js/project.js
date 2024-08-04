@@ -224,12 +224,10 @@ function updateUI() {
         if (favorites.includes(project_id)) {
             img.src = activeSrc;
             document.getElementById('project_like_text').innerHTML = 'В избранном';
-            console.log('ldfks')
         }
         else {
             img.src = inactiveSrc;
             document.getElementById('project_like_text').innerHTML = 'Добавить в избранное';
-            console.log('ldfkdfgsdfgs')
         }
 
     }
@@ -272,11 +270,61 @@ function zoom_img(identifier) {
     modalImg.src = identifier.src;
 }
 
-modal.onclick = function() {
-    img01.className += " out";
-    setTimeout(function() {
-       modal.style.display = "none";
-       img01.className = "modal-content";
-     }, 400);
 
- }
+window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        img01.className += " out";
+        setTimeout(function() {
+           modal.style.display = "none";
+           img01.className = "modal-content";
+         }, 400);
+    }
+});
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const openFormBtn1 = document.getElementById('make_sale_open');
+
+    const make_sale = document.getElementById('make_sale');
+    const closeFormBtn = document.getElementById('make_sale_close');
+
+    openFormBtn1.addEventListener('click', () => {
+        make_sale.style.display = 'flex';
+    });
+
+    closeFormBtn.addEventListener('click', () => {
+        make_sale.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === make_sale) {
+            make_sale.style.display = 'none';
+        }
+    });
+});
+
+
+
+
+
+var sale = 0;
+
+
+
+document.querySelectorAll('.container2').forEach(sale_input => {
+    sale_input.addEventListener('change', function() {
+        input = document.getElementById(`sale_${sale_input.id}`)
+        if (input.checked) {
+            sale += Number(input.value)
+        } else {
+            sale -= Number(input.value)
+        }
+
+        document.getElementById(`total_sale`).innerHTML = `ИТОГО: ${sale.toLocaleString('ru-RU')} руб`;
+    });
+});
+

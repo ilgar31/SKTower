@@ -83,11 +83,12 @@ function zoom_img(identifier) {
     modalImg.src = identifier.src;
 }
 
-modal.onclick = function() {
-    img01.className += " out";
-    setTimeout(function() {
-       modal.style.display = "none";
-       img01.className = "modal-content";
-     }, 400);
-
- }
+window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        img01.className += " out";
+        setTimeout(function() {
+           modal.style.display = "none";
+           img01.className = "modal-content";
+         }, 400);
+    }
+});

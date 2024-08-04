@@ -89,4 +89,40 @@
     </div>
 </div>
 
+
+<div class="special_block222">
+    <div class="special_block1">
+        <div class="special_block1_1">
+            <h1 class="special_block_title">У вас уже есть проект или смета на дом?</h1>
+            <p class="special_block_text">Прикрепите готовую смету, и мы расскажем, как можно сэкономить</p>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="file" class="file_input"></label>
+                <input type="file" id="file" class="feedback__file" name="file">
+                <p class="file_name" id="file_name"></p>
+                <p class="info_file_text" id="info_file_text">*Если у Вас более одного файла, поместите их все в один архив</p>
+                <input id='name' type="text" name="name" placeholder="Ваше имя" class="special_block_input">
+                <input id="phone" type="tel" name="phone" placeholder="Ваш телефон" class="special_block_input">
+            </form>
+        </div>
+        <label class="mobile_container">Согласен на обработку <a href="#soglasie1" id="soglasie_open4" class="container_a">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="container_a">пользовательским соглашением</a>
+            <input type="checkbox" id="agreement" name="agreement" checked required>
+            <span class="mobile_checkmark"></span>
+        </label>
+        <div class="special_block1_2">
+            <div class="special_button1" id='send_estimate_button' onclick="send_estimate()">Отправить заявку</div>
+            <a class="special_button2" style="text-decoration: none;" href="tel:89958866700">Позвонить нам</a>
+        </div>
+    </div>
+
+    <div class="special_block2">
+        <img src="{% static 'main/png/home/special_block2_foto.png' %}" class="special_block2_foto" draggable="false">
+        <label class="container">Согласен на обработку <a href="#soglasie1" id="soglasie_open5" class="container_a">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="container_a">пользовательским соглашением</a>
+            <input type="checkbox" checked required>
+            <span class="checkmark"></span>
+        </label>
+    </div>
+</div>
+
+
 {% endblock %}

@@ -143,7 +143,7 @@
 
 
                 <p class="project_new_price_text">При исключении некоторых организационных позиций можно уменьшить стоимость наших услуг</p>
-                <div class="project_new_price">Сделать дешевле</div>
+                <div class="project_new_price" id="make_sale_open">Сделать дешевле</div>
             </div>
 
         </div>
@@ -259,7 +259,7 @@
         </label>
         <div class="special_block1_2">
             <div class="special_button1" id='send_estimate_button' onclick="send_estimate()">Отправить заявку</div>
-            <div class="special_button2">Позвонить нам</div>
+            <a class="special_button2" style="text-decoration: none;" href="tel:89958866700">Позвонить нам</a>
         </div>
     </div>
 
@@ -269,6 +269,36 @@
             <input type="checkbox" checked required>
             <span class="checkmark"></span>
         </label>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="make_sale" id="make_sale">
+    <div class="make_sale_content">
+        <span class="close-btn" id="make_sale_close">&times;</span>
+        <h2 class="make_sale_title">Сделать дешевле</h2>
+        <p class="make_sale_text">Мы заложили в стандартную комплектацию наиболее качественные материалы и все необходимое для Вашего комфорта и спокойствия. Вы можете убрать некоторые пункты, если считаете, что это Вам не нужно.</p>
+        <div class="make_sale_container">
+            {% for sale in sales %}
+                <div class="make_sale_item">
+
+                    <label class="container2" id="{{ sale.id }}">{{ sale.name }}</a>
+                        <input type="checkbox" id="sale_{{ sale.id }}" value="{{ sale.price }}" required>
+                        <span class="checkmark2"></span>
+                    </label>
+
+                    <p class="sale_price">{{ sale.price|format_price }} руб</p>
+                </div>
+            {% endfor %}
+        </div>
+        <p class="total_sale" id="total_sale">ИТОГО: 0 руб</p>
+        <p class="make_sale_text">На эту сумму можно уменьшить стоимость наших услуг без потери качества и при исключении некоторых организационных позиций.</p>
     </div>
 </div>
 {% endblock %}

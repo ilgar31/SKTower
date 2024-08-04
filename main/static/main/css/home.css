@@ -824,6 +824,7 @@
     outline: 25px solid rgba(0, 0, 0, 0.35);
     background-color: #949494;
     width: 270px;
+    text-decoration: none;
     height: 90px;
     font-size: 22px;
     font-family: 'Gilroy-Bold', sans-serif;
@@ -1701,6 +1702,7 @@
 .your_question_button2 {
     width: 250px;
     height: 70px;
+    text-decoration: none;
     background-color: #949494;
     display: flex;
     color: #2A2A2A;

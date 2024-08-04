@@ -167,7 +167,7 @@
         </label>
         <div class="special_block1_2">
             <div class="special_button1" id='send_estimate_button' onclick="send_estimate()">Отправить заявку</div>
-            <div class="special_button2">Позвонить нам</div>
+            <a class="special_button2" href="tel:89958866700">Позвонить нам</a>
         </div>
     </div>
 
@@ -228,7 +228,19 @@
             <div>
                 <div class="person_info">
                     <img src="{% static 'main/png/home/person_icon.png' %}" class="person_icon" draggable="false">
-                    <p class="person_name">Олег Артемьев</p>
+                    <p class="person_name">Иван Петров</p>
+                </div>
+                <p class="review_text">
+                    Мы выбрали эту компанию для строительства нашего коттеджа. Все работы были выполнены качественно и в срок.
+                    Отдельно хотелось бы отметить помощь в выборе материалов для фасада. Результат превзошел ожидания!
+                </p>
+            </div>
+        </div>
+        <div class="review">
+            <div>
+                <div class="person_info">
+                    <img src="{% static 'main/png/home/person_icon.png' %}" class="person_icon" draggable="false">
+                    <p class="person_name">Наталья</p>
                 </div>
                 <p class="review_text">
                     После строительства потребовалось выполнить наружную отделку сооружения. Обратились в компанию.
@@ -241,25 +253,11 @@
             <div>
                 <div class="person_info">
                     <img src="{% static 'main/png/home/person_icon.png' %}" class="person_icon" draggable="false">
-                    <p class="person_name">Олег Артемьев</p>
+                    <p class="person_name">Дмитрий Васильев</p>
                 </div>
                 <p class="review_text">
-                    После строительства потребовалось выполнить наружную отделку сооружения. Обратились в компанию.
-                    Ребята помогли выбрать облицовку, заделали щели все с внешней части дома. отличная работа.
-                    Результатом довольны. Будем бытовку строить, обратимся снова вновь.
-                </p>
-            </div>
-        </div>
-        <div class="review">
-            <div>
-                <div class="person_info">
-                    <img src="{% static 'main/png/home/person_icon.png' %}" class="person_icon" draggable="false">
-                    <p class="person_name">Олег Артемьев</p>
-                </div>
-                <p class="review_text">
-                    После строительства потребовалось выполнить наружную отделку сооружения. Обратились в компанию.
-                    Ребята помогли выбрать облицовку, заделали щели все с внешней части дома. отличная работа.
-                    Результатом довольны. Будем бытовку строить, обратимся снова вновь.
+                    Нужно было построить гостевой домик. Ребята сделали все быстро и качественно.
+                    Особенно понравилось, что учитывали наши пожелания по дизайну. Результатом очень довольны.
                 </p>
             </div>
         </div>
@@ -272,53 +270,53 @@
     <div class="questions">
         <div class="question">
             <div class="question_container">
-                <p class="question_text">Вопрос Вопрос Вопрос</p>
+                <p class="question_text">А есть ли у вас уже готовые каталоги, чтобы просто выбрать дом, и все?</p>
                 <img src="{% static 'main/png/home/question_arrow.png' %}" class="arrow_icon" draggable="false">
             </div>
 
             <div class="answer_container">
-                <p class="answer_text">Ответ ответ ответ ответ</p>
+                <p class="answer_text">Да, каталог проектов можно посмотреть по <a href="{% url 'projects' %}" style="color: white; border-bottom: 1px solid white; box-shadow: none; text-decoration: none;" previewlistener="true">ссылке</a></p>
             </div>
         </div>
         <div class="question">
             <div class="question_container">
-                <p class="question_text">Вопрос Вопрос Вопрос</p>
+                <p class="question_text">Что значит "строительство домов под ключ"?</p>
                 <img src="{% static 'main/png/home/question_arrow.png' %}" class="arrow_icon" draggable="false">
             </div>
 
             <div class="answer_container">
-                <p class="answer_text">Ответ ответ ответ ответ</p>
+                <p class="answer_text">"Строительство домов под ключ" означает, что одна компания или подрядчик будет отвечать за все этапы строительства, начиная от проектирования и заканчивая отделкой и установкой всех систем. Клиенту доставляется полностью готовый дом, готовый к проживанию.</p>
             </div>
         </div>
         <div class="question">
             <div class="question_container">
-                <p class="question_text">Вопрос Вопрос Вопрос</p>
+                <p class="question_text">Какие преимущества имеет строительство домов под ключ?</p>
                 <img src="{% static 'main/png/home/question_arrow.png' %}" class="arrow_icon" draggable="false">
             </div>
 
             <div class="answer_container">
-                <p class="answer_text">Ответ ответ ответ ответ</p>
+                <p class="answer_text">Основное преимущество строительства под ключ в том, что это снижает количество контактов и обязательств для заказчика. Вместо того, чтобы согласовывать работу между разными подрядчиками, вам нужно будет работать только с одной компанией. Это также упрощает процесс управления проектом и может снизить общую стоимость строительства.</p>
             </div>
         </div>
         <div class="question">
             <div class="question_container">
-                <p class="question_text">Вопрос Вопрос Вопрос</p>
+                <p class="question_text">Сколько времени может занять строительство дома под ключ?</p>
                 <img src="{% static 'main/png/home/question_arrow.png' %}" class="arrow_icon" draggable="false">
             </div>
 
             <div class="answer_container">
-                <p class="answer_text">Ответ ответ ответ ответ</p>
+                <p class="answer_text">Время строительства дома под ключ зависит от многих факторов, включая размер дома, сложность дизайна, условия местности и т.д. В среднем, процесс может занять от нескольких месяцев до года или даже более длительный период.</p>
             </div>
         </div>
 
         <div class="question">
             <div class="question_container">
-                <p class="question_text">Вопрос Вопрос Вопрос</p>
+                <p class="question_text">Как мне рассчитать стоимость дома?</p>
                 <img src="{% static 'main/png/home/question_arrow.png' %}" class="arrow_icon" draggable="false">
             </div>
 
             <div class="answer_container">
-                <p class="answer_text">Ответ ответ ответ ответ</p>
+                <p class="answer_text">Стоимость строительства дома зависит от множества факторов, включая размеры здания, материалы, используемые в конструкции, дизайн, а также местоположение участка. Наша компания предоставляет инструмент для онлайн-расчета, где вы можете указать все параметры и получить приблизительную стоимость. Для более точного расчета рекомендуем обратиться к нашим специалистам.</p>
             </div>
         </div>
     </div>
@@ -331,7 +329,7 @@
     </div>
     <div class="your_question_buttons">
         <div class="your_question_button1" id="openForm">Заказать звонок</div>
-        <div class="your_question_button2">Позвонить нам</div>
+        <a class="your_question_button2" href="tel:89958866700">Позвонить нам</a>
     </div>
 </div>
 {% endblock %}
