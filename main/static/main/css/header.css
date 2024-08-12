@@ -1909,3 +1909,27 @@ img, video {
         width: 100%;
     }
 }
+
+
+
+.step1_item {
+    position: relative;
+}
+
+.step_item_cost {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px;
+    padding: 2px 4px;
+    background-color: white;
+    border-radius: 4px;
+    display: flex;
+    column-gap: 5px;
+    border: 2px solid black;
+}
+
+.money_png {
+    height: 18px;
+}
+

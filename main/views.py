@@ -105,15 +105,13 @@ def send_calculator(data):
 
 Фундамент: {step3}
 
-Тип дома: {step4}
+Тип стен: {step4}
 
-Тип стен: {step5}
+Покрытие кровли: {step5}
 
-Покрытие кровли: {step6}
+Отмостка: {step6}
 
-Отмостка: {step7}
-
-Фасад: {step8}''',
+Фасад: {step7}''',
                              "sunclub.stor@gmail.com",
                              ["ilgar.bagishev@gmail.com"])
         email.send()

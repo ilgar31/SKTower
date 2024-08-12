@@ -178,7 +178,7 @@ async function next_step(step, button=false) {
     await delay(500);
     document.getElementById(`step${step - 1}`).classList.remove('select');
     document.getElementById(`step${step}`).classList.add('select');
-    if (step == 9) {
+    if (step == 8) {
         document.getElementById(`step${step}`).style.display = "flex";
     }
 }
@@ -203,8 +203,7 @@ function check(step) {
         step_2_1 = document.getElementById('step_2_1');
         step_2_2 = document.getElementById('step_2_2');
         step_2_3 = document.getElementById('step_2_3');
-        step_2_4 = document.getElementById('step_2_4');
-        return step_2_1.checked || step_2_2.checked || step_2_3.checked || step_2_4.checked;
+        return step_2_1.checked || step_2_2.checked || step_2_3.checked;
     }
     if (step == 3) {
         step_3_1 = document.getElementById('step_3_1');
@@ -217,36 +216,29 @@ function check(step) {
     if (step == 4) {
         step_4_1 = document.getElementById('step_4_1');
         step_4_2 = document.getElementById('step_4_2');
-        step_4_3 = document.getElementById('step_4_3');
-        step_4_4 = document.getElementById('step_4_4');
-        return step_4_1.checked || step_4_2.checked || step_4_3.checked || step_4_4.checked;
+        return step_4_1.checked || step_4_2.checked;
     }
     if (step == 5) {
         step_5_1 = document.getElementById('step_5_1');
         step_5_2 = document.getElementById('step_5_2');
-        return step_5_1.checked || step_5_2.checked;
+        step_5_3 = document.getElementById('step_5_3');
+        step_5_4 = document.getElementById('step_5_4');
+        step_5_5 = document.getElementById('step_5_5');
+        return step_5_1.checked || step_5_2.checked || step_5_3.checked || step_5_4.checked || step_5_5.checked;
     }
     if (step == 6) {
         step_6_1 = document.getElementById('step_6_1');
         step_6_2 = document.getElementById('step_6_2');
         step_6_3 = document.getElementById('step_6_3');
-        step_6_4 = document.getElementById('step_6_4');
-        step_6_5 = document.getElementById('step_6_5');
-        return step_6_1.checked || step_6_2.checked || step_6_3.checked || step_6_4.checked || step_6_5.checked;
+        return step_6_1.checked || step_6_2.checked || step_6_3.checked;
     }
     if (step == 7) {
         step_7_1 = document.getElementById('step_7_1');
         step_7_2 = document.getElementById('step_7_2');
         step_7_3 = document.getElementById('step_7_3');
-        return step_7_1.checked || step_7_2.checked || step_7_3.checked;
-    }
-    if (step == 8) {
-        step_8_1 = document.getElementById('step_8_1');
-        step_8_2 = document.getElementById('step_8_2');
-        step_8_3 = document.getElementById('step_8_3');
-        step_8_4 = document.getElementById('step_8_4');
-        step_8_5 = document.getElementById('step_8_5');
-        return step_8_1.checked || step_8_2.checked || step_8_3.checked || step_8_4.checked || step_8_5.checked;
+        step_7_4 = document.getElementById('step_7_4');
+        step_7_5 = document.getElementById('step_7_5');
+        return step_7_1.checked || step_7_2.checked || step_7_3.checked || step_7_4.checked || step_7_5.checked;
     }
 }
 
@@ -349,14 +341,6 @@ function send_calculator() {
         }
     }
 
-    step8 = document.getElementsByName('step_8');
-    step8_value = '';
-    for (i = 0; i < step8.length; i++) {
-        if (step8[i].checked) {
-            step8_value = step8[i].value;
-        }
-    }
-
     button = document.getElementById("calculator_button")
     button.innerHTML = '<div class="loader2"></div>'
 
@@ -377,7 +361,6 @@ function send_calculator() {
             'step5': step5_value,
             'step6': step6_value,
             'step7': step7_value,
-            'step8': step8_value,
             'checked': checked,
         },
         success: (res)=> {

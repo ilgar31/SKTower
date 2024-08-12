@@ -467,6 +467,7 @@
     margin-top: 15px;
     margin-left: 5%;
     display: flex;
+    align-items: center;
 }
 
 .project_equipment_title {
@@ -815,7 +816,7 @@
 
 @media screen and (max-width: 700px){
     .price {
-        margin-bottom: 60px;
+        margin-bottom: 20px;
     }
 
     .price_buttons {
@@ -1769,6 +1770,114 @@
 
     .total_sale {
         font-size: 18px;
+    }
+}
+
+
+
+.about_equipment_png {
+    height: 22px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 500px){
+    .about_equipment_png {
+        height: 18px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.comparison-container {
+  width: 80%;
+  max-width: 1000px;
+  margin: 50px auto 0px;
+  padding: 20px;
+  font-family: 'Gilroy-Bold', sans-serif;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.comparison-table th, .comparison-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.comparison-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.comparison-table td {
+  background-color: #fff;
+}
+
+.comparison-table tr:nth-child(even) td {
+  background-color: #f9f9f9;
+}
+
+.comparison-table td:not(:first-child) {
+  width: 18%;
+}
+
+.comparison-table td:first-child {
+  text-align: left;
+  font-weight: bold;
+}
+
+.comparison-table td {
+  color: #333;
+}
+
+.comparison-table td:contains('✔️') {
+  color: green;
+}
+
+.comparison-table td:contains('✘') {
+  color: red;
+}
+
+
+
+
+@media screen and (max-width: 1000px){
+    .comparison-container {
+        max-width: 95%;
+        width: 100%;
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .comparison-container {
+        padding: 5px;
+        margin-top: 15px;
+    }
+
+    .comparison-table {
+      margin-top: 10px;
+    }
+
+
+    .comparison-table th, .comparison-table td {
+      padding: 5px;
+      font-size: 12px;
     }
 }
 

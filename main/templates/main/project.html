@@ -115,7 +115,7 @@
                 <div class="project_equipment_block">
                     <div class="project_equipment_title_block">
                         <p class="project_equipment_title">КОМПЛЕКТАЦИЯ</p>
-                        <img src="" alt="">
+                        <a href="#comparison" style="display: flex;align-items: center;"><img src="{% static 'main/png/project/info_about_equipment.png' %}" class="about_equipment_png" draggable="false"></a>
                     </div>
                     <select class="project_equipment_selector" id="complect1">
                         {% for equipment in equipments %}
@@ -127,7 +127,6 @@
                 <div class="project_equipment_block">
                     <div class="project_equipment_title_block">
                         <p class="project_equipment_title">ТИП СТЕН</p>
-                        <img src="" alt="">
                     </div>
                     <select class="project_equipment_selector" id="complect2">
                         {% for equipment in types_walls %}
@@ -204,6 +203,86 @@
         </div>
         <img src="{% static 'main/png/finished_projects/price_foto.png' %}" class="price_foto" draggable="false">
     </div>
+</div>
+
+<div id="comparison" class="comparison-container">
+  <h2>Сравнение комплектаций</h2>
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Характеристики</th>
+        <th>Базовая</th>
+        <th>Стандарт</th>
+        <th>Комфорт</th>
+        <th>White-box</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Фундамент</td>
+        <td>✔️</td>
+        <td>✔️</td>
+        <td>✔️</td>
+        <td>✔️</td>
+      </tr>
+      <tr>
+        <td>Стены</td>
+        <td>✔️</td>
+        <td>✔️</td>
+        <td>✔️</td>
+        <td>✔️</td>
+      </tr>
+      <tr>
+        <td>Крыша</td>
+        <td>✔️</td>
+        <td>✔️</td>
+        <td>✔️</td>
+        <td>✔️</td>
+      </tr>
+      <tr>
+        <td>Отмостка</td>
+        <td>✘</td>
+        <td>✔️</td>
+        <td>✔️</td>
+        <td>✔️</td>
+      </tr>
+      <tr>
+        <td>Фасад</td>
+        <td>✘</td>
+        <td>✔️</td>
+        <td>✔️</td>
+        <td>✔️</td>
+      </tr>
+      <tr>
+        <td>Окна</td>
+        <td>✘</td>
+        <td>✔️</td>
+        <td>✔️</td>
+        <td>✔️</td>
+      </tr>
+      <tr>
+        <td>Инженерные сети</td>
+        <td>✘</td>
+        <td>✘</td>
+        <td>✔️</td>
+        <td>✔️</td>
+      </tr>
+      <tr>
+        <td>Штукатурка</td>
+        <td>✘</td>
+        <td>✘</td>
+        <td>✔️</td>
+        <td>✔️</td>
+      </tr>
+      <tr>
+        <td>White-box отделка</td>
+        <td>✘</td>
+        <td>✘</td>
+        <td>✘</td>
+        <td>✔️</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <div class="causes_block" id="consultation">
