@@ -328,3 +328,26 @@ document.querySelectorAll('.container2').forEach(sale_input => {
     });
 });
 
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const buy_project = document.getElementById('buy_project');
+    const buyForm = document.getElementById('buyForm');
+    const buyFormBtn = document.getElementById('buyFormBtn');
+
+    buy_project.addEventListener('click', () => {
+        buyForm.style.display = 'flex';
+    });
+
+    buyFormBtn.addEventListener('click', () => {
+        buyForm.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === buyForm) {
+            buyForm.style.display = 'none';
+        }
+    });
+});
