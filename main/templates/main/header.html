@@ -222,7 +222,7 @@
     <div class="soglasie_content">
         <span class="close-btn" id="soglasie_close">&times;</span>
         <h2 class="soglasie_title">Согласие на обработку персональных данных посетителей сайта</h2>
-        <p class="soglasie_text">Настоящим, свободно, своей волей и в своем интересе выражаю свое согласие ООО «S.K. TOWER» по адресу: Российская Федерация, г. Ярославль, ... на автоматизированную обработку моих персональных данных в соответствии со следующим перечнем:
+        <p class="soglasie_text">Настоящим, свободно, своей волей и в своем интересе выражаю свое согласие ООО «S.K. TOWER» по адресу: Российская Федерация, г. Москва, Скандинавский бульвар 2к2 кв 103 на автоматизированную обработку моих персональных данных в соответствии со следующим перечнем:
 — IP-адрес;
 — MAC-адрес;
 — Информация из cookies;
@@ -243,8 +243,6 @@
 
 Оператор вправе осуществлять обработку моих персональных данных следующими способами: сбор, систематизация, накопление, хранение, обновление, изменение, использование, передача третьим лицам
 (предоставление, доступ).
-
-Указанные персональные данные могут обрабатываться следующими интернет-сервисами: Яндекс.Метрика, VK pixel, Tilda.
 
 Настоящее согласие вступает в силу с момента моего перехода на сайт оператора и на срок выполнения запрашиваемой услуги
 
@@ -372,10 +370,10 @@
             <p class="calculator_text">Выберете фундамент, который вы бы хотели для своего будущего дома</p>
             <div class="step_container">
                 <div class="step1_item">
-                    <input tabindex="1" name="step_3" type="radio" id="step_3_1" value="Ленточный с полами по грунту" class="radio-input" onclick="next_step(4)">
+                    <input tabindex="1" name="step_3" type="radio" id="step_3_1" value="Винтовые сваи" class="radio-input" onclick="next_step(4)">
                     <label for="step_3_1" class="radio-label">
-                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_3_1.jpg);"></div>
-                        <span>Ленточный с полами по грунту</span>
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_3_5.jpg);"></div>
+                        <span>Винтовые сваи (подходит только для каркасных и деревянных домов)</span>
                     </label>
                     <div class="step_item_cost">
                         <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
@@ -393,34 +391,36 @@
                     </div>
                 </div>
                 <div class="step1_item">
-                    <input tabindex="1" name="step_3" type="radio" id="step_3_3" value="Плитный" class="radio-input" onclick="next_step(4)">
+                    <input tabindex="1" name="step_3" type="radio" id="step_3_3" value="Ленточный с полами по грунту" class="radio-input" onclick="next_step(4)">
                     <label for="step_3_3" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_3_1.jpg);"></div>
+                        <span>Ленточный с полами по грунту</span>
+                    </label>
+                    <div class="step_item_cost">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                    </div>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_3" type="radio" id="step_3_4" value="Плитный" class="radio-input" onclick="next_step(4)">
+                    <label for="step_3_4" class="radio-label">
                         <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_3_3.jpg);"></div>
                         <span>Плитный</span>
                     </label>
                     <div class="step_item_cost">
                         <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
                     </div>
                 </div>
                 <div class="step1_item">
-                    <input tabindex="1" name="step_3" type="radio" id="step_3_4" value="Свайно-ростверковый с плитой" class="radio-input" onclick="next_step(4)">
-                    <label for="step_3_4" class="radio-label">
+                    <input tabindex="1" name="step_3" type="radio" id="step_3_5" value="Свайно-ростверковый с плитой" class="radio-input" onclick="next_step(4)">
+                    <label for="step_3_5" class="radio-label">
                         <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_3_4.jpg);"></div>
                         <span>Свайно-ростверковый с плитой</span>
                     </label>
                     <div class="step_item_cost">
                         <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                    </div>
-                </div>
-                <div class="step1_item">
-                    <input tabindex="1" name="step_3" type="radio" id="step_3_5" value="Винтовые сваи" class="radio-input" onclick="next_step(4)">
-                    <label for="step_3_5" class="radio-label">
-                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_3_5.jpg);"></div>
-                        <span>Винтовые сваи</span>
-                    </label>
-                    <div class="step_item_cost">
                         <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
                         <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
                         <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
@@ -457,6 +457,10 @@
                         <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_5_1.jpg);"></div>
                         <span>Газобетон</span>
                     </label>
+                    <div class="step_item_cost">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                    </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_4" type="radio" id="step_4_2" value="Теплая керамика" class="radio-input" onclick="next_step(5)">
@@ -464,6 +468,11 @@
                         <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_5_2.jpg);"></div>
                         <span>Теплая керамика</span>
                     </label>
+                    <div class="step_item_cost">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                    </div>
                 </div>
             </div>
             <div class="step_error" id="step_error4"></div>
@@ -489,20 +498,32 @@
                         <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_6_1.jpg);"></div>
                         <span>Металлочерепица</span>
                     </label>
+                    <div class="step_item_cost">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                    </div>
                 </div>
                 <div class="step1_item">
-                    <input tabindex="1" name="step_5" type="radio" id="step_5_2" value="Кликфальц" class="radio-input" onclick="next_step(6)">
+                    <input tabindex="1" name="step_5" type="radio" id="step_5_2" value="Битумная черепица" class="radio-input" onclick="next_step(6)">
                     <label for="step_5_2" class="radio-label">
-                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_6_2.jpg);"></div>
-                        <span>Кликфальц</span>
-                    </label>
-                </div>
-                <div class="step1_item">
-                    <input tabindex="1" name="step_5" type="radio" id="step_5_3" value="Битумная черепица" class="radio-input" onclick="next_step(6)">
-                    <label for="step_5_3" class="radio-label">
                         <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_6_3.jpg);"></div>
                         <span>Битумная черепица</span>
                     </label>
+                    <div class="step_item_cost">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                    </div>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_5" type="radio" id="step_5_3" value="Кликфальц" class="radio-input" onclick="next_step(6)">
+                    <label for="step_5_3" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_6_2.jpg);"></div>
+                        <span>Кликфальц</span>
+                    </label>
+                    <div class="step_item_cost">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                    </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_5" type="radio" id="step_5_4" value="Цементно-песчаная черепица" class="radio-input" onclick="next_step(6)">
@@ -510,6 +531,12 @@
                         <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_6_4.jpg);"></div>
                         <span>Цементно-песчаная черепица</span>
                     </label>
+                    <div class="step_item_cost">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                    </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_6" type="radio" id="step_5_5" value="Нужна помощь" class="radio-input" onclick="next_step(6)">
@@ -537,18 +564,25 @@
             <p class="calculator_text">Выберете отмостку, которую вы бы хотели для своего будущего дома</p>
             <div class="step_container">
                 <div class="step1_item">
-                    <input tabindex="1" name="step_6" type="radio" id="step_6_1" value="Утепленная бетонная отмостка с дренажем и ливневой системой" class="radio-input" onclick="next_step(7)">
+                    <input tabindex="1" name="step_6" type="radio" id="step_6_1" value="Утепленная мягкая отмостка с дренажем и ливневой системой" class="radio-input" onclick="next_step(7)">
                     <label for="step_6_1" class="radio-label">
-                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_7_1.jpg);"></div>
-                        <span>Утепленная бетонная отмостка с дренажем и ливневой системой</span>
-                    </label>
-                </div>
-                <div class="step1_item">
-                    <input tabindex="1" name="step_6" type="radio" id="step_6_2" value="Утепленная мягкая отмостка с дренажем и ливневой системой" class="radio-input" onclick="next_step(7)">
-                    <label for="step_6_2" class="radio-label">
                         <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_7_2.jpg);"></div>
                         <span>Утепленная мягкая отмостка с дренажем и ливневой системой</span>
                     </label>
+                    <div class="step_item_cost">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                    </div>
+                </div>
+                <div class="step1_item">
+                    <input tabindex="1" name="step_6" type="radio" id="step_6_2" value="Утепленная бетонная отмостка с дренажем и ливневой системой" class="radio-input" onclick="next_step(7)">
+                    <label for="step_6_2" class="radio-label">
+                        <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_7_1.jpg);"></div>
+                        <span>Утепленная бетонная отмостка с дренажем и ливневой системой</span>
+                    </label>
+                    <div class="step_item_cost">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                    </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_6" type="radio" id="step_6_3" value="Нужна помощь" class="radio-input" onclick="next_step(7)">
@@ -581,6 +615,9 @@
                         <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_8_1.jpg);"></div>
                         <span>ISKULT DECOR декоративная плитка из газобетона под покраску</span>
                     </label>
+                    <div class="step_item_cost">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                    </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_7" type="radio" id="step_7_2" value="Штукатурный фасад готовыми смесями с фактурой 'Короед' или 'Камешковая'" class="radio-input" onclick="next_step(8)">
@@ -588,6 +625,10 @@
                         <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_8_2.jpg);"></div>
                         <span>Штукатурный фасад готовыми смесями</span>
                     </label>
+                    <div class="step_item_cost">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                    </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_7" type="radio" id="step_7_3" value="Планкен из лиственницы скошенный или прямой покрытый маслом" class="radio-input" onclick="next_step(8)">
@@ -595,6 +636,11 @@
                         <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_8_3.jpg);"></div>
                         <span>Планкен из лиственницы скошенный или прямой покрытый маслом</span>
                     </label>
+                    <div class="step_item_cost">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                    </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_7" type="radio" id="step_7_4" value="Фиброцементный сайдинг с фактурой древесины, камня, мозаики и др." class="radio-input" onclick="next_step(8)">
@@ -602,6 +648,12 @@
                         <div class="image-placeholder" style="background-image: url(../../static/main/png/header/calculator_step_8_4.jpg);"></div>
                         <span>Фиброцементный сайдинг с фактурой древесины, камня, мозаики и др.</span>
                     </label>
+                    <div class="step_item_cost">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                    </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_7" type="radio" id="step_7_5" value="Нужна помощь" class="radio-input" onclick="next_step(8)">

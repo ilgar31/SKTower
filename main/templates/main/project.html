@@ -138,7 +138,7 @@
                 <p class="project_price_title">ЦЕНА СТРОИТЕЛЬСТВА ДОМА ОТ</p>
                 <p class="project_price_value" id="project_value">{{ project.min_price|format_price }} РУБ</p>
 
-                <div class="project_create_order" id="buy_project">Сделать заказ</div>
+                <div class="project_create_order" id="openFormBtn5">Сделать заказ</div>
 
 
                 <p class="project_new_price_text">При исключении некоторых организационных позиций можно уменьшить стоимость наших услуг</p>
@@ -275,7 +275,14 @@
         <td>✔️</td>
       </tr>
       <tr>
-        <td>White-box отделка</td>
+        <td>Стяжка</td>
+        <td>✘</td>
+        <td>✘</td>
+        <td>✘</td>
+        <td>✔️</td>
+      </tr>
+      <tr>
+        <td>Дизайн проект</td>
         <td>✘</td>
         <td>✘</td>
         <td>✘</td>
@@ -383,26 +390,4 @@
 
 
 
-
-
-
-<div id="buyForm" class="popup" data-ajax-url="{% url 'forms' %}">
-    <div class="popup-content">
-        <span class="close-btn" id="buyFormBtn">&times;</span>
-        <form method="POST" autocomplete="off">
-            {% csrf_token %}
-            <h2 class="popup_title"> заявку</h2>
-            <p class="popup_text">Перезвоним как можно скорее</p>
-            <input type="text" id="popup_name" name="popup_name" placeholder="Ваше Имя" class="popup_input" required>
-            <input type="email" id="popup_email" name="popup_email" placeholder="Email" class="popup_input" required>
-            <input type="tel" id="popup_phone" name="popup_phone" placeholder="Телефон" class="popup_input" required>
-            <textarea id="popup_message" name="popup_message" placeholder="Сообщение" class="popup_input popup_message" required></textarea>
-            <button class="popup_button" type="button" id='send_feedback_button' onclick="send_feedback()">Отправить</button>
-            <label class="popup_container">Согласен на обработку <a href="#soglasie1" class="popup_container_a" id="soglasie_open1">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="popup_container_a">пользовательским соглашением</a>
-                <input type="checkbox"  id="popup_agreement" name="popup_agreement" checked required>
-                <span class="popup_checkmark"></span>
-            </label>
-        </form>
-    </div>
-</div>
 {% endblock %}

@@ -17,7 +17,7 @@ def send_feedback(data):
             email = EmailMessage("На сайте S.K.TOWER оставили данные для обратной связи",
                                  f"Имя: {name} \nНомер телефона: {phone} \nEmail: {email} \nСообщение: {message} \n",
                                  "sunclub.stor@gmail.com",
-                                 ["ilgar.bagishev@gmail.com"])
+                                 ["s.k.tower@mail.ru"])
             email.send()
             return JsonResponse({"status": 'success'})
         else:
@@ -36,7 +36,7 @@ def send_estimate(data):
             email = EmailMessage("На сайте S.K.TOWER оставили данные для обратной связи",
                                  f"Имя: {name} \nНомер телефона: {phone} \n",
                                  "sunclub.stor@gmail.com",
-                                 ["ilgar.bagishev@gmail.com"])
+                                 ["s.k.tower@mail.ru"])
             email.attach(file.name, file.read(), file.content_type)
             email.send()
             return JsonResponse({"status": 'success'})
@@ -55,7 +55,7 @@ def send_consultation(data):
             email = EmailMessage("На сайте S.K.TOWER оставили данные для обратной связи",
                                  f"Имя: {name} \nНомер телефона: {phone} \n",
                                  "sunclub.stor@gmail.com",
-                                 ["ilgar.bagishev@gmail.com"])
+                                 ["s.k.tower@mail.ru"])
             email.send()
             return JsonResponse({"status": 'success'})
         else:
@@ -73,7 +73,7 @@ def send_review(data):
             email = EmailMessage("На сайте S.K.TOWER оставили новый отзыв!",
                                  f"Имя: {name} \nОтзыв: {review} \n",
                                  "sunclub.stor@gmail.com",
-                                 ["ilgar.bagishev@gmail.com"])
+                                 ["s.k.tower@mail.ru"])
             email.send()
             return JsonResponse({"status": 'success'})
         else:
@@ -113,7 +113,7 @@ def send_calculator(data):
 
 Фасад: {step7}''',
                              "sunclub.stor@gmail.com",
-                             ["ilgar.bagishev@gmail.com"])
+                             ["s.k.tower@mail.ru"])
         email.send()
         return JsonResponse({"status": 'success'})
     else:
