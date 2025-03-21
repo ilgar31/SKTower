@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.core.mail import send_mail, EmailMessage
 from django.http import JsonResponse, HttpResponseNotFound
 from django.views.decorators.csrf import csrf_exempt
-from .models import FinishedProjects, Projects, MakeSale, Reviews
+from .models import FinishedProjects, Projects, MakeSale, Reviews, OfferSale
 import json
 
 
@@ -143,16 +143,22 @@ def forms(request):
             return send_calculator(request.POST)
         if request.POST.get('form_id') == '5':
             return change_price(request.POST)
-
+    
 
 @csrf_exempt
 def home(request):
     if request.method == 'POST':
         return send_estimate(request)
+    
+    sale = OfferSale.objects.all()
+    sales = list(filter(lambda x: x.status, sale))
 
-    home_projects = list(filter(lambda x: x.id in [7, 13, 5, 3], Projects.objects.all()))
+    try:
+        home_projects = list(filter(lambda x: x.id in [7, 13, 5, 3], Projects.objects.all()))
+    except:
+        home_projects = Projects.objects.all()[:4]
 
-    return render(request, 'main/home.html', {'projects': home_projects})
+    return render(request, 'main/home.html', {'projects': home_projects, "sales": sales})
 
 
 def about(request):

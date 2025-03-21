@@ -14,7 +14,12 @@
 
 
 {% block title %}
-Главная
+Коттеджи и дома под ключ – Проекты и строительство | SK Tower
+{% endblock %}
+
+
+{% block description %}
+<meta name="description" content="Строительство коттеджей и домов под ключ. Индивидуальные проекты, современные решения и качественные материалы. Реализуем мечту о собственном доме!">
 {% endblock %}
 
 
@@ -37,6 +42,14 @@
 
 
 {% block content %}
+
+{% for sale in sales %}
+    <div class="extra_sale_block">
+        <h1 class="block_title" style="text-align: left; color: white; margin-top: 10px;">{{ sale.name }}</h1>
+        <p class="extra_sale_block_text">{{ sale.description }}</p>
+    </div>
+{% endfor %}
+
 <div class="advantages_block" id="block1">
     <h1 class="block_title">Наши преимущества</h1>
     <div class="advantages">
@@ -143,7 +156,7 @@
             </a>
         {% endfor %}
     </div>
-    <a href="{% url 'projects' %}" class="we_all_projects">Все объекты</a>
+    <a href="{% url 'projects' %}" class="we_all_projects">Все проекты</a>
 </div>
 
 <div class="special_block">
@@ -158,7 +171,7 @@
                 <p class="file_name" id="file_name"></p>
                 <p class="info_file_text" id="info_file_text">*Если у Вас более одного файла, поместите их все в один архив</p>
                 <input id='name' type="text" name="name" placeholder="Ваше имя" class="special_block_input">
-                <input id="phone" type="tel" name="phone" placeholder="Ваш телефон" class="special_block_input">
+                <input id="phone" type="tel" onkeypress="return event.charCode >= 48 && event.charCode <= 57" name="phone" placeholder="Ваш телефон" class="special_block_input">
             </form>
         </div>
         <label class="mobile_container">Согласен на обработку <a href="#soglasie1" id="soglasie_open4" class="container_a">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="container_a">пользовательским соглашением</a>
@@ -167,7 +180,7 @@
         </label>
         <div class="special_block1_2">
             <div class="special_button1" id='send_estimate_button' onclick="send_estimate()">Отправить заявку</div>
-            <a class="special_button2" href="tel:89958866700">Позвонить нам</a>
+            <a class="special_button2" href="tel:{{ number }}">Позвонить нам</a>
         </div>
     </div>
 
@@ -329,7 +342,7 @@
     </div>
     <div class="your_question_buttons">
         <div class="your_question_button1" id="openForm">Заказать звонок</div>
-        <a class="your_question_button2" href="tel:89958866700">Позвонить нам</a>
+        <a class="your_question_button2" href="tel:{{ number }}">Позвонить нам</a>
     </div>
 </div>
 {% endblock %}

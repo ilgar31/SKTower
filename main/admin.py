@@ -1,10 +1,12 @@
 from django.contrib import admin
 from .models import FinishedProjects, FinishedProjectImages, Reviews, Projects, ProjectPrices, ProjectLayouts, \
-    ProjectImages, MakeSale
+    ProjectImages, MakeSale, ConactInfo, OfferSale
 
 
 admin.site.register(Reviews)
 admin.site.register(MakeSale)
+admin.site.register(ConactInfo)
+admin.site.register(OfferSale)
 
 
 class FinishedProjectsImagesInline(admin.TabularInline):

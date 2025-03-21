@@ -13,8 +13,14 @@
 
 
 {% block title %}
-Отзывы
+Отзывы клиентов – Довольные владельцы домов | SK Tower
 {% endblock %}
+
+
+{% block description %}
+<meta name="description" content="Читайте отзывы клиентов о строительстве домов под ключ от SK Tower. Реальные мнения и впечатления.">
+{% endblock %}
+
 
 
 {% block navigation %}
@@ -95,12 +101,12 @@
     <p class="special_block_title">Получить консультацию специалиста</p>
     <div class="special_block_inputs">
         <input id='name' type="text" name="name" placeholder="Ваше имя" class="special_block_input">
-        <input id="phone" type="tel" name="phone" placeholder="Ваш телефон" class="special_block_input">
+        <input id="phone" type="tel" onkeypress="return event.charCode >= 48 && event.charCode <= 57" name="phone" placeholder="Ваш телефон" class="special_block_input">
     </div>
     <div class="special_block_buttons">
         <div class="special_buttons">
             <div class="special_button1" id='send_consultation_button' onclick="send_consultation()">Отправить заявку</div>
-            <a class="special_button2" style="text-decoration: none;" href="tel:89958866700">Позвонить нам</a>
+            <a class="special_button2" style="text-decoration: none;" href="tel:{{ number }}">Позвонить нам</a>
         </div>
         <label class="container">Согласен на обработку <a href="#soglasie1" id="soglasie_open7" class="container_a">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="container_a">пользовательским соглашением</a>
             <input type="checkbox" id="agreement" name="agreement" checked>

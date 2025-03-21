@@ -110,3 +110,26 @@ class MakeSale(models.Model):
         verbose_name_plural = "Сделать дешевле"
 
 
+class ConactInfo(models.Model):
+    name = models.CharField(verbose_name="Критерий (не менять)", max_length=100, blank=True)
+    value = models.CharField(verbose_name="Значение (можно менять)", max_length=150, blank=True)
+
+    def __str__(self):
+        return f'{self.name}'
+    
+    class Meta:
+        verbose_name = "Информация"
+        verbose_name_plural = "Информация"
+        
+        
+class OfferSale(models.Model):
+    name = models.CharField(verbose_name='Название акции', max_length=260, blank=True)
+    description = models.CharField(verbose_name="Описание акции", max_length=5000, blank=True)
+    status = models.BooleanField(verbose_name="Активна")
+
+    def __str__(self):
+        return f'{self.name}'
+
+    class Meta:
+        verbose_name = "Добавить акцию"
+        verbose_name_plural = "Добавить акцию"

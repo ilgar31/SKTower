@@ -13,8 +13,14 @@
 
 
 {% block title %}
-О нас
+О компании SK Tower – Эксперты в строительстве домов под ключ
 {% endblock %}
+
+
+{% block description %}
+<meta name="description" content="Узнайте больше о компании SK Tower – опыт, надежность и качество в строительстве коттеджей. Ваш дом – наша ответственность.">
+{% endblock %}
+
 
 
 {% block navigation %}
@@ -129,7 +135,7 @@ S.K. Tower - это молодая компания, которая была с�
             <li class="slider__indicator" data-slide-to='3'></li>
         </ol>
     </div>
-    <a href="{% url 'portfolio' %}" class="we_all_projects">Все объекты</a>
+    <a href="{% url 'portfolio' %}" class="we_all_projects">Все проекты</a>
 </div>
 
 
@@ -137,12 +143,12 @@ S.K. Tower - это молодая компания, которая была с�
     <p class="special_block_title">Получить консультацию специалиста</p>
     <div class="special_block_inputs">
         <input id='name' type="text" name="name" placeholder="Ваше имя" class="special_block_input">
-        <input id="phone" type="tel" name="phone" placeholder="Ваш телефон" class="special_block_input">
+        <input id="phone" type="tel" onkeypress="return event.charCode >= 48 && event.charCode <= 57" name="phone" placeholder="Ваш телефон" class="special_block_input">
     </div>
     <div class="special_block_buttons">
         <div class="special_buttons">
             <div class="special_button1" id='send_consultation_button' onclick="send_consultation()">Отправить заявку</div>
-            <a class="special_button2" style="text-decoration: none;" href="tel:89958866700">Позвонить нам</a>
+            <a class="special_button2" style="text-decoration: none;" href="tel:{{ number }}">Позвонить нам</a>
         </div>
         <label class="container">Согласен на обработку <a href="#soglasie1" id="soglasie_open9" class="container_a">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="container_a">пользовательским соглашением</a>
             <input type="checkbox" id="agreement" name="agreement" checked>
@@ -206,12 +212,12 @@ S.K. Tower - это молодая компания, которая была с�
     </div>
     <div class="contact_info_block">
         <p class="contact_info_title">Адрес:</p>
-        <p class="contact_info_text">МО, г. Москва, Скандинавский бульвар 2к2 кв 103</p>
+        <p class="contact_info_text">{{ address }}</p>
         <p class="contact_info_title">Телефоны:</p>
-        <a class="contact_info_text" href="tel:89958866700">+7 (995) 886-67-00</a>
-        <a class="contact_info_text" href="tel:89958940519">+7 (995) 894-05-19</a>
+        <a class="contact_info_text" href="tel:{{ number }}">{{ number }}</a>
+        <a class="contact_info_text" href="tel:{{ extra_number }}">{{ extra_number }}</a>
         <p class="contact_info_title">E-mail:</p>
-        <a class="contact_info_text" href="mailto:s.k.tower@mail.ru">s.k.tower@mail.ru</a>
+        <a class="contact_info_text" href="mailto:{{ mail }}">{{ mail }}</a>
         <div class="contact_button" id="openFormBtn5">Обратная связь</div>
     </div>
 </div>

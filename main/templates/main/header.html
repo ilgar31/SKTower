@@ -6,6 +6,22 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    
+       ym(99438391, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/99438391" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
     <link rel="icon" href="{% static 'main/png/header/logo1.png' %}" type="image/png">
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
@@ -34,6 +50,7 @@
     <script src="{% static 'main/js/header.js' %}" defer></script>
     {% block script %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
+    {% block description %}{% endblock %}
 </head>
 <body>
 <web_header>
@@ -72,7 +89,7 @@
         </div>
         <div class="info_container">
             <div class="work_time">Пн–Пт 9:00-19:00 / Сб-Вс по договоренности</div>
-            <a class="header_number" href="tel:89958866700">+7 (995) 886-67-00</a>
+            <a class="header_number" href="tel:{{ number }}">{{ number }}</a>
         </div>
     </div>
 </web_header>
@@ -108,9 +125,9 @@
     <div class="mobile_menu_block" id="menu_block">
         <div class="mobile_navigation_list">
             <div class="mobile_menu_header">
-                <a href="tel:89958866700" class="mobile_phone_number">
+                <a href="tel:{{ number }}" class="mobile_phone_number">
                     <img src="{% static 'main/png/header/phone.png' %}" class="mobile_phone_icon" draggable="false">
-                    +7 (995) 886-67-00
+                    {{ number }}
                 </a>
 
                 <div id="exit" class="mobile_menu2 not-visible">
@@ -205,7 +222,7 @@
             <p class="popup_text">Перезвоним как можно скорее</p>
             <input type="text" id="popup_name" name="popup_name" placeholder="Ваше Имя" class="popup_input" required>
             <input type="email" id="popup_email" name="popup_email" placeholder="Email" class="popup_input" required>
-            <input type="tel" id="popup_phone" name="popup_phone" placeholder="Телефон" class="popup_input" required>
+            <input type="tel" onkeypress='return event.charCode >= 48 && event.charCode <= 57' id="popup_phone" name="popup_phone" placeholder="Телефон" class="popup_input" required>
             <textarea id="popup_message" name="popup_message" placeholder="Сообщение" class="popup_input popup_message" required></textarea>
             <button class="popup_button" type="button" id='send_feedback_button' onclick="send_feedback()">Отправить</button>
             <label class="popup_container">Согласен на обработку <a href="#soglasie1" class="popup_container_a" id="soglasie_open1">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="popup_container_a">пользовательским соглашением</a>
@@ -222,7 +239,7 @@
     <div class="soglasie_content">
         <span class="close-btn" id="soglasie_close">&times;</span>
         <h2 class="soglasie_title">Согласие на обработку персональных данных посетителей сайта</h2>
-        <p class="soglasie_text">Настоящим, свободно, своей волей и в своем интересе выражаю свое согласие ООО «S.K. TOWER» по адресу: Российская Федерация, г. Москва, Скандинавский бульвар 2к2 кв 103 на автоматизированную обработку моих персональных данных в соответствии со следующим перечнем:
+        <p class="soglasie_text">Настоящим, свободно, своей волей и в своем интересе выражаю свое согласие ООО «S.K. TOWER» по адресу: Российская Федерация, {{ address }} на автоматизированную обработку моих персональных данных в соответствии со следующим перечнем:
 — IP-адрес;
 — MAC-адрес;
 — Информация из cookies;
@@ -266,7 +283,7 @@
                         <span>Маленький</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        ₽
                     </div>
                 </div>
                 <div class="step1_item">
@@ -276,8 +293,7 @@
                         <span>Средний</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        ₽ ₽
                     </div>
                 </div>
                 <div class="step1_item">
@@ -287,9 +303,7 @@
                         <span>Большой</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        ₽ ₽ ₽
                     </div>
                 </div>
                 <div class="step1_item">
@@ -299,10 +313,7 @@
                         <span>Очень большой</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
+                        ₽ ₽ ₽ ₽
                     </div>
                 </div>
             </div>
@@ -330,8 +341,7 @@
                         <span>1 этаж</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                    </div>
+₽                     </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_2" type="radio" id="step_2_2" value="2 этажа" class="radio-input" onclick="next_step(3)">
@@ -340,9 +350,7 @@
                         <span>2 этажа</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                    </div>
+₽ ₽                     </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_2" type="radio" id="step_2_3" value="Нужна помощь" class="radio-input" onclick="next_step(3)">
@@ -376,8 +384,7 @@
                         <span>Винтовые сваи (подходит только для каркасных и деревянных домов)</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                    </div>
+₽                     </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_3" type="radio" id="step_3_2" value="Мелкозаглубленная утепленаня фундаментаная лента" class="radio-input" onclick="next_step(4)">
@@ -386,9 +393,7 @@
                         <span>Мелкозаглубленная утепленаня фундаментаная лента</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                    </div>
+₽ ₽                     </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_3" type="radio" id="step_3_3" value="Ленточный с полами по грунту" class="radio-input" onclick="next_step(4)">
@@ -397,9 +402,7 @@
                         <span>Ленточный с полами по грунту</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                    </div>
+₽ ₽                     </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_3" type="radio" id="step_3_4" value="Плитный" class="radio-input" onclick="next_step(4)">
@@ -408,10 +411,7 @@
                         <span>Плитный</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                    </div>
+₽ ₽ ₽                     </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_3" type="radio" id="step_3_5" value="Свайно-ростверковый с плитой" class="radio-input" onclick="next_step(4)">
@@ -420,11 +420,7 @@
                         <span>Свайно-ростверковый с плитой</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                    </div>
+₽ ₽ ₽ ₽                     </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_3" type="radio" id="step_3_6" value="Нужна помощь" class="radio-input" onclick="next_step(4)">
@@ -458,9 +454,7 @@
                         <span>Газобетон</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                    </div>
+₽ ₽                     </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_4" type="radio" id="step_4_2" value="Теплая керамика" class="radio-input" onclick="next_step(5)">
@@ -469,10 +463,7 @@
                         <span>Теплая керамика</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                    </div>
+₽ ₽ ₽                     </div>
                 </div>
             </div>
             <div class="step_error" id="step_error4"></div>
@@ -499,8 +490,7 @@
                         <span>Металлочерепица</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                    </div>
+₽                     </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_5" type="radio" id="step_5_2" value="Битумная черепица" class="radio-input" onclick="next_step(6)">
@@ -509,9 +499,7 @@
                         <span>Битумная черепица</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                    </div>
+₽ ₽                     </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_5" type="radio" id="step_5_3" value="Кликфальц" class="radio-input" onclick="next_step(6)">
@@ -520,10 +508,7 @@
                         <span>Кликфальц</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                    </div>
+₽ ₽ ₽                     </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_5" type="radio" id="step_5_4" value="Цементно-песчаная черепица" class="radio-input" onclick="next_step(6)">
@@ -532,11 +517,7 @@
                         <span>Цементно-песчаная черепица</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                    </div>
+₽ ₽ ₽ ₽                     </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_6" type="radio" id="step_5_5" value="Нужна помощь" class="radio-input" onclick="next_step(6)">
@@ -570,8 +551,7 @@
                         <span>Утепленная мягкая отмостка с дренажем и ливневой системой</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                    </div>
+₽                     </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_6" type="radio" id="step_6_2" value="Утепленная бетонная отмостка с дренажем и ливневой системой" class="radio-input" onclick="next_step(7)">
@@ -580,9 +560,7 @@
                         <span>Утепленная бетонная отмостка с дренажем и ливневой системой</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                    </div>
+₽ ₽                     </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_6" type="radio" id="step_6_3" value="Нужна помощь" class="radio-input" onclick="next_step(7)">
@@ -616,8 +594,7 @@
                         <span>ISKULT DECOR декоративная плитка из газобетона под покраску</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                    </div>
+₽                     </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_7" type="radio" id="step_7_2" value="Штукатурный фасад готовыми смесями с фактурой 'Короед' или 'Камешковая'" class="radio-input" onclick="next_step(8)">
@@ -626,9 +603,7 @@
                         <span>Штукатурный фасад готовыми смесями</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                    </div>
+₽ ₽                     </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_7" type="radio" id="step_7_3" value="Планкен из лиственницы скошенный или прямой покрытый маслом" class="radio-input" onclick="next_step(8)">
@@ -637,10 +612,7 @@
                         <span>Планкен из лиственницы скошенный или прямой покрытый маслом</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                    </div>
+₽ ₽ ₽                     </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_7" type="radio" id="step_7_4" value="Фиброцементный сайдинг с фактурой древесины, камня, мозаики и др." class="radio-input" onclick="next_step(8)">
@@ -649,11 +621,7 @@
                         <span>Фиброцементный сайдинг с фактурой древесины, камня, мозаики и др.</span>
                     </label>
                     <div class="step_item_cost">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                        <img src="{% static 'main/png/header/money.png' %}" class="money_png" draggable="false">
-                    </div>
+₽ ₽ ₽ ₽                     </div>
                 </div>
                 <div class="step1_item">
                     <input tabindex="1" name="step_7" type="radio" id="step_7_5" value="Нужна помощь" class="radio-input" onclick="next_step(8)">
@@ -740,12 +708,12 @@
                 </div>
                 <div class="footer_address">
                     <p class="footer_info_title">Наш адрес</p>
-                    <p class="footer_address_text">г. Москва, Скандинавский бульвар 2к2 кв 103</p>
+                    <p class="footer_address_text">{{ address }}</p>
                 </div>
             </div>
             <div class="footer_contact">
-                <p class="footer_work_date">Пн–Пт 9:00-18:00 / Сб-Вс по записи</p>
-                <a href="tel:89958866700" class="footer_number">+7 (995) 886-67-00</a>
+                <p class="footer_work_date">Пн–Пт 9:00-19:00 / Сб-Вс по записи</p>
+                <a href="tel:{{ number }}" class="footer_number">{{ number }}</a>
                 <div class="footer_order_call" id="openFormBtn3">Заказать звонок</div>
             </div>
         </div>
@@ -761,6 +729,110 @@
 <div id="myModal" class="modal">
    <img class="modal-content" id="img01">
 </div>
+
+<style>
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .vk-icon {
+      position: fixed;
+      bottom: 100px;
+      right: 0px;
+      width: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+      background-color: #4c75a3;
+      z-index: 1;
+    }
+
+    .vk-icon:hover {
+      transform: scale(1.1);
+    }
+
+    .vk-icon img {
+      width: 50px;
+      height: 50px;
+    }
+
+    @media (max-width: 768px) {
+        .vk-icon {
+          bottom: 70px;
+          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+        }
+        .vk-icon img {
+          width: 40px;
+          height: 40px;
+        }
+    }
+</style>
+<a href="https://vk.com/s.k.tower" class="vk-icon" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/VK.com-logo.svg" alt="VK Logo" />
+</a>
+
+
+<style>
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .tg-icon {
+      position: fixed;
+      bottom: 160px;
+      right: 0px;
+      width: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+      background-color: #03A8E2;
+      z-index: 1;
+    }
+
+    .tg-icon:hover {
+      transform: scale(1.1);
+    }
+
+    .tg-icon img {
+      width: 50px;
+      height: 50px;
+    }
+
+    @media (max-width: 768px) {
+        .tg-icon {
+          bottom: 120px;
+          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+        }
+        .tg-icon img {
+          width: 40px;
+          height: 40px;
+        }
+    }
+</style>
+<a href="https://t.me/sktowermsk" class="tg-icon" target="_blank">
+    <img src="{% static 'main/png/header/tg-icon.png' %}" alt="TG Logo" />
+</a>
+
+<script>
+// Дополнительный код для анимации появления значка
+document.addEventListener('DOMContentLoaded', () => {
+  const vkIcon = document.querySelector('.vk-icon');
+  vkIcon.style.opacity = '0';
+  vkIcon.style.transition = 'opacity 0.5s';
+
+  setTimeout(() => {
+    vkIcon.style.opacity = '1';
+  }, 200);
+});
+</script>
 
 </body>
 </html>

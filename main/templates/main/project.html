@@ -14,7 +14,12 @@
 
 
 {% block title %}
-Проект {{ project.name }}
+{{ project.name }} – Дом под ключ | SK Tower
+{% endblock %}
+
+
+{% block description %}
+<meta name="description" content="Подробное описание, планировка и стоимость строительства. Узнайте больше и закажите дом мечты.">
 {% endblock %}
 
 
@@ -336,7 +341,7 @@
                 <p class="file_name" id="file_name"></p>
                 <p class="info_file_text" id="info_file_text">*Если у Вас более одного файла, поместите их все в один архив</p>
                 <input id='name' type="text" name="name" placeholder="Ваше имя" class="special_block_input">
-                <input id="phone" type="tel" name="phone" placeholder="Ваш телефон" class="special_block_input">
+                <input id="phone" type="tel" onkeypress="return event.charCode >= 48 && event.charCode <= 57" name="phone" placeholder="Ваш телефон" class="special_block_input">
             </form>
         </div>
         <label class="mobile_container">Согласен на обработку <a href="#soglasie1" id="soglasie_open4" class="container_a">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="container_a">пользовательским соглашением</a>
@@ -345,7 +350,7 @@
         </label>
         <div class="special_block1_2">
             <div class="special_button1" id='send_estimate_button' onclick="send_estimate()">Отправить заявку</div>
-            <a class="special_button2" style="text-decoration: none;" href="tel:89958866700">Позвонить нам</a>
+            <a class="special_button2" style="text-decoration: none;" href="tel:{{ number }}">Позвонить нам</a>
         </div>
     </div>
 

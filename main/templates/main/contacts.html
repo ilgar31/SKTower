@@ -13,7 +13,12 @@
 
 
 {% block title %}
-Контакты
+Контакты SK Tower – Свяжитесь с нами
+{% endblock %}
+
+
+{% block description %}
+<meta name="description" content="Контакты для связи с SK Tower. Адрес, телефон и электронная почта для консультаций по строительству домов под ключ.">
 {% endblock %}
 
 
@@ -55,12 +60,12 @@
     </div>
     <div class="contact_info_block">
         <p class="contact_info_title">Адрес:</p>
-        <p class="contact_info_text">МО, г. Москва, Скандинавский бульвар 2к2 кв 103</p>
+        <p class="contact_info_text">{{ address }}</p>
         <p class="contact_info_title">Телефоны:</p>
-        <a class="contact_info_text" href="tel:89958866700">+7 (995) 886-67-00</a>
-        <a class="contact_info_text" href="tel:89958940519">+7 (995) 894-05-19</a>
+        <a class="contact_info_text" href="tel:{{ number }}">{{ number }}</a>
+        <a class="contact_info_text" href="tel:{{ extra_number }}">{{ extra_number }}</a>
         <p class="contact_info_title">E-mail:</p>
-        <a class="contact_info_text" href="mailto:s.k.tower@mail.ru">s.k.tower@mail.ru</a>
+        <a class="contact_info_text" href="mailto:{{ mail }}">{{ mail }}</a>
         <div class="contact_button" id="openFormBtn5">Обратная связь</div>
     </div>
 </div>
@@ -71,50 +76,50 @@
         <div class="ur_info_content">
             <div class="ur_item">
                 <p class="ur_title">Сокращенное наименование</p>
-                <p class="ur_value">ООО «S.K. TOWER»</p>
+                <p class="ur_value">{{ short_name }}</p>
             </div>
             <div class="ur_item">
                 <p class="ur_title">Юридический адрес</p>
-                <p class="ur_value">г. Москва, Скандинавский бульвар 2к2 кв 103</p>
+                <p class="ur_value">{{ ur_address }}</p>
             </div>
             <div class="ur_item">
                 <p class="ur_title">Физический адрес</p>
-                <p class="ur_value">г. Москва, Скандинавский бульвар 2к2 кв 103</p>
+                <p class="ur_value">{{ phis_address }}</p>
             </div>
             <div class="ur_item">
                 <p class="ur_title">ОГРНИП</p>
-                <p class="ur_value">324774600493808</p>
+                <p class="ur_value">{{ ogrnip }}</p>
             </div>
             <div class="ur_item">
                 <p class="ur_title">ИНН</p>
-                <p class="ur_value">290706241850</p>
+                <p class="ur_value">{{ inn }}</p>
             </div>
         </div>
 
         <div class="ur_info_content">
             <div class="ur_item">
                 <p class="ur_title">Дата присвоения ОГРНИП</p>
-                <p class="ur_value">26.07.2024</p>
+                <p class="ur_value">{{ data_ogrnip }}</p>
             </div>
             <div class="ur_item">
                 <p class="ur_title">КПП</p>
-                <p class="ur_value">---</p>
+                <p class="ur_value">{{ kpp }}</p>
             </div>
             <div class="ur_item">
                 <p class="ur_title">Расчетный счет</p>
-                <p class="ur_value">---</p>
+                <p class="ur_value">{{ chet }}</p>
             </div>
             <div class="ur_item">
                 <p class="ur_title">Название банка</p>
-                <p class="ur_value">---</p>
+                <p class="ur_value">{{ bank_name }}</p>
             </div>
             <div class="ur_item">
                 <p class="ur_title">Корреспондентский счет</p>
-                <p class="ur_value">---</p>
+                <p class="ur_value">{{ kor_chet }}</p>
             </div>
             <div class="ur_item">
                 <p class="ur_title">БИК</p>
-                <p class="ur_value">---</p>
+                <p class="ur_value">{{ bik }}</p>
             </div>
         </div>
     </div>
