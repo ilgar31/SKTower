@@ -192,7 +192,7 @@ function show_more() {
             res.projects.forEach(project => {
                 projects.innerHTML += `
                     <a class="project" href="/project/${project.id}">
-                        <div class="project_block1" style="background-image: url('../static/${project.image}');">
+                        <div class="project_block1" style="background-image: url('media/${project.image}');">
                             <div class="project_compare_block" onclick="event.preventDefault();">
                                 <img src="/static/main/png/home/project_compare.png" id='project_compare_${project.id}' class="project_action_button" onclick="addToCompares(${project.id})" data-active-src="/static/main/png/home/project_compare_active.png" data-inactive-src="/static/main/png/home/project_compare.png"draggable="false">
                             </div>
@@ -310,7 +310,7 @@ function sort(type, state) {
             res.main_projects.forEach(project => {
                 projects.innerHTML += `
                     <a class="project" href="/project/${project.id}">
-                        <div class="project_block1" style="background-image: url('../static/${project.image}');">
+                        <div class="project_block1" style="background-image: url('media/${project.image}');">
                             <div class="project_compare_block" onclick="event.preventDefault();">
                                 <img src="/static/main/png/home/project_compare.png" id='project_compare_${project.id}' class="project_action_button" onclick="addToCompares(${project.id})" data-active-src="/static/main/png/home/project_compare_active.png" data-inactive-src="/static/main/png/home/project_compare.png"draggable="false">
                             </div>
@@ -340,7 +340,7 @@ function sort(type, state) {
             res.projects.forEach(project => {
                 projects.innerHTML += `
                     <a class="project" href="/project/${project.id}">
-                        <div class="project_block1" style="background-image: url('../static/${project.image}');">
+                        <div class="project_block1" style="background-image: url('media/${project.image}');">
                             <div class="project_compare_block" onclick="event.preventDefault();">
                                 <img src="/static/main/png/home/project_compare.png" id='project_compare_${project.id}' class="project_action_button" onclick="addToCompares(${project.id})" data-active-src="/static/main/png/home/project_compare_active.png" data-inactive-src="/static/main/png/home/project_compare.png"draggable="false">
                             </div>
@@ -421,7 +421,7 @@ function filter_func() {
             res.main_projects.forEach(project => {
                 projects.innerHTML += `
                     <a class="project" href="/project/${project.id}">
-                        <div class="project_block1" style="background-image: url('../static/${project.image}');">
+                        <div class="project_block1" style="background-image: url('media/${project.image}');">
                             <div class="project_compare_block" onclick="event.preventDefault();">
                                 <img src="/static/main/png/home/project_compare.png" id='project_compare_${project.id}' class="project_action_button" onclick="addToCompares(${project.id})" data-active-src="/static/main/png/home/project_compare_active.png" data-inactive-src="/static/main/png/home/project_compare.png"draggable="false">
                             </div>
@@ -451,7 +451,7 @@ function filter_func() {
             res.projects.forEach(project => {
                 projects.innerHTML += `
                     <a class="project" href="/project/${project.id}">
-                        <div class="project_block1" style="background-image: url('../static/${project.image}');">
+                        <div class="project_block1" style="background-image: url('media/${project.image}');">
                             <div class="project_compare_block" onclick="event.preventDefault();">
                                 <img src="/static/main/png/home/project_compare.png" id='project_compare_${project.id}' class="project_action_button" onclick="addToCompares(${project.id})" data-active-src="/static/main/png/home/project_compare_active.png" data-inactive-src="/static/main/png/home/project_compare.png"draggable="false">
                             </div>

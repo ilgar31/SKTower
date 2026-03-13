@@ -14,6 +14,8 @@ urlpatterns = [
     path('favorites', views.favorites, name='favorites'),
     path('compare', views.compare, name='compare'),
     path('agreement', views.agreement, name='agreement'),
+    path('articles', views.articles, name='articles'),
+    path('articles/<slug:slug>/', views.article, name="article"),
 
     path('ajax/forms', views.forms, name='forms')
 ]

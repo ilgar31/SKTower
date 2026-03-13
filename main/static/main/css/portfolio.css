@@ -90,7 +90,7 @@
     margin: 40px auto;
     height: 500px;
     background-size: cover;
-    background-image: url("../png/about/special_background.png");
+    background-image: url("../png/about/special_background.webp");
     display: flex;
     flex-direction: column;
     row-gap: 40px;
@@ -253,7 +253,7 @@
         margin: 30px auto;
         height: auto;
         padding-bottom: 30px;
-        background-image: url("../png/about/special_background.png");
+        background-image: url("../png/about/special_background.webp");
         row-gap: 0px;
     }
 
@@ -335,7 +335,7 @@
 @media screen and (max-width: 700px){
     .special_block {
         margin: 40px auto;
-        background-image: url("../png/about/mobile_special_background.png");
+        background-image: url("../png/about/mobile_special_background.webp");
     }
 
     .special_block_title {

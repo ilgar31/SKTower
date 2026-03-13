@@ -290,7 +290,7 @@
     margin-top: 40px;
     width: 100%;
     height: 530px;
-    background-image: url("../png/home/idea_background.png");
+    background-image: url("../png/home/idea_background.webp");
     background-size: cover;
     display: flex;
     justify-content: space-around;
@@ -686,7 +686,7 @@
     width: 90%;
     max-width: 1800px;
     margin: 20px auto;
-    background-image: url("../png/home/special_block_background.png");
+    background-image: url("../png/home/special_block_background.webp");
     background-size: cover;
     height: auto;
     padding-bottom: 60px;
@@ -1641,7 +1641,7 @@
 
 
 .your_question_block {
-    background-image: url("../png/home/your_question_background.png");
+    background-image: url("../png/home/your_question_background.webp");
     width: 80%;
     max-width: 1200px;
     margin: 50px auto;

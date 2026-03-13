@@ -13,7 +13,7 @@
 
 
 {% block title %}
-Портфолио готовых проектов – Дома под ключ | SK Tower
+Портфолио готовых проектов – Дома под ключ | Строительная компания «Тауэр» | Москва (Tower)
 {% endblock %}
 
 
@@ -54,7 +54,7 @@
         {% for project in projects %}
             <a class="project" href="{% url 'finished' project.id %}">
                 <div class="project_photo">
-                    <img src="{% static project.images.all.0 %}" class="project_img" draggable="false">
+                    <img src="https://sktower.ru/media/{{ project.images.all.0 }}" class="project_img" draggable="false">
                 </div>
                 <p class="project_name">{{ project.object_name }}</p>
                 <div class="project_text_block">

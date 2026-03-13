@@ -14,7 +14,7 @@
 
 
 {% block title %}
-{{ project.name }} – Дом под ключ | SK Tower
+{{ project.name }} – Дом под ключ | Строительная компания «Тауэр» | Москва (Tower)
 {% endblock %}
 
 
@@ -158,7 +158,7 @@
                     <div class="slider__items">
                         {% for image in project.images.all %}
                             <div class="slider__item">
-                                <img src="{% static image %}" class="slide_photo" onclick="zoom_img(this);" draggable="false">
+                                <img src="https://sktower.ru/media/{{ image }}" class="slide_photo" onclick="zoom_img(this);" draggable="false">
                             </div>
                         {% endfor %}
                     </div>
@@ -183,7 +183,7 @@
                 <div class="layouts_images">
                     {% for i, image in layouts %}
                         <div class="layout_image" id="layout_image_{{ i }}">
-                            <img src="{% static image %}" class="layout_photo" onclick="zoom_img(this);" draggable="false">
+                            <img src="https://sktower.ru/media/{{ image }}" class="layout_photo" onclick="zoom_img(this);" draggable="false">
                         </div>
                     {% endfor %}
                 </div>
@@ -355,7 +355,7 @@
     </div>
 
     <div class="special_block2">
-        <img src="{% static 'main/png/home/special_block2_foto.png' %}" class="special_block2_foto" draggable="false">
+        <img src="{% static 'main/png/home/special_block2_foto.webp' %}" class="special_block2_foto" draggable="false">
         <label class="container">Согласен на обработку <a href="#soglasie1" id="soglasie_open5" class="container_a">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="container_a">пользовательским соглашением</a>
             <input type="checkbox" checked required>
             <span class="checkmark"></span>

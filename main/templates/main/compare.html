@@ -14,7 +14,7 @@
 
 
 {% block title %}
-Сравнение проектов домов – Найдите идеальный вариант | SK Tower
+Сравнение проектов домов – Найдите идеальный вариант | Строительная компания «Тауэр» | Москва (Tower)
 {% endblock %}
 
 
@@ -73,7 +73,7 @@
             {% for project in projects %}
                 <div class="project_compare" id="project_{{ project.id }}">
                     <div class="project_compare_head1">
-                        <img src="{% static project.images.all.0 %}" alt="" class="project_compare_image">
+                        <img src="https://sktower.ru/media/{{ project.images.all.0 }}" alt="" class="project_compare_image">
                         <img src="{% static 'main/png/compare/delete_compare.png' %}" alt="" class="project_compare_delete" onclick="addCompares({{ project.id }})">
                         <p class="project_compare_name">{{ project.name }}</p>
                     </div>
@@ -121,7 +121,7 @@
     </div>
 
     <div class="special_block2">
-        <img src="{% static 'main/png/home/special_block2_foto.png' %}" class="special_block2_foto" draggable="false">
+        <img src="{% static 'main/png/home/special_block2_foto.webp' %}" class="special_block2_foto" draggable="false">
         <label class="container">Согласен на обработку <a href="#soglasie1" id="soglasie_open5" class="container_a">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="container_a">пользовательским соглашением</a>
             <input type="checkbox" checked required>
             <span class="checkmark"></span>

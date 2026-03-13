@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from datetime import datetime
+from django.utils.text import slugify
+from django.urls import reverse
 
 
 class Projects(models.Model):
@@ -133,3 +135,31 @@ class OfferSale(models.Model):
     class Meta:
         verbose_name = "Добавить акцию"
         verbose_name_plural = "Добавить акцию"
+
+
+def article_img_save(instance, filename):
+    return f'main/png/articles/{instance.id}/{filename}'
+
+class Articles(models.Model):
+    article_name = models.CharField('Название статьи', max_length=100, blank=True)
+    slug = models.SlugField('Слаг (для URL)', unique=True, blank=True,
+                            help_text='Только буквы, цифры, дефисы и подчёркивания')
+    article_text = models.TextField('Текст статьи', blank=True)  # удобнее TextField
+    article_image = models.ImageField(upload_to=article_img_save, blank=True, null=True)
+    is_published = models.BooleanField('Опубликовать', default=True)
+    article_date = models.DateTimeField('Дата', default=datetime.now, blank=True)
+
+    class Meta:
+        verbose_name = 'Статья'
+        verbose_name_plural = 'Статьи'
+
+    def __str__(self):
+        return self.article_name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.article_name)
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("article", kwargs={"slug": self.slug})

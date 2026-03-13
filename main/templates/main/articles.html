@@ -1,0 +1,87 @@
+{% extends 'main/header.html' %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/articles.css' %}">
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'main/js/articles.js' %}" defer></script>
+{% endblock %}
+
+{% block title %}
+Статьи – Полезные материалы о строительстве домов | Строительная компания «Тауэр» | Москва (Tower)
+{% endblock %}
+
+{% block description %}
+<meta name="description" content="Читайте статьи строительной компании «Тауэр» | Москва (Tower): советы, технологии, этапы строительства, материалы и полезные рекомендации.">
+{% endblock %}
+
+{% block navigation %}
+<a href="/">Главная</a> » Статьи
+{% endblock %}
+
+{% block mobile_navigation %}
+<a href="/">Главная</a> » Статьи
+{% endblock %}
+
+{% block title_text %}
+Наши статьи
+{% endblock %}
+
+{% block extra_text %}
+Полезные статьи о строительстве домов, выборе материалов, этапах работ и современных технологиях.
+{% endblock %}
+
+{% block mobile_title_text %}
+Наши статьи
+{% endblock %}
+
+{% block mobile_extra_text %}
+Полезные статьи о строительстве домов, выборе материалов, этапах работ и современных технологиях.
+{% endblock %}
+
+{% block content %}
+<div class="articles_block" id="block1">
+    <div class="articles">
+        {% for article in articles %}
+            <a class="article_card" href="{% url 'article' article.slug %}">
+                <div class="article_card_photo">
+                    {% if article.article_image %}
+                        <img src="https://sktower.ru/media/{{ article.article_image }}" class="article_card_img" draggable="false" alt="{{ article.article_name }}">
+                    {% else %}
+                        <img src="{% static 'main/png/logo.png' %}" class="article_card_img" draggable="false" alt="{{ article.article_name }}">
+                    {% endif %}
+                </div>
+
+                <div class="article_card_content">
+                    <p class="article_card_date">{{ article.article_date|date:"d.m.Y" }}</p>
+                    <p class="article_card_title">{{ article.article_name }}</p>
+                    <p class="article_card_text">
+                        {{ article.article_text|striptags|truncatechars:170 }}
+                    </p>
+                    <div class="article_card_button">Читать статью</div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="special_block">
+    <p class="special_block_title">Получить консультацию специалиста</p>
+    <div class="special_block_inputs">
+        <input id='name' type="text" name="name" placeholder="Ваше имя" class="special_block_input">
+        <input id="phone" type="tel" onkeypress="return event.charCode >= 48 && event.charCode <= 57" name="phone" placeholder="Ваш телефон" class="special_block_input">
+    </div>
+    <div class="special_block_buttons">
+        <div class="special_buttons">
+            <div class="special_button1" id='send_consultation_button' onclick="send_consultation()">Отправить заявку</div>
+            <a class="special_button2" style="text-decoration: none;" href="tel:{{ number }}">Позвонить нам</a>
+        </div>
+        <label class="container">Согласен на обработку <a href="#soglasie1" id="soglasie_open9" class="container_a">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="container_a">пользовательским соглашением</a>
+            <input type="checkbox" id="agreement" name="agreement" checked>
+            <span class="checkmark"></span>
+        </label>
+    </div>
+</div>
+{% endblock %}

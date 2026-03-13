@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ti5@4ni%g#7@czv73n^(a*-(l=8v0@d(asode!8j2bajm67j@n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -106,9 +106,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = 'static/'
+STATIC_ROOT = Path("/var/www/u2764470/data/www/sktower.ru/static")
 
-MEDIA_ROOT = BASE_DIR / 'main/static'
+MEDIA_URL = "media/"
+MEDIA_ROOT = Path("/var/www/u2764470/data/www/sktower.ru/media")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -120,3 +121,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'sunclub.stor@gmail.com'
 EMAIL_HOST_PASSWORD = 'lexiojcyljiqmuma'
 EMAIL_PORT = 587
+

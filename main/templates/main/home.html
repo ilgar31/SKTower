@@ -120,10 +120,10 @@
 <div class="steps_block" id="block2">
     <h1 class="block_title">Этапы работы</h1>
     <div class="steps_block_content">
-        <img src="{% static 'main/png/home/steps_background1.png' %}" class="steps_background" draggable="false">
+        <img src="{% static 'main/png/home/steps_background1.webp' %}" class="steps_background" draggable="false">
         <img src="{% static 'main/png/home/steps_main.png' %}" class="steps_main_photo" draggable="false">
         <img src="{% static 'main/png/home/mobile_steps_main.png' %}" class="mobile_steps_main_photo" draggable="false">
-        <img src="{% static 'main/png/home/steps_background2.png' %}" class="steps_background" draggable="false">
+        <img src="{% static 'main/png/home/steps_background2.webp' %}" class="steps_background" draggable="false">
     </div>
 </div>
 
@@ -143,7 +143,7 @@
     <div class="projects">
         {% for project in projects %}
             <a class="project" href="{% url 'project' project.id %}">
-                <div class="project_block1" style="background-image: url('../static/{{ project.images.all.0 }}');">
+                <div class="project_block1" style="background-image: url('media/{{ project.images.all.0 }}');">
                 </div>
                 <div class="project_block2">
                     <div class="project_stat">
@@ -185,7 +185,7 @@
     </div>
 
     <div class="special_block2">
-        <img src="{% static 'main/png/home/special_block2_foto.png' %}" class="special_block2_foto" draggable="false">
+        <img src="{% static 'main/png/home/special_block2_foto.webp' %}" class="special_block2_foto" draggable="false">
         <label class="container">Согласен на обработку <a href="#soglasie1" id="soglasie_open5" class="container_a">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="container_a">пользовательским соглашением</a>
             <input type="checkbox" checked required>
             <span class="checkmark"></span>
@@ -197,7 +197,7 @@
     <h1 class="block_title">Наши основные услуги</h1>
     <div class="services">
         <div class="service">
-            <img src="{% static 'main/png/home/service1.png' %}" class="service_foto" draggable="false">
+            <img src="{% static 'main/png/home/service1.webp' %}" class="service_foto" draggable="false">
             <div class="service_info">
                 <p class="service_name">Строительство домов из газобетона</p>
                 <p class="service_text">Дома из газобетона - это отличное решение для создания прочных и теплых жилых помещений.
@@ -206,7 +206,7 @@
         </div>
 
         <div class="service">
-            <img src="{% static 'main/png/home/service2.png' %}" class="service_foto" draggable="false">
+            <img src="{% static 'main/png/home/service2.webp' %}" class="service_foto" draggable="false">
             <div class="service_info">
                 <p class="service_name">Строительство домов из теплой керамики</p>
                 <p class="service_text">Теплая керамика - это экологичный материал, который обладает прекрасными теплоизоляционными свойствами.
@@ -215,7 +215,7 @@
         </div>
 
         <div class="service">
-            <img src="{% static 'main/png/home/service3.png' %}" class="service_foto" draggable="false">
+            <img src="{% static 'main/png/home/service3.webp' %}" class="service_foto" draggable="false">
             <div class="service_info">
                 <p class="service_name">Строительство брусовых домов</p>
                 <p class="service_text">Брусовые дома - это классика, которая всегда актуальна и востребована.
@@ -224,7 +224,7 @@
         </div>
 
         <div class="service">
-            <img src="{% static 'main/png/home/service4.png' %}" class="service_foto" draggable="false">
+            <img src="{% static 'main/png/home/service4.webp' %}" class="service_foto" draggable="false">
             <div class="service_info">
                 <p class="service_name">Строительство каркасных домов</p>
                 <p class="service_text">Каркасные дома - это современное и экономичное решение.

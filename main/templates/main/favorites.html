@@ -54,7 +54,7 @@
 <div class="projects" id="projects">
     {% for project in projects %}
         <a class="project" href="{% url 'project' project.id %}" id='project_{{ project.id }}'>
-            <div class="project_block1" style="background-image: url('../static/{{ project.images.all.0 }}');">
+            <div class="project_block1" style="background-image: url('media/{{ project.images.all.0 }}');">
                 <div class="project_compare_block" onclick="event.preventDefault();">
                     <img src="{% static 'main/png/home/project_compare.png' %}" id='project_compare_{{ project.id }}' class="project_action_button" onclick="addToCompares({{ project.id }})" data-active-src="{% static 'main/png/home/project_compare_active.png' %}" data-inactive-src="{% static 'main/png/home/project_compare.png' %}"draggable="false">
                 </div>
@@ -102,7 +102,7 @@
     </div>
 
     <div class="special_block2">
-        <img src="{% static 'main/png/home/special_block2_foto.png' %}" class="special_block2_foto" draggable="false">
+        <img src="{% static 'main/png/home/special_block2_foto.webp' %}" class="special_block2_foto" draggable="false">
         <label class="container">Согласен на обработку <a href="#soglasie1" id="soglasie_open5" class="container_a">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="container_a">пользовательским соглашением</a>
             <input type="checkbox" checked required>
             <span class="checkmark"></span>

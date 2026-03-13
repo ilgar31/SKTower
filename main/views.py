@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.mail import send_mail, EmailMessage
 from django.http import JsonResponse, HttpResponseNotFound
 from django.views.decorators.csrf import csrf_exempt
-from .models import FinishedProjects, Projects, MakeSale, Reviews, OfferSale
+from .models import FinishedProjects, Projects, MakeSale, Reviews, OfferSale, Articles
 import json
 
 
@@ -14,7 +14,7 @@ def send_feedback(data):
     checked = data.get('checked')
     if checked == "true":
         if name and email and phone and message:
-            email = EmailMessage("На сайте S.K.TOWER оставили данные для обратной связи",
+            email = EmailMessage("На сайте строительной компании «Тауэр» | Москва (Tower) оставили данные для обратной связи",
                                  f"Имя: {name} \nНомер телефона: {phone} \nEmail: {email} \nСообщение: {message} \n",
                                  "sunclub.stor@gmail.com",
                                  ["s.k.tower@mail.ru"])
@@ -33,7 +33,7 @@ def send_estimate(data):
     checked = data.POST.get('checked')
     if checked == "true":
         if name and phone and file:
-            email = EmailMessage("На сайте S.K.TOWER оставили данные для обратной связи",
+            email = EmailMessage("На сайте строительной компании «Тауэр» | Москва (Tower) оставили данные для обратной связи",
                                  f"Имя: {name} \nНомер телефона: {phone} \n",
                                  "sunclub.stor@gmail.com",
                                  ["s.k.tower@mail.ru"])
@@ -52,7 +52,7 @@ def send_consultation(data):
     checked = data.get('checked')
     if checked == "true":
         if name and phone:
-            email = EmailMessage("На сайте S.K.TOWER оставили данные для обратной связи",
+            email = EmailMessage("На сайте строительной компании «Тауэр» | Москва (Tower) оставили данные для обратной связи",
                                  f"Имя: {name} \nНомер телефона: {phone} \n",
                                  "sunclub.stor@gmail.com",
                                  ["s.k.tower@mail.ru"])
@@ -70,7 +70,7 @@ def send_review(data):
     checked = data.get('checked')
     if checked == "true":
         if name and review:
-            email = EmailMessage("На сайте S.K.TOWER оставили новый отзыв!",
+            email = EmailMessage("На сайте строительной компании «Тауэр» | Москва (Tower) оставили новый отзыв!",
                                  f"Имя: {name} \nОтзыв: {review} \n",
                                  "sunclub.stor@gmail.com",
                                  ["s.k.tower@mail.ru"])
@@ -95,7 +95,7 @@ def send_calculator(data):
     step8 = data.get('step8')
     checked = data.get('checked')
     if checked == "true":
-        email = EmailMessage("На сайте S.K.TOWER оставили заявку на подсчет дома!",
+        email = EmailMessage("На сайте строительной компании «Тауэр» | Москва (Tower) оставили заявку на подсчет дома!",
                              f'''Телефон: {phone}
 Тип связи: {phone_type}
 
@@ -345,6 +345,19 @@ def compare(request):
 
 def agreement(request):
     return render(request, 'main/agreement.html')
+
+def articles(request):
+    articles_list = Articles.objects.all()
+    return render(request, 'main/articles.html', {'articles': articles_list})
+
+def article(request, slug):
+    article_obj = get_object_or_404(Articles, slug=slug, is_published=True)
+    other_articles = Articles.objects.filter(is_published=True).exclude(id=article_obj.id).order_by('-article_date')[:3]
+
+    return render(request, 'main/article.html', {
+        'article': article_obj,
+        'other_articles': other_articles,
+    })
 
 
 

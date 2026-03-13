@@ -1,0 +1,97 @@
+{% extends 'main/header.html' %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/css/article.css' %}">
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'main/js/article.js' %}" defer></script>
+{% endblock %}
+
+{% block title %}
+{{ article.article_name }} – Статья | Строительная компания «Тауэр» | Москва (Tower)
+{% endblock %}
+
+{% block description %}
+<meta name="description" content="{{ article.article_text|striptags|truncatechars:160 }}">
+{% endblock %}
+
+{% block navigation %}
+<a href="/">Главная</a> » <a href="{% url 'articles' %}">Статьи</a> » {{ article.article_name }}
+{% endblock %}
+
+{% block mobile_navigation %}
+<a href="/">Главная</a> » <a href="{% url 'articles' %}">Статьи</a> » {{ article.article_name }}
+{% endblock %}
+
+{% block title_text %}
+{{ article.article_name }}
+{% endblock %}
+
+{% block extra_text %}
+Полезный материал от строительной компании «Тауэр» | Москва (Tower)
+{% endblock %}
+
+{% block mobile_title_text %}
+{{ article.article_name }}
+{% endblock %}
+
+{% block mobile_extra_text %}
+Полезный материал от строительной компании «Тауэр» | Москва (Tower)
+{% endblock %}
+
+{% block content %}
+<div class="article_wrapper">
+    <div class="article_page">
+        {% if article.article_image %}
+            <img src="https://sktower.ru/media/{{ article.article_image }}" class="article_main_img" draggable="false" alt="{{ article.article_name }}">
+        {% endif %}
+
+        <div class="article_info">
+            <p class="article_date">Дата публикации: {{ article.article_date|date:"d.m.Y" }}</p>
+        </div>
+
+        <div class="article_text_block">
+            <div class="article_text">
+                {{ article.article_text|safe }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="other_articles_block" id="block1">
+    <p class="block_title">Другие статьи</p>
+    <div class="other_articles">
+        {% for item in other_articles %}
+            <a class="other_article_card" href="{% url 'article' item.slug %}">
+                {% if item.article_image %}
+                    <img src="https://sktower.ru/media/{{ item.article_image }}" class="other_article_img" draggable="false" alt="{{ item.article_name }}">
+                {% endif %}
+                <div class="other_article_content">
+                    <p class="other_article_date">{{ item.article_date|date:"d.m.Y" }}</p>
+                    <p class="other_article_title">{{ item.article_name }}</p>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="special_block">
+    <p class="special_block_title">Получить консультацию специалиста</p>
+    <div class="special_block_inputs">
+        <input id='name' type="text" name="name" placeholder="Ваше имя" class="special_block_input">
+        <input id="phone" type="tel" onkeypress="return event.charCode >= 48 && event.charCode <= 57" name="phone" placeholder="Ваш телефон" class="special_block_input">
+    </div>
+    <div class="special_block_buttons">
+        <div class="special_buttons">
+            <div class="special_button1" id='send_consultation_button' onclick="send_consultation()">Отправить заявку</div>
+            <a class="special_button2" style="text-decoration: none;" href="tel:{{ number }}">Позвонить нам</a>
+        </div>
+        <label class="container">Согласен на обработку <a href="#soglasie1" id="soglasie_open10" class="container_a">персональных данных</a> в соответствии с <a href="{% url 'agreement' %}" class="container_a">пользовательским соглашением</a>
+            <input type="checkbox" id="agreement" name="agreement" checked>
+            <span class="checkmark"></span>
+        </label>
+    </div>
+</div>
+{% endblock %}
